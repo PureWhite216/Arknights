@@ -1,24 +1,54 @@
 package Character;
 
 import Component.AnimationComponent;
+import Component.BattleComponent;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
-import com.esotericsoftware.spine.SkeletonMeshRenderer;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.esotericsoftware.spine.SkeletonRenderer;
+import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 
-public abstract class CharacterBase
+public abstract class CharacterBase extends Actor implements Comparable
 {
-    protected static final float defaultScale = 0.6f;
+    public static final float defaultScale = 0.4f;
     protected AnimationComponent animationComponent;
-    protected float health;
+    protected BattleComponent battleComponent;
+    protected CharacterBase target;
+
+//    public Button button = new Button();
 
     protected abstract void setAnimationComponent(float scale);
+
     public abstract void callSkillAnimation(SkillAnimation skillAnimation);
 
     public CharacterBase(float posX, float posY, float scale)
     {
+        super();
         setAnimationComponent(scale);
-        setPosition(posX, posY);
         animationComponent.setScale(defaultScale);
+//        button.setWidth(animationComponent.getWidth() * defaultScale * 0.8f);
+//        button.setHeight(animationComponent.getHeight() * defaultScale);
+        setOrigin(animationComponent.getWidth() / 2, 0);
+        setSize(animationComponent.getWidth(), animationComponent.getHeight());
+        setPosition(posX, posY);
+//        button.addListener(new ClickListener() {
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                System.out.println("Click");
+//                System.out.printf("%f %f\n", button.getWidth(), button.getHeight());
+//                System.out.printf("%f %f\n", button.getX(), button.getY());
+//                System.out.printf("Spine: %f %f\n", animationComponent.getSkeleton().getX(), animationComponent.getSkeleton().getY());
+//                System.out.printf("Cursor: %f %f\n", x, y);
+//                callSkillAnimation(SkillAnimation.attack);
+//            }
+//        });
+    }
+
+    public abstract void callSkill(SkillName skillName);
+
+    public void setTarget(CharacterBase target)
+    {
+        this.target = target;
     }
 
     public AnimationComponent getAnimationComponent()
@@ -26,9 +56,9 @@ public abstract class CharacterBase
         return animationComponent;
     }
 
-    public float getHealth()
+    public BattleComponent getBattleComponent()
     {
-        return health;
+        return battleComponent;
     }
 
     public void update()
@@ -37,20 +67,36 @@ public abstract class CharacterBase
         animationComponent.getAnimationState().update(Gdx.graphics.getDeltaTime());
         animationComponent.getSkeleton().updateWorldTransform();
         animationComponent.getAnimationState().apply(animationComponent.getSkeleton());
+        animationComponent.getSkeleton().setPosition(getX(), getY());
         /*Update Spine Animation*/
     }
-    public void render(PolygonSpriteBatch batch, SkeletonMeshRenderer renderer)
+
+
+    public void render(TwoColorPolygonBatch batch, SkeletonRenderer renderer)
     {
         renderer.draw(batch, animationComponent.getSkeleton());
     }
+
+    @Override
     public void setPosition(float posX, float posY)
     {
+        super.setPosition(posX, posY);
+//        System.out.println(posX);
         animationComponent.getSkeleton().setPosition(posX, posY);
+//        button.setPosition(posX - button.getWidth() / 2 , posY);
     }
-    public void getDamage(float damage)
+
+    @Override
+    public void act(float delta)
     {
-        health -= damage;
-        if(health <= 0) die();
+        super.act(delta);
+    }
+
+
+    @Override
+    public void draw(Batch batch, float parentAlpha)
+    {
+
     }
 
     public void die()
@@ -58,5 +104,18 @@ public abstract class CharacterBase
 
     }
 
+    @Override
+    public int compareTo(Object o)
+    {
+        CharacterBase c = (CharacterBase)o;
+        if(this.getBattleComponent().getSpeed() > c.getBattleComponent().getSpeed())
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
 
