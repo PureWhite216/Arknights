@@ -45,6 +45,7 @@ public class TestLevel extends BattleLevelBase
             enemies[i].callSkillAnimation(SkillAnimation.levelStart);
             enemies[i].getAnimationComponent().setScale(0.6f);
             enemies[i].setTarget(operators[i]);
+            stage.addActor(enemies[i]);
         }
         AudioManager.getInstance().playBGM(0);
         System.out.println("TestLevel: " + stage.getActors().size);
