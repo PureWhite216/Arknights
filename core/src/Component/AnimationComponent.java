@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.spine.*;
+import Character.CharacterBase;
 
 public class AnimationComponent
 {
@@ -29,7 +30,8 @@ public class AnimationComponent
         skeleton = new Skeleton(skeletonData);
         animationStateData = new AnimationStateData(skeletonData);
         animationState = new AnimationState(animationStateData);
-        
+        animationState.setTimeScale(1.1f); // Default Time Scale
+
         /*Set Default Animation Mix*/
 //        animationStateData.setMix("Start", "Idle", 0.3f);
 //        animationStateData.setMix("Idle", "Attack", 0.3f);
@@ -40,7 +42,6 @@ public class AnimationComponent
     public void setScale(float scale)
     {
 //        System.out.println(0.6f);
-        if(scale < 0) scale = 0;
         json.setScale(scale);
 //        System.out.println(json.getScale());
     }
@@ -64,5 +65,20 @@ public class AnimationComponent
     public Skeleton getSkeleton()
     {
         return skeleton;
+    }
+
+    public SkeletonData getSkeletonData()
+    {
+        return skeletonData;
+    }
+
+    public float getWidth()
+    {
+        return skeletonData.getWidth() * CharacterBase.defaultScale;
+    }
+
+    public float getHeight()
+    {
+        return skeletonData.getHeight() * CharacterBase.defaultScale;
     }
 }

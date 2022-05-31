@@ -1,2 +1,5 @@
-package UI;public class BattleUI {
+package UI;
+
+public class BattleUI
+{
 }

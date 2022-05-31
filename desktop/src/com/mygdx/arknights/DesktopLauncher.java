@@ -11,7 +11,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
-		config.setWindowedMode(1600, 720);
+		config.setWindowedMode(1920, 1080);
 
 //		Graphics.DisplayMode primaryMode = Lwjgl3ApplicationConfiguration.getDisplayMode();
 //		config.setFullscreenMode(primaryMode); // Set Full Screen Mode

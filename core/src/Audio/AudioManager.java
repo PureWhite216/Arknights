@@ -8,7 +8,7 @@ public class AudioManager
     private static AudioManager instance = new AudioManager();
     private String[] musicAssets = new String[10];
     private Music bgm;
-    private float defaultVolume = 0.1f;
+    public static float defaultVolume = 0.4f;
 
     public static AudioManager getInstance()
     {
@@ -18,6 +18,7 @@ public class AudioManager
     private AudioManager()
     {
         musicAssets[0] = "Audio/Music/Tactical Ambush.mp3";
+        musicAssets[1] = "assets/Audio/Music/赴遥尘.mp3";
     }
 
     public void playBGM(int index)
@@ -28,6 +29,13 @@ public class AudioManager
         bgm.setVolume(defaultVolume);
         bgm.play();
     }
+
+    public void StopBGM()
+    {
+        bgm.stop();
+        bgm.dispose();
+    }
+
 
     public Music getBgm()
     {

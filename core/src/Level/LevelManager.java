@@ -1,18 +1,25 @@
 package Level;
 
-import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.esotericsoftware.spine.SkeletonMeshRenderer;
+import com.esotericsoftware.spine.SkeletonRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 
 import java.util.Stack;
 
 public class LevelManager
 {
+    private static LevelManager instance = new LevelManager();
     private Stack<LevelBase> levels;
 
-    public LevelManager()
+    private LevelManager()
     {
         levels = new Stack<>();
+    }
+
+    public static LevelManager getInstance()
+    {
+        return instance;
     }
 
     public void push(LevelBase level)
@@ -30,10 +37,14 @@ public class LevelManager
         levels.peek().update(deltaTime);
     }
 
-    public void render(SpriteBatch sp, PolygonSpriteBatch psp, SkeletonMeshRenderer renderer)
+    public void render()
     {
-        levels.peek().render(sp, psp, renderer);
+        levels.peek().render();
     }
 
+    public void resize(int width, int height)
+    {
+        levels.peek().resize(width, height);
+    }
 
 }
