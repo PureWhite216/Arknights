@@ -60,8 +60,8 @@ public class TestLevel extends BattleLevelBase
     {
         if(Gdx.input.isKeyJustPressed((Input.Keys.A)))
         {
-            System.out.println("aaa");
-            roundExecute();
+//            System.out.println("aaa");
+//            roundExecute();
 //            for(int i = 0; i <= 3; i++)
 //            {
 //                if(operators[i] == null) break;

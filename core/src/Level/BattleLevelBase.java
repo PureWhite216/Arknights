@@ -7,10 +7,12 @@ import Character.Enemy;
 import Character.Operator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +28,7 @@ public abstract class BattleLevelBase extends LevelBase
     protected Button[] operatorButtons = new Button[4];
     public static float defaultY = 200;
     protected Image targetBox;
+    protected Button readyButton;
     protected float roundExecuteTimer = 0;
     protected BattleHandler battleHandler;
 
@@ -38,10 +41,21 @@ public abstract class BattleLevelBase extends LevelBase
         targetBox.setVisible(false);
         Button.ButtonStyle style = new Button.ButtonStyle();
 
-//        Texture startTexture = new Texture(Gdx.files.internal("assets/Images/TargetBox.png"));
-//        Texture downTexture = new Texture(Gdx.files.internal("assets/Images/TargetBox.png"));
-//        style.up = new TextureRegionDrawable(new TextureRegion(startTexture));
-//        style.down = new TextureRegionDrawable(new TextureRegion(downTexture));
+        Texture ready_Texture = new Texture(Gdx.files.internal("assets/Button/ready.png"));
+        Button.ButtonStyle ready_Style = new Button.ButtonStyle();
+        ready_Style.up = new TextureRegionDrawable(new TextureRegion(ready_Texture));
+        ready_Style.down = new TextureRegionDrawable(new TextureRegion(ready_Texture));
+        readyButton = new Button(ready_Style);
+        readyButton.setPosition(stage.getWidth() / 2 - readyButton.getWidth() / 2, stage.getHeight() * 0.75f);
+        readyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Ready");
+                roundExecute();
+            }
+        });
+        stage.addActor(readyButton);
+
         for(int i = 0; i <= 3; i++)
         {
             operatorButtons[i] = new Button(style);
@@ -67,6 +81,7 @@ public abstract class BattleLevelBase extends LevelBase
 
     protected void roundExecute()
     {
+        readyButton.setVisible(false);
         Collections.sort(characters);
         battleHandler.execute();
     }
@@ -81,5 +96,10 @@ public abstract class BattleLevelBase extends LevelBase
     {
         super.update(deltaTime);
         battleHandler.update(deltaTime);
+    }
+
+    public Button getReadyButton()
+    {
+        return readyButton;
     }
 }

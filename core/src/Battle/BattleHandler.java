@@ -9,6 +9,7 @@ public class BattleHandler
     private float timer = duration;
     private int currentIndex = 0;
     private boolean isEnd = true;
+    private boolean isEndReady = false;
     public BattleHandler(BattleLevelBase level)
     {
         this.level = level;
@@ -18,16 +19,23 @@ public class BattleHandler
     {
         if(isEnd) return;
         timer += deltaTime;
-        if(timer >= duration)
+        if(isEndReady && timer >= duration)
+        {
+            timer = duration;
+            isEnd = true;
+            level.getReadyButton().setVisible(true);
+            return;
+        }
+        else if(!isEndReady && timer >= duration)
         {
             level.getCharacters().get(currentIndex).callSkill(SkillName.Attack);
             currentIndex++;
             timer = 0;
             if(level.getCharacters().size() == currentIndex)
             {
-                isEnd = true;
+                isEndReady = true;
                 currentIndex = 0;
-                timer = duration;
+                timer = 0;
             }
         }
     }
