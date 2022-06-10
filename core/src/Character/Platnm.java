@@ -2,17 +2,34 @@ package Character;
 
 import Component.AnimationComponent;
 import Component.BattleComponent;
+import Component.Skill.Platnm.Skill_Platnm_Attack;
+import Level.BattleLevelBase;
+import Level.LevelBase;
+import UI.SkillChooseTable;
 
 public class Platnm extends Operator
 {
     static final String atlasPath = "assets/Platnm_Front/char_204_platnm.atlas";
     static final String skelPath = "assets/Platnm_Front/char_204_platnm.skel";
+    static final String soundPath = "assets/Platnm_Front/白金_选中干员1.wav";
 
     public Platnm(float posX, float posY)
     {
-        super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(300, 150, 45);
+        super(posX, posY, defaultScale, soundPath);
+        battleComponent = new BattleComponent(100, 80, 45, this);
+
+        skills.add(new Skill_Platnm_Attack(this));
+
+        skillChooseTable = new SkillChooseTable(this); // Set up skillChooseTable
     }
+
+    @Override
+    public void enterLevel(BattleLevelBase currentLevel, int index)
+    {
+        super.enterLevel(currentLevel, index);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
+    }
+
     @Override
     protected void setAnimationComponent(float scale)
     {
@@ -23,33 +40,11 @@ public class Platnm extends Operator
         /*Set Animation Mix*/
     }
 
-    @Override
-    public void callSkill(SkillName skillName)
-    {
-        switch(skillName)
-        {
-            case Attack:
-                skillAction_Attack();
-        }
-    }
 
-    public void skillAction_Attack()
-    {
-        callSkillAnimation(SkillAnimation.attack);
-    }
 
-    @Override
-    public void callSkillAnimation(SkillAnimation skillAnimation)
-    {
-        switch(skillAnimation)
-        {
-            case levelStart:
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-            case attack:
-                animationComponent.getAnimationState().setAnimation(0, "Attack", false);
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-        }
-    }
+
+
+
+
+
 }

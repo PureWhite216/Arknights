@@ -1,10 +1,14 @@
 package Character;
 
+import Audio.AudioManager;
 import Component.AnimationComponent;
 import Component.BattleComponent;
+import Component.Skill.Enemy1002.Skill_Enemy1002_Attack;
 import Level.BattleLevelBase;
+import Level.LevelBase;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
 public class Enemy_1002 extends Enemy
 {
@@ -14,7 +18,16 @@ public class Enemy_1002 extends Enemy
     public Enemy_1002(float posX, float posY)
     {
         super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(300, 100, 30);
+        battleComponent = new BattleComponent(200, 40, 30, this);
+        skills.add(new Skill_Enemy1002_Attack(this));
+        chosenSkillIndex = 0;
+    }
+
+    @Override
+    public void enterLevel(BattleLevelBase currentLevel, int index)
+    {
+        super.enterLevel(currentLevel, index);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
     }
 
     @Override
@@ -26,40 +39,4 @@ public class Enemy_1002 extends Enemy
         /*Set Animation Mix*/
     }
 
-    @Override
-    public void callSkill(SkillName skillName)
-    {
-        switch(skillName)
-        {
-            case Attack:
-                skillAction_Attack();
-        }
-    }
-
-    public void skillAction_Attack()
-    {
-        callSkillAnimation(SkillAnimation.attack);
-        this.clearActions();
-        this.addAction(Actions.sequence(
-                Actions.moveTo(target.getX() + 100, BattleLevelBase.defaultY, 0.3f, Interpolation.circleIn),
-                Actions.delay(0.6f),
-                Actions.moveTo(this.getX(), BattleLevelBase.defaultY, 0.35f, Interpolation.circleOut))
-        );
-    }
-
-    @Override
-    public void callSkillAnimation(SkillAnimation skillAnimation)
-    {
-        /*Set the Animation of the skill*/
-        switch(skillAnimation)
-        {
-            case levelStart:
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-            case attack:
-                animationComponent.getAnimationState().setAnimation(0, "Attack", false);
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-        }
-    }
 }

@@ -2,5 +2,5 @@ package Character;
 
 public enum SkillName
 {
-    Attack
+    Attack, Die
 }

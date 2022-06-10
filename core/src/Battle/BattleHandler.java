@@ -1,7 +1,10 @@
 package Battle;
 
 import Level.BattleLevelBase;
-import Character.SkillName;
+import Character.Operator;
+import Character.Enemy;
+import Character.CharacterBase;
+
 public class BattleHandler
 {
     private BattleLevelBase level;
@@ -17,26 +20,55 @@ public class BattleHandler
 
     public void update(float deltaTime)
     {
-        if(isEnd) return;
+        if(isEnd) return; // Not Start
         timer += deltaTime;
-        if(isEndReady && timer >= duration)
+        if(isEndReady && timer >= duration) // End the Round
         {
             timer = duration;
             isEnd = true;
-            level.getReadyButton().setVisible(true);
-            return;
+            level.getReadyButton().setVisible(false);
+            level.getPreImage().setVisible(true);
+            level.getImage_Battling().setVisible(false);
+            isEndReady = false;
+
+            Operator[] operators = level.getOperators();
+            for(int i = 0; i <= 3; i++)
+            {
+                if(operators[i] == null) break;
+                operators[i].setTarget(null);
+            }
+
+            /*Check Is Battle End*/
+            for(Enemy enemy : level.getEnemies())
+            {
+                if(enemy == null) continue;
+                if(!enemy.isDied())
+                {
+                    return;
+                }
+            }
+            level.battleEnd();
+
         }
         else if(!isEndReady && timer >= duration)
         {
-            level.getCharacters().get(currentIndex).callSkill(SkillName.Attack);
-            currentIndex++;
-            timer = 0;
-            if(level.getCharacters().size() == currentIndex)
+            while(currentIndex < level.getCharacters().size() && level.getCharacters().get(currentIndex).isDied())
+            {
+                currentIndex++;
+            }
+            if(level.getCharacters().size() == currentIndex) // Ready to End the Round
             {
                 isEndReady = true;
                 currentIndex = 0;
-                timer = 0;
             }
+            else
+            {
+                CharacterBase tmp;
+                tmp = level.getCharacters().get(currentIndex);
+                tmp.getSkills().get(tmp.chosenSkillIndex).callSkill();
+                currentIndex++;
+            }
+            timer = 0;
         }
     }
 

@@ -2,6 +2,7 @@ package Level;
 
 import Audio.AudioManager;
 import Character.*;
+import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,16 +12,11 @@ public class TestLevel extends BattleLevelBase
 {
     private float speed = 1f;
     private Texture background;
-//    MoveToAction action = Actions.moveTo(1500, 200, 0.5f, Interpolation.circleIn);
-//    DelayAction delay = Actions.delay(0.5f);
-//    MoveToAction action2 = Actions.moveTo(700, 200, 0.5f, Interpolation.circleOut);
-//    SequenceAction sequenceAction = Actions.sequence(action, delay, action2);
+    private SkillChooseTable skillChooseTable;
     public TestLevel()
     {
         super();
         background = new Texture(Gdx.files.internal("assets/BackGround/BackGroud1.jpg"));
-//        background.setPosition(0, 0);
-//        stage.addActor(background);
 
         operators[0] = new Amiya(operatorPos[0],defaultY);
         operators[1] = new Texas(operatorPos[1], defaultY);
@@ -33,16 +29,15 @@ public class TestLevel extends BattleLevelBase
         {
             if(operators[i] == null) break;
             characters.add(operators[i]);
-            operators[i].callSkillAnimation(SkillAnimation.levelStart);;
+            operators[i].enterLevel(this, i);;
             operators[i].getAnimationComponent().setScale(0.6f);
-            operators[i].setTarget(enemies[i]);
             stage.addActor(operators[i]);
         }
         for(int i = 0; i <= 3; i++)
         {
             if(enemies[i] == null) break;
             characters.add(enemies[i]);
-            enemies[i].callSkillAnimation(SkillAnimation.levelStart);
+            enemies[i].enterLevel(this, i);;
             enemies[i].getAnimationComponent().setScale(0.6f);
             enemies[i].setTarget(operators[i]);
             stage.addActor(enemies[i]);
@@ -51,6 +46,13 @@ public class TestLevel extends BattleLevelBase
         System.out.println("TestLevel: " + stage.getActors().size);
         
         initUI();
+
+        for(int i = 0; i <= 3; i++)
+        {
+            if(operators[i] == null) break;
+            operators[i].getSkillChooseTable().setPosition(operatorPos[i] + 50);
+            operators[i].getSkillChooseTable().addToLevel(stage, this, i);
+        }
     }
 
 
@@ -60,15 +62,6 @@ public class TestLevel extends BattleLevelBase
     {
         if(Gdx.input.isKeyJustPressed((Input.Keys.A)))
         {
-//            System.out.println("aaa");
-//            roundExecute();
-//            for(int i = 0; i <= 3; i++)
-//            {
-//                if(operators[i] == null) break;
-//                operators[i].callSkill(SkillName.Attack, enemies[i]);
-//            }
-//            System.out.println(operators[0].getAnimationComponent().getSkeletonData().getWidth());
-//            System.out.println(operators[0].getAnimationComponent().getSkeletonData().getHeight());
         }
         if(Gdx.input.justTouched())
         {
@@ -121,7 +114,7 @@ public class TestLevel extends BattleLevelBase
     @Override
     protected LevelBase loadNextLevel()
     {
-        return null;
+        return new TestLevel();
     }
 
     @Override

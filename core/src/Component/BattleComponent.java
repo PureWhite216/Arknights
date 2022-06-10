@@ -1,31 +1,55 @@
 package Component;
 
+import Character.CharacterBase;
+import Character.Operator;
+
 public class BattleComponent
 {
-    private float health;
-//    private float tmpHealth;
+    private int HP;
+    private int maxHP;
+//    private float tmpHP;
 //    private float armor;
-    private float atk;
-    private float speed;
+    private int atk;
+    private int speed;
+    private CharacterBase character;
+    private boolean isDied = false;
 
-    public BattleComponent(float health, float atk, float speed)
+    public BattleComponent(int maxHP, int atk, int speed, CharacterBase character)
     {
-        this.health = health;
+        this.HP = maxHP;
+        this.maxHP = maxHP;
         this.atk = atk;
         this.speed = speed;
+        this.character = character;
     }
 
-    public void getDamage(float damage)
+    public void getDamage(int damage)
     {
-        health -= damage;
+        HP -= damage;
+        character.getHPPanel().updateHP(HP);
+        if(HP <= 0)
+        {
+            isDied = true;
+            character.die();
+        }
     }
 
-    public float getHealth()
+    public boolean isDied()
     {
-        return health;
+        return isDied;
     }
 
-    public float getAtk()
+    public int getHP()
+    {
+        return HP;
+    }
+
+    public int getMaxHP()
+    {
+        return maxHP;
+    }
+
+    public int getAtk()
     {
         return atk;
     }

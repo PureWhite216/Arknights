@@ -1,21 +1,42 @@
 package Character;
 
+import Audio.AudioManager;
 import Component.AnimationComponent;
 import Component.BattleComponent;
+import Component.Skill.Enemy1002.Skill_Enemy1002_Attack;
+import Component.Skill.Texas.Skill_Texas_Attack;
 import Level.BattleLevelBase;
+import Level.LevelBase;
+import UI.SkillChooseTable;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
 public class Texas extends Operator
 {
     static final String atlasPath = "assets/Texas/char_102_texas.atlas";
     static final String skelPath = "assets/Texas/char_102_texas.skel";
+    static final String soundPath = "assets/Texas/德克萨斯_选中干员1.wav";
 
     public Texas(float posX, float posY)
     {
-        super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(500, 150, 70);
+        super(posX, posY, defaultScale, soundPath);
+        battleComponent = new BattleComponent(200, 60, 70, this);
+
+        skills.add(new Skill_Texas_Attack(this));
+
+        skillChooseTable = new SkillChooseTable(this); // Set up skillChooseTable
+
     }
+
+
+    @Override
+    public void enterLevel(BattleLevelBase currentLevel, int index)
+    {
+        super.enterLevel(currentLevel, index);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
+    }
+
     @Override
     protected void setAnimationComponent(float scale)
     {
@@ -26,42 +47,4 @@ public class Texas extends Operator
         /*Set Animation Mix*/
     }
 
-    @Override
-    public void callSkill(SkillName skillName)
-    {
-        switch(skillName)
-        {
-            case Attack:
-                skillAction_Attack();
-        }
-    }
-
-    public void skillAction_Attack()
-    {
-        this.clearActions();
-        this.addAction(Actions.sequence(
-                Actions.delay(0.4f),
-                Actions.moveTo(target.getX() - 100, BattleLevelBase.defaultY, 0.35f, Interpolation.circleIn),
-                Actions.delay(0.55f),
-                Actions.moveTo(this.getX(), BattleLevelBase.defaultY, 0.35f, Interpolation.circleOut))
-        );
-        callSkillAnimation(SkillAnimation.attack);
-    }
-
-    @Override
-    public void callSkillAnimation(SkillAnimation skillAnimation)
-    {
-        switch(skillAnimation)
-        {
-            case levelStart:
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-            case attack:
-                animationComponent.getAnimationState().setAnimation(0, "Attack_Start", false);
-                animationComponent.getAnimationState().addAnimation(0, "Attack_Loop", false, 0f);
-                animationComponent.getAnimationState().addAnimation(0, "Attack_End", false, 0f);
-                animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-                break;
-        }
-    }
 }
