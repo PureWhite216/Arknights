@@ -1,6 +1,7 @@
 package Component.Skill.Amiya;
 
 import Audio.AudioManager;
+import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import Level.BattleLevelBase;
@@ -14,12 +15,13 @@ public class Skill_Amiya_PowerStrike extends Skill_Amiya_Attack
     {
         super(character);
         skillName = "强力击";
+        apCost = 2;
     }
 
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2);
+        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Magical);
         AudioManager.getInstance().getHitSFX()[0].play(0.4f);
     }
 }

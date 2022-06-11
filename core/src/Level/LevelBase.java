@@ -83,7 +83,6 @@ public abstract class LevelBase
         }
     }
     protected abstract LevelBase loadNextLevel();
-    protected abstract void handleInput();
     public void update(float deltaTime)
     {
         enterLevel(deltaTime);

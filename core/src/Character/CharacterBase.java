@@ -14,7 +14,7 @@ import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 
 import java.util.ArrayList;
 
-public abstract class CharacterBase extends Actor implements Comparable
+public abstract class CharacterBase extends Actor
 {
     public static final float defaultScale = 0.4f;
     protected AnimationComponent animationComponent;
@@ -43,6 +43,7 @@ public abstract class CharacterBase extends Actor implements Comparable
         this.currentLevel = currentLevel;
         target = null;
         this.index = index;
+        battleComponent.setAp(2);
     }
 
 
@@ -110,20 +111,6 @@ public abstract class CharacterBase extends Actor implements Comparable
     public CharacterBase getTarget()
     {
         return target;
-    }
-
-    @Override
-    public int compareTo(Object o)
-    {
-        CharacterBase c = (CharacterBase)o;
-        if(this.getBattleComponent().getSpeed() > c.getBattleComponent().getSpeed())
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
     }
 
     public Panel_HP getHPPanel()

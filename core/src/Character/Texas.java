@@ -21,7 +21,7 @@ public class Texas extends Operator
     public Texas(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath);
-        battleComponent = new BattleComponent(200, 60, 70, this);
+        battleComponent = new BattleComponent(200, 60, 50, 0, this);
 
         skills.add(new Skill_Texas_Attack(this));
 

@@ -1,11 +1,14 @@
 package Level;
 
+import Audio.AudioManager;
 import Battle.BattleHandler;
 import Character.CharacterBase;
 import Character.Enemy;
 import Character.Operator;
+import UI.Panel_AP;
 import UI.Panel_HP;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -27,6 +30,7 @@ public abstract class BattleLevelBase extends LevelBase
     protected Enemy[] enemies = new Enemy[4];
     protected ArrayList<CharacterBase> characters = new ArrayList<>();
 
+    protected Texture background = new Texture(Gdx.files.internal("assets/BackGround/BackGroud1.jpg"));;
     protected static Texture enemyBox = new Texture(Gdx.files.internal("assets/Images/EnemyBox.png"));
     protected static Texture operatorBox = new Texture(Gdx.files.internal("assets/Images/operatorBox.png"));
     protected Button[] operatorButtons = new Button[4];
@@ -38,6 +42,7 @@ public abstract class BattleLevelBase extends LevelBase
     protected Image endImage;
     protected Image[] readyImages = new Image[4];
     protected Panel_HP[] hpPanels = new Panel_HP[8];
+    protected Panel_AP[] apPanels = new Panel_AP[4];
 
     protected static final Texture Texture_preImage= new Texture(Gdx.files.internal("assets/Images/准备阶段.png"));
     protected static final Texture Texture_Battling = new Texture(Gdx.files.internal("assets/Images/battling.png"));
@@ -58,6 +63,35 @@ public abstract class BattleLevelBase extends LevelBase
     }
 
     protected boolean isChoosingTarget = false;
+
+    protected void initLevel()
+    {
+        initCharacters();
+        initUI();
+        AudioManager.getInstance().playBGM(0);
+        battleHandler = new BattleHandler(this);
+    }
+
+    protected void initCharacters()
+    {
+        for(int i = 0; i <= 3; i++)
+        {
+            if(operators[i] == null) break;
+            characters.add(operators[i]);
+            operators[i].enterLevel(this, i);
+            operators[i].getAnimationComponent().setScale(0.6f);
+            stage.addActor(operators[i]);
+        }
+        for(int i = 0; i <= 3; i++)
+        {
+            if(enemies[i] == null) break;
+            characters.add(enemies[i]);
+            enemies[i].enterLevel(this, i);
+            enemies[i].getAnimationComponent().setScale(0.6f);
+            enemies[i].setTarget(operators[i]);
+            stage.addActor(enemies[i]);
+        }
+    }
 
     protected void initUI()
     {
@@ -125,6 +159,11 @@ public abstract class BattleLevelBase extends LevelBase
             hpPanels[i].setPosition(operatorPos[i] - hpPanels[i].getHpImage().getWidth() / 2);
             hpPanels[i].initHP(operators[i].getBattleComponent().getHP(), operators[i].getBattleComponent().getMaxHP());
 
+            apPanels[i] = new Panel_AP();
+            apPanels[i].addToLevel(stage, this, i);
+            apPanels[i].setPosition(operatorPos[i] - apPanels[i].getApPanel().getWidth() / 2);
+            apPanels[i].updateAP(operators[i].getBattleComponent().getAp());
+
             readyImages[i] = new Image(Texture_Ready);
             readyImages[i].setPosition(operatorPos[i] - readyImages[i].getWidth() / 2, 350);
             readyImages[i].setVisible(false);
@@ -187,7 +226,12 @@ public abstract class BattleLevelBase extends LevelBase
         stage.addActor(nextButton);
         nextButton.setVisible(false);
 
-        battleHandler = new BattleHandler(this);
+        for(int i = 0; i <= 3; i++)
+        {
+            if(operators[i] == null) break;
+            operators[i].getSkillChooseTable().setPosition(operatorPos[i] + 50);
+            operators[i].getSkillChooseTable().addToLevel(stage, this, i);
+        }
     }
 
     public boolean checkIsReady()
@@ -214,7 +258,6 @@ public abstract class BattleLevelBase extends LevelBase
             enemies[i].chooseTarget();
         }
         readyButton.setVisible(false);
-        Collections.sort(characters);
         battleHandler.execute();
     }
 
@@ -225,11 +268,66 @@ public abstract class BattleLevelBase extends LevelBase
     }
 
     @Override
+    protected LevelBase loadNextLevel()
+    {
+        return new TestLevel();
+    }
+
+    @Override
     public void update(float deltaTime)
     {
         super.update(deltaTime);
         battleHandler.update(deltaTime);
+        for(CharacterBase character : operators)
+        {
+            if(character == null) break;
+            character.update();
+        }
+        for(CharacterBase character : enemies)
+        {
+            if(character == null) break;
+            character.update();
+        }
     }
+
+    @Override
+    public void render()
+    {
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        spriteBatch.begin();
+        spriteBatch.draw(background, 0, 0);
+        spriteBatch.end();
+
+        twoColorPolygonBatch.begin();
+        for(CharacterBase character : operators)
+        {
+            if(character == null) break;
+            character.render(twoColorPolygonBatch, renderer);
+        }
+//        twoColorPolygonBatch.setTransformMatrix(new Matrix4().setToRotation(new Vector3(0, 1, 0), -180));
+        for(CharacterBase character : enemies)
+        {
+            if(character == null) break;
+            character.render(twoColorPolygonBatch, renderer);
+        }
+        twoColorPolygonBatch.end();
+        stage.draw();
+    }
+
+    /*Do Not Forget to Dispose*/
+    @Override
+    public void dispose()
+    {
+
+    }
+
+    @Override
+    public void resize(int width, int height)
+    {
+
+    }
+
     public ArrayList<CharacterBase> getCharacters()
     {
         return characters;
@@ -278,5 +376,10 @@ public abstract class BattleLevelBase extends LevelBase
     public Image[] getReadyImages()
     {
         return readyImages;
+    }
+
+    public Panel_AP[] getApPanels()
+    {
+        return apPanels;
     }
 }

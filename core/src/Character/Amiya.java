@@ -22,7 +22,7 @@ public class Amiya extends Operator
     public Amiya(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath);
-        battleComponent = new BattleComponent(200, 70, 50, this); // Set Battle Info
+        battleComponent = new BattleComponent(200, 70, 25, 20, this); // Set Battle Info
         /*Init Skill*/
         skills.add(new Skill_Amiya_Attack(this));
         skills.add(new Skill_Amiya_PowerStrike(this));

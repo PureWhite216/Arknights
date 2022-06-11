@@ -13,6 +13,7 @@ public class BattleHandler
     private int currentIndex = 0;
     private boolean isEnd = true;
     private boolean isEndReady = false;
+
     public BattleHandler(BattleLevelBase level)
     {
         this.level = level;
@@ -22,8 +23,10 @@ public class BattleHandler
     {
         if(isEnd) return; // Not Start
         timer += deltaTime;
+
         if(isEndReady && timer >= duration) // End the Round
         {
+            /*End the Round*/
             timer = duration;
             isEnd = true;
             level.getReadyButton().setVisible(false);
@@ -36,6 +39,10 @@ public class BattleHandler
             {
                 if(operators[i] == null) break;
                 operators[i].setTarget(null);
+                operators[i].getBattleComponent().apPlusPlus();
+                level.getApPanels()[i].updateAP(operators[i].getBattleComponent().getAp());
+                level.setChoosingTarget(false);
+                operators[i].chosenSkillIndex = -1;
             }
 
             /*Check Is Battle End*/

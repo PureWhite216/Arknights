@@ -1,6 +1,7 @@
 package Character;
 
 import Audio.AudioManager;
+import Level.BattleLevelBase;
 import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -13,6 +14,13 @@ public abstract class Operator extends CharacterBase
     {
         super(posX, posY, scale);
         chosenSound = Gdx.audio.newSound(Gdx.files.internal(soundPath));
+    }
+
+    @Override
+    public void enterLevel(BattleLevelBase currentLevel, int index)
+    {
+        super.enterLevel(currentLevel, index);
+        chosenSkillIndex = -1;
     }
 
     @Override
@@ -35,3 +43,4 @@ public abstract class Operator extends CharacterBase
         AudioManager.getInstance().playCharacterSound(chosenSound);
     }
 }
+

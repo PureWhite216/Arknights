@@ -25,7 +25,6 @@ public class Panel_HP extends BattleUI
         group = new Group();
         group.setVisible(true);
         group.setY(140);
-
         hpImage = new Image(Texture_HP);
         group.addActor(hpImage);
 

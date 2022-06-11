@@ -18,7 +18,7 @@ public class Enemy_1002 extends Enemy
     public Enemy_1002(float posX, float posY)
     {
         super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(200, 40, 30, this);
+        battleComponent = new BattleComponent(200, 67, 13, 0, this);
         skills.add(new Skill_Enemy1002_Attack(this));
         chosenSkillIndex = 0;
     }

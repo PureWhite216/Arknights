@@ -1,20 +1,18 @@
 package UI;
 
+import Character.Operator;
 import Component.Skill.SkillBase;
-import Level.BattleLevelBase;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import Character.Operator;
 
 import java.util.ArrayList;
 
@@ -25,8 +23,8 @@ public class SkillChooseTable extends BattleUI
     private Image skillTable;
     private Label skillNameLabel;
     private Label.LabelStyle labelStyle;
-    private Texture upTexture;
-    private Texture downTexture;
+    private static final Texture upTexture = new Texture(Gdx.files.internal("assets/Button/button1.png"));
+    private static final Texture downTexture = new Texture(Gdx.files.internal("assets/Button/button1_pressed.png"));
     private Operator operator;
     private static final Texture tableTexture = new Texture(Gdx.files.internal("assets/Images/SkillTable.png"));
 
@@ -50,8 +48,6 @@ public class SkillChooseTable extends BattleUI
 
     private void generateSkillButtons()
     {
-        upTexture = new Texture(Gdx.files.internal("assets/Button/button1.png"));
-        downTexture = new Texture(Gdx.files.internal("assets/Button/button1_pressed.png"));
         upTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         downTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -73,9 +69,16 @@ public class SkillChooseTable extends BattleUI
             button.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
+                    if(operator.getSkills().get(finalI).getApCost() > operator.getBattleComponent().getAp()) return;
                     level.setChoosingTarget(true);
                     level.setChoosingOperator(index);
+                    if(operator.chosenSkillIndex != -1)
+                    {
+                        operator.getBattleComponent().addAP(operator.getSkills().get(operator.chosenSkillIndex).getApCost());
+                    }
                     operator.chosenSkillIndex = finalI;
+                    operator.getBattleComponent().costAP(operator.getSkills().get(finalI).getApCost());
+                    level.getApPanels()[index].updateAP(operator.getBattleComponent().getAp());
                 }
             });
             buttons.add(button);

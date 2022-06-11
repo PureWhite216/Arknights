@@ -7,24 +7,41 @@ public class BattleComponent
 {
     private int HP;
     private int maxHP;
-//    private float tmpHP;
-//    private float armor;
+    private int def;
+    private int res;
     private int atk;
-    private int speed;
+    private int ap;
+    private int apReadyToCost;
     private CharacterBase character;
     private boolean isDied = false;
 
-    public BattleComponent(int maxHP, int atk, int speed, CharacterBase character)
+    public BattleComponent(int maxHP, int atk, int def, int res, CharacterBase character)
     {
         this.HP = maxHP;
         this.maxHP = maxHP;
         this.atk = atk;
-        this.speed = speed;
+        this.def = def;
+        this.res = res;
         this.character = character;
+        ap = 0;
     }
 
-    public void getDamage(int damage)
+    public void getDamage(int damage, DamageType damageType)
     {
+        switch(damageType)
+        {
+            case Physical:
+                damage -= def;
+                if(damage <= 0) damage = 1;
+                break;
+            case Magical:
+                damage = damage * (100 - res) / 100;
+                if(damage <= 0) damage = 1;
+                break;
+            case Real:
+                break;
+        }
+
         HP -= damage;
         character.getHPPanel().updateHP(HP);
         if(HP <= 0)
@@ -32,6 +49,17 @@ public class BattleComponent
             isDied = true;
             character.die();
         }
+    }
+
+    public void costAP(int cost)
+    {
+        ap -= cost;
+    }
+
+    public void apPlusPlus()
+    {
+        ap++;
+        if(ap > 6) ap = 6;
     }
 
     public boolean isDied()
@@ -54,8 +82,18 @@ public class BattleComponent
         return atk;
     }
 
-    public float getSpeed()
+    public int getAp()
     {
-        return speed;
+        return ap;
+    }
+
+    public void addAP(int t)
+    {
+        ap += t;
+    }
+
+    public void setAp(int ap)
+    {
+        this.ap = ap;
     }
 }

@@ -12,6 +12,7 @@ public abstract class SkillBase
     protected CharacterBase character;
     protected BattleComponent battleComponent;
     protected AnimationComponent animationComponent;
+    protected int apCost;
 
     public SkillBase(CharacterBase character)
     {
@@ -27,5 +28,10 @@ public abstract class SkillBase
     public String getSkillName()
     {
         return skillName;
+    }
+
+    public int getApCost()
+    {
+        return apCost;
     }
 }

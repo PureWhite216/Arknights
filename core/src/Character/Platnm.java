@@ -3,6 +3,7 @@ package Character;
 import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Platnm.Skill_Platnm_Attack;
+import Component.Skill.Platnm.Skill_Platnm_QuickShoot;
 import Level.BattleLevelBase;
 import Level.LevelBase;
 import UI.SkillChooseTable;
@@ -16,9 +17,10 @@ public class Platnm extends Operator
     public Platnm(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath);
-        battleComponent = new BattleComponent(100, 80, 45, this);
+        battleComponent = new BattleComponent(100, 80, 45, 0, this);
 
         skills.add(new Skill_Platnm_Attack(this));
+        skills.add(new Skill_Platnm_QuickShoot(this));
 
         skillChooseTable = new SkillChooseTable(this); // Set up skillChooseTable
     }
