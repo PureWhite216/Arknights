@@ -17,8 +17,4 @@ public class TestLevel extends BattleLevelBase
 
         initLevel();
     }
-
-
-
-
 }

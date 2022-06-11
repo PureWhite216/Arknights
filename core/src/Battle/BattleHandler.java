@@ -70,14 +70,41 @@ public class BattleHandler
             }
             else
             {
-                CharacterBase tmp;
-                tmp = level.getCharacters().get(currentIndex);
-                tmp.getSkills().get(tmp.chosenSkillIndex).callSkill();
+                CharacterBase tmpC;
+                tmpC = level.getCharacters().get(currentIndex);
+                if(!tmpC.getTarget().isDied() || findAliveTarget(tmpC))
+                {
+                    tmpC.getSkills().get(tmpC.chosenSkillIndex).callSkill();
+                }
                 currentIndex++;
             }
             timer = 0;
         }
     }
+    
+    private boolean findAliveTarget(CharacterBase character)
+    {
+        if(character instanceof Operator)
+        {
+            for(Enemy enemy : level.getEnemies())
+            {
+                if(enemy == null || enemy.isDied()) continue;
+                character.setTarget(enemy);
+                return true;
+            }
+        }
+        else
+        {
+            for(Operator operator : level.getOperators())
+            {
+                if(operator == null || operator.isDied()) continue;
+                character.setTarget(operator);
+                return true;
+            }
+        }
+        return false;
+    }
+    
 
     public boolean isEnd()
     {

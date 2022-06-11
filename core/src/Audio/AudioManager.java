@@ -11,7 +11,7 @@ public class AudioManager
     private Sound[] hitSFX = new Sound[3];
     private Sound currentCharacterSound;
     private Music bgm;
-    public static float defaultVolume = 0.0f;
+    public static float defaultVolume = 0.3f;
 
     public static AudioManager getInstance()
     {

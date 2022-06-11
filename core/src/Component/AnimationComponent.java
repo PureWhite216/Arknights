@@ -32,10 +32,6 @@ public class AnimationComponent
         animationState = new AnimationState(animationStateData);
         animationState.setTimeScale(1.1f); // Default Time Scale
 
-        /*Set Default Animation Mix*/
-//        animationStateData.setMix("Start", "Idle", 0.3f);
-//        animationStateData.setMix("Idle", "Attack", 0.3f);
-//        animationStateData.setMix("Idle", "Skill_1", 0.3f);
     }
 
 
