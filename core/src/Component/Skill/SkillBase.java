@@ -23,6 +23,7 @@ public abstract class SkillBase
 
     protected abstract RunnableAction getEffectAction();
     protected abstract void callEffect();
+
     public abstract void callSkill();
 
     public String getSkillName()
