@@ -15,6 +15,11 @@ public class BattleComponent
     private CharacterBase character;
     private boolean isDied = false;
 
+
+    public int buff_NoDamage = 0; //大于0时角色无法受到伤害，每回合减1
+    public float buff_Miss = 0; //[0,1) 闪避率
+    public int buff_Dizzy = 0; //眩晕， 大于0时角色无法行动，每回合减1
+
     public BattleComponent(int maxHP, int atk, int def, int res, CharacterBase character)
     {
         this.HP = maxHP;
@@ -26,8 +31,18 @@ public class BattleComponent
         ap = 0;
     }
 
+    //角色受到伤害
     public void getDamage(int damage, DamageType damageType)
     {
+        if(Math.random() <= buff_Miss)
+        {
+            return;
+        }
+        if(buff_NoDamage > 0)
+        {
+            buff_NoDamage--;
+            return;
+        }
         switch(damageType)
         {
             case Physical:
@@ -51,6 +66,16 @@ public class BattleComponent
         }
     }
 
+    //角色受到治疗
+    public void getHealing(int heal)
+    {
+        if(!isDied)
+        {
+            HP += heal;
+            character.getHPPanel().updateHP(HP);
+        }
+    }
+
     public void costAP(int cost)
     {
         ap -= cost;
@@ -60,6 +85,11 @@ public class BattleComponent
     {
         ap++;
         if(ap > 6) ap = 6;
+    }
+
+    public void addAP(int t)
+    {
+        ap += t;
     }
 
     public boolean isDied()
@@ -85,11 +115,6 @@ public class BattleComponent
     public int getAp()
     {
         return ap;
-    }
-
-    public void addAP(int t)
-    {
-        ap += t;
     }
 
     public void setAp(int ap)

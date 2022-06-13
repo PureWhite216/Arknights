@@ -72,9 +72,13 @@ public class BattleHandler
             {
                 CharacterBase tmpC;
                 tmpC = level.getCharacters().get(currentIndex);
-                if(!tmpC.getTarget().isDied() || findAliveTarget(tmpC))
+                if(tmpC.getBattleComponent().buff_Dizzy > 0)
                 {
-                    tmpC.getSkills().get(tmpC.chosenSkillIndex).callSkill();
+                    tmpC.getBattleComponent().buff_Dizzy--;
+                }
+                else if(!tmpC.getTarget().isDied() || findAliveTarget(tmpC))
+                {
+                    tmpC.getSkills().get(tmpC.chosenSkillIndex).callSkill(); //调用角色技能
                 }
                 currentIndex++;
             }

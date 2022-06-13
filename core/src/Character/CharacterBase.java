@@ -1,5 +1,7 @@
 package Character;
 
+import Audio.AudioManager;
+import Audio.SFXName;
 import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.SkillBase;
@@ -85,6 +87,7 @@ public abstract class CharacterBase extends Actor
             System.out.println("Died");
             animationComponent.getAnimationState().setAnimation(0, "Die", false);
             isDied = true;
+            AudioManager.getInstance().getSFX().get(SFXName.die).play(0.4f);
         }
     }
 

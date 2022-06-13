@@ -17,8 +17,7 @@ public class Platnm extends Operator
     public Platnm(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath);
-        battleComponent = new BattleComponent(100, 80, 45, 0, this);
-
+        battleComponent = new BattleComponent(100, 80, 20, 0, this);
         skills.add(new Skill_Platnm_Attack(this));
         skills.add(new Skill_Platnm_QuickShoot(this));
 

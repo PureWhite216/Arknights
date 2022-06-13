@@ -1,6 +1,7 @@
 package Component.Skill.Platnm;
 
 import Audio.AudioManager;
+import Audio.SFXName;
 import Component.DamageType;
 import Component.Skill.SkillBase;
 import Component.Skill.Skill_Attack;
@@ -22,7 +23,7 @@ public class Skill_Platnm_QuickShoot extends Skill_Attack
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage((int)((float)battleComponent.getAtk() * 0.8f), DamageType.Physical);
-        AudioManager.getInstance().getHitSFX()[0].play(0.4f);
+        AudioManager.getInstance().getSFX().get(SFXName.arrow).play(0.6f);
     }
 
     @Override

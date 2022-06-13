@@ -1,5 +1,7 @@
 package Component.Skill.Liskarm;
 
+import Audio.AudioManager;
+import Audio.SFXName;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import Level.BattleLevelBase;
@@ -13,6 +15,14 @@ public class Skill_Liskarm_Attack extends Skill_Attack{
         super(character);
         skillName = "射击";
     }
+
+    @Override
+    protected void callEffect()
+    {
+        super.callEffect();
+        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+    }
+
     @Override
     public void callSkill()
     {

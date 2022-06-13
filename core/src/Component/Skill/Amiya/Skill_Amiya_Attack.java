@@ -1,4 +1,6 @@
 package Component.Skill.Amiya;
+import Audio.AudioManager;
+import Audio.SFXName;
 import Character.CharacterBase;
 import Component.Skill.Skill_Attack;
 import Level.BattleLevelBase;
@@ -12,6 +14,13 @@ public class Skill_Amiya_Attack extends Skill_Attack
     {
         super(character);
         skillName = "斩击";
+    }
+
+    @Override
+    protected void callEffect()
+    {
+        super.callEffect();
+        AudioManager.getInstance().getSFX().get(SFXName.sword).play(0.6f);
     }
 
     @Override

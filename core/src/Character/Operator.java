@@ -1,6 +1,7 @@
 package Character;
 
 import Audio.AudioManager;
+import Audio.SFXName;
 import Level.BattleLevelBase;
 import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
@@ -10,6 +11,7 @@ public abstract class Operator extends CharacterBase
 {
     protected Sound chosenSound;
     protected SkillChooseTable skillChooseTable;
+    protected Sound deadSound = Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_dead.wav"));
     public Operator(float posX, float posY, float scale, String soundPath)
     {
         super(posX, posY, scale);

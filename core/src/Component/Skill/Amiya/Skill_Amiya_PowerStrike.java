@@ -1,6 +1,7 @@
 package Component.Skill.Amiya;
 
 import Audio.AudioManager;
+import Audio.SFXName;
 import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
@@ -22,6 +23,6 @@ public class Skill_Amiya_PowerStrike extends Skill_Amiya_Attack
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Magical);
-        AudioManager.getInstance().getHitSFX()[0].play(0.4f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 }
