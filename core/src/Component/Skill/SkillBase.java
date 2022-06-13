@@ -27,6 +27,10 @@ public abstract class SkillBase
 
     public abstract void callSkill();
 
+    protected void callSound()
+    {
+
+    }
 
 
     public String getSkillName()

@@ -31,6 +31,9 @@ public class AudioManager
         SFX.put(SFXName.swordMagic, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_atk_magicsword_n_2.wav")));
         SFX.put(SFXName.die, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_dead.wav")));
         SFX.put(SFXName.magic, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_imp_magspell_h.wav")));
+        SFX.put(SFXName.atkBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_atkboost.wav")));
+        SFX.put(SFXName.defBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_defboost.wav")));
+        SFX.put(SFXName.healBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_healboost.wav")));
 
     }
 

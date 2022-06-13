@@ -19,10 +19,11 @@ public class Amiya extends Operator
     static final String atlasPath = "assets/Amiya2_Front/char_1001_amiya2.atlas";
     static final String skelPath = "assets/Amiya2_Front/char_1001_amiya2.skel";
     static final String soundPath = "assets/Amiya2_Front/阿米娅_选中干员1.wav";
+    static String[] skillSoundsPath = {"assets/Amiya2_Front/阿米娅_作战中1.wav", "assets/Amiya2_Front/阿米娅_作战中4.wav"};
 
     public Amiya(float posX, float posY)
     {
-        super(posX, posY, defaultScale, soundPath);
+        super(posX, posY, defaultScale, soundPath, skillSoundsPath);
         /*Set Battle Info*/
         battleComponent = new BattleComponent(200, 70, 25, 20, this);
         /*Init Skill*/

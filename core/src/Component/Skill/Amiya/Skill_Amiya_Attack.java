@@ -2,6 +2,7 @@ package Component.Skill.Amiya;
 import Audio.AudioManager;
 import Audio.SFXName;
 import Character.CharacterBase;
+import Character.Operator;
 import Component.Skill.Skill_Attack;
 import Level.BattleLevelBase;
 import com.badlogic.gdx.math.Interpolation;
@@ -17,6 +18,12 @@ public class Skill_Amiya_Attack extends Skill_Attack
     }
 
     @Override
+    protected void callSound()
+    {
+        character.getSkillSounds()[0].play(0.5f);
+    }
+
+    @Override
     protected void callEffect()
     {
         super.callEffect();
@@ -26,6 +33,8 @@ public class Skill_Amiya_Attack extends Skill_Attack
     @Override
     public void callSkill()
     {
+        callSound();
+
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Skill_2_Loop", false);
         animationComponent.getAnimationState().addAnimation(0, "Skill_2_Idle", true, 0f);

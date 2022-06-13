@@ -9,6 +9,7 @@ import Level.BattleLevelBase;
 import Level.LevelBase;
 import UI.Panel_HP;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.esotericsoftware.spine.SkeletonRenderer;
@@ -25,6 +26,7 @@ public abstract class CharacterBase extends Actor
     protected boolean isDied = false;
     protected ArrayList<SkillBase> skills = new ArrayList<>();
     protected BattleLevelBase currentLevel;
+    protected Sound[] skillSounds = new Sound[4];
     protected int index;
     public int chosenSkillIndex;
 
@@ -109,6 +111,11 @@ public abstract class CharacterBase extends Actor
     public BattleComponent getBattleComponent()
     {
         return battleComponent;
+    }
+
+    public Sound[] getSkillSounds()
+    {
+        return skillSounds;
     }
 
     public CharacterBase getTarget()
