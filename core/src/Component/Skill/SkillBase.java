@@ -13,6 +13,7 @@ public abstract class SkillBase
     protected BattleComponent battleComponent;
     protected AnimationComponent animationComponent;
     protected int apCost;
+    protected boolean needChoose = true; //该技能是否需要选择目标
 
     public SkillBase(CharacterBase character)
     {
@@ -25,6 +26,8 @@ public abstract class SkillBase
     protected abstract void callEffect();
 
     public abstract void callSkill();
+
+
 
     public String getSkillName()
     {

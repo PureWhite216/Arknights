@@ -19,6 +19,9 @@ public abstract class Skill_Attack extends SkillBase
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Physical);
+//        character.getTarget().getBattleComponent().buff_Dizzy = 1;
+//        character.getBattleComponent().buff_NoDamage = 1;
+//        character.getTarget().getBattleComponent().getHealing(100);
     }
 
     @Override

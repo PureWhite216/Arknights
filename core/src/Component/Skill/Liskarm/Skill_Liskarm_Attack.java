@@ -21,6 +21,7 @@ public class Skill_Liskarm_Attack extends Skill_Attack{
     {
         super.callEffect();
         AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+
     }
 
     @Override
