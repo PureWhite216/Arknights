@@ -24,8 +24,6 @@ public class Arknights extends ApplicationAdapter
 		/*Test Level*/
 		LevelManager.getInstance().push(new TestLevel());
 //		LevelManager.getInstance().push(new StartLevel());
-		/*Test Level*/
-		LevelManager.getInstance().push(new TestLevel());
 	}
 
 	/*Game Loop*/

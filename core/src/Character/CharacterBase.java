@@ -134,5 +134,10 @@ public abstract class CharacterBase extends Actor
             return currentLevel.getHpPanels()[index + 4];
         }
     }
+
+    public BattleLevelBase getCurrentLevel()
+    {
+        return currentLevel;
+    }
 }
 
