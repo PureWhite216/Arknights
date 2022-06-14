@@ -25,7 +25,7 @@ public abstract class Enemy extends CharacterBase
 
     public void chooseTarget()
     {
-        tmp = random.nextInt(10);
+        tmp = random.nextInt(12);
         int targetIndex;
         if(tmp >= 6)
         {

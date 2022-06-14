@@ -19,6 +19,9 @@ public class BattleComponent
     public int buff_NoDamage = 0; //大于0时角色无法受到伤害，每回合减1
     public float buff_Miss = 0; //[0,1) 闪避率
     public int buff_Dizzy = 0; //眩晕， 大于0时角色无法行动，每回合减1
+    public int buff_sharp = 0; //锋利，角色攻击力暂时变为原来的2倍
+    public int buff_hard = 0; //坚硬，角色的防御力暂时变为原来的1.5倍
+    public int buff_fragile = 0; // 易伤，角色受到的伤害变为原来的2倍
 
     public BattleComponent(int maxHP, int atk, int def, int res, CharacterBase character)
     {
