@@ -5,6 +5,8 @@ import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Amiya.Skill_Amiya_PowerStrike;
 import Component.Skill.Liskarm.Skill_Liskarm_Attack;
+import Component.Skill.Liskarm.Skill_Liskarm_PowerAttack;
+import Component.Skill.Liskarm.Skill_Liskarm_defense;
 import Component.Skill.SkillBase;
 import Component.Skill.Amiya.Skill_Amiya_Attack;
 import Level.BattleLevelBase;
@@ -17,7 +19,7 @@ public class Liskarm extends Operator{
     static final String atlasPath = "assets/Liskarm_Front/liskarm.atlas";
     static final String skelPath = "assets/Liskarm_Front/liskarm.skel";
     static final String soundPath = "assets/Liskarm_Front/雷蛇_选中干员2.wav";
-    static String[] skillSoundsPath;
+    static String[] skillSoundsPath = {"assets/Liskarm_Front/雷蛇_作战中1.wav","assets/Liskarm_Front/雷蛇_作战中2.wav","assets/Liskarm_Front/雷蛇_作战中3.wav","assets/Liskarm_Front/雷蛇_作战中4.wav"};
 
     public Liskarm(float posX, float posY)
     {
@@ -26,8 +28,8 @@ public class Liskarm extends Operator{
         battleComponent = new BattleComponent(300, 55, 60, 20, this);
         /*Init Skill*/
         skills.add(new Skill_Liskarm_Attack(this));
-
-
+        skills.add(new Skill_Liskarm_PowerAttack(this));
+        skills.add(new Skill_Liskarm_defense(this));
         /*Set up skillChooseTable*/
         skillChooseTable = new SkillChooseTable(this);
     }

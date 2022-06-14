@@ -2,30 +2,35 @@ package Component.Skill.Liskarm;
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import Level.BattleLevelBase;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import Character.Enemy;
 
-
-public class Skill_Liskarm_Attack extends Skill_Attack{
-    public Skill_Liskarm_Attack(CharacterBase character)
-    {
+public class Skill_Liskarm_fightback extends Skill_Attack{
+    public Skill_Liskarm_fightback(CharacterBase character){
         super(character);
-        skillName = "射击";
+        skillName ="反击电弧";
+        apCost = 4;
+        //needChoose = false;
     }
 
     protected void callSound()
     {
-        character.getSkillSounds()[0].play(0.5f);
+        character.getSkillSounds()[3].play(0.5f);
     }
 
     @Override
     protected void callEffect()
     {
-        super.callEffect();
-        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        //super.callEffect();
+        //for(Enemy enemy: character.)){
+
+        //}
+        AudioManager.getInstance().getSFX().get(SFXName.defBoost).play(0.6f);
 
     }
 
@@ -34,9 +39,7 @@ public class Skill_Liskarm_Attack extends Skill_Attack{
     {
         callSound();
         //System.out.println("test");
-        animationComponent.getAnimationState().setAnimation(0, "Attack_Begin", false);
-        animationComponent.getAnimationState().addAnimation(0, "Attack_Loop", false, 0f);
-        animationComponent.getAnimationState().addAnimation(0, "Attack_End", false, 0f);
+        animationComponent.getAnimationState().setAnimation(0, "Skill", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         //System.out.println("test1");
         character.clearActions();
