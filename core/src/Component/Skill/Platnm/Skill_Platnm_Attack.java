@@ -1,5 +1,7 @@
 package Component.Skill.Platnm;
 
+import Audio.AudioManager;
+import Audio.SFXName;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import Level.BattleLevelBase;
@@ -13,6 +15,13 @@ public class Skill_Platnm_Attack extends Skill_Attack
     {
         super(character);
         skillName = "射击";
+    }
+
+    @Override
+    protected void callEffect()
+    {
+        super.callEffect();
+        AudioManager.getInstance().getSFX().get(SFXName.arrow).play(0.6f);
     }
 
     @Override

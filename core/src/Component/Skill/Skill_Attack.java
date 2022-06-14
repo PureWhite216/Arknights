@@ -1,6 +1,7 @@
 package Component.Skill;
 
 import Audio.AudioManager;
+import Audio.SFXName;
 import Character.CharacterBase;
 import Component.DamageType;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -18,7 +19,9 @@ public abstract class Skill_Attack extends SkillBase
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Physical);
-        AudioManager.getInstance().getHitSFX()[0].play(0.4f);
+//        character.getTarget().getBattleComponent().buff_Dizzy = 1;
+//        character.getBattleComponent().buff_NoDamage = 1;
+//        character.getTarget().getBattleComponent().getHealing(100);
     }
 
     @Override

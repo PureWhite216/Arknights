@@ -1,5 +1,7 @@
 package Component.Skill.Enemy1002;
 
+import Audio.AudioManager;
+import Audio.SFXName;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import Level.BattleLevelBase;
@@ -12,6 +14,13 @@ public class Skill_Enemy1002_Attack extends Skill_Attack
     public Skill_Enemy1002_Attack(CharacterBase character)
     {
         super(character);
+    }
+
+    @Override
+    protected void callEffect()
+    {
+        super.callEffect();
+        AudioManager.getInstance().getSFX().get(SFXName.sword).play(0.6f);
     }
 
     @Override

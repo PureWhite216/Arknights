@@ -17,10 +17,11 @@ public class Texas extends Operator
     static final String atlasPath = "assets/Texas/char_102_texas.atlas";
     static final String skelPath = "assets/Texas/char_102_texas.skel";
     static final String soundPath = "assets/Texas/德克萨斯_选中干员1.wav";
+    static String[] skillSoundsPath;
 
     public Texas(float posX, float posY)
     {
-        super(posX, posY, defaultScale, soundPath);
+        super(posX, posY, defaultScale, soundPath, skillSoundsPath);
         battleComponent = new BattleComponent(200, 60, 50, 0, this);
 
         skills.add(new Skill_Texas_Attack(this));
