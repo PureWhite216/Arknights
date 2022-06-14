@@ -1,6 +1,8 @@
 package Component.Skill.Jessica;
 
 
+import Audio.AudioManager;
+import Audio.SFXName;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -9,6 +11,19 @@ public class Skill_Jessica_Attack extends Skill_Attack {
     public Skill_Jessica_Attack(CharacterBase character){
         super(character);
         skillName = "射击";
+    }
+
+    @Override
+    protected void callSound()
+    {
+        character.getSkillSounds()[0].play(0.5f);
+    }
+
+    @Override
+    protected void callEffect()
+    {
+        super.callEffect();
+        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
     }
 
     @Override

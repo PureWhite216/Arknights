@@ -16,9 +16,9 @@ public class Jessica extends Operator
     static final String atlasPath = "assets/Operators/Jessica/jessica.atlas";
     static final String skelPath = "assets/Operators/Jessica/jessica.skel";
     static final String soundPath = "assets/Operators/Jessica/杰西卡_选中干员2.wav";
-
+    static final String[] skillPath = {"assets/Operators/Jessica/杰西卡_作战中1.wav","assets/Operators/Jessica/杰西卡_作战中4.wav"};
     public Jessica(float posX, float posY){
-        super(posX, posY, defaultScale, soundPath);
+        super(posX, posY, defaultScale, soundPath, skillPath);
         /* set battle info */
         battleComponent = new BattleComponent(150, 80, 20, 0, this);
         /* init skill*/
