@@ -4,6 +4,8 @@ import Audio.AudioManager;
 import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Jessica.Skill_Jessica_Attack;
+import Component.Skill.Jessica.Skill_Jessica_PowerStrike;
+import Component.Skill.Jessica.Skill_Jessica_Smoking;
 import Component.Skill.SkillBase;
 import Level.BattleLevelBase;
 import Level.LevelBase;
@@ -16,13 +18,16 @@ public class Jessica extends Operator
     static final String atlasPath = "assets/Operators/Jessica/jessica.atlas";
     static final String skelPath = "assets/Operators/Jessica/jessica.skel";
     static final String soundPath = "assets/Operators/Jessica/杰西卡_选中干员2.wav";
-    static final String[] skillPath = {"assets/Operators/Jessica/杰西卡_作战中1.wav","assets/Operators/Jessica/杰西卡_作战中4.wav"};
+    static final String[] skillPath = {"assets/Operators/Jessica/杰西卡_作战中1.wav","assets/Operators/Jessica/杰西卡_作战中4.wav"
+   , "assets/Operators/Jessica/杰西卡_作战中2.wav"};
     public Jessica(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
         /* set battle info */
         battleComponent = new BattleComponent(150, 80, 20, 0, this);
         /* init skill*/
         skills.add(new Skill_Jessica_Attack(this));
+        skills.add(new Skill_Jessica_PowerStrike(this));
+        skills.add(new Skill_Jessica_Smoking(this));
         skillChooseTable = new SkillChooseTable(this);
     }
 
