@@ -32,6 +32,10 @@ public abstract class SkillBase
 
     }
 
+    public boolean isNeedChoose()
+    {
+        return needChoose;
+    }
 
     public String getSkillName()
     {

@@ -70,8 +70,18 @@ public class SkillChooseTable extends BattleUI
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     if(operator.getSkills().get(finalI).getApCost() > operator.getBattleComponent().getAp()) return;
-                    level.setChoosingTarget(true);
-                    level.setChoosingOperator(index);
+
+                    if(operator.getSkills().get(finalI).isNeedChoose())
+                    {
+                        level.setChoosingTarget(true);
+                        level.setChoosingOperator(index);
+                    }
+                    else
+                    {
+                        operator.getSkillChooseTable().hide();
+                        operator.setTarget(operator);
+                    }
+
                     if(operator.chosenSkillIndex != -1)
                     {
                         operator.getBattleComponent().addAP(operator.getSkills().get(operator.chosenSkillIndex).getApCost());

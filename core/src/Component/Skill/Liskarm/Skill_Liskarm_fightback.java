@@ -15,7 +15,7 @@ public class Skill_Liskarm_fightback extends Skill_Attack{
         super(character);
         skillName ="反击电弧";
         apCost = 4;
-        //needChoose = false;
+        needChoose = false;
     }
 
     protected void callSound()
@@ -27,11 +27,14 @@ public class Skill_Liskarm_fightback extends Skill_Attack{
     protected void callEffect()
     {
         //super.callEffect();
-        //for(Enemy enemy: character.)){
-
-        //}
-        AudioManager.getInstance().getSFX().get(SFXName.defBoost).play(0.6f);
-
+        for(Enemy enemy: character.getCurrentLevel().getEnemies()){
+            if(enemy == null) continue;
+            if(Math.random()<0.5f){
+                enemy.getBattleComponent().buff_Dizzy=1;
+            }
+            enemy.getBattleComponent().getDamage((int)((float)battleComponent.getAtk() * 2.0f), DamageType.Magical);
+        }
+        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
     @Override
