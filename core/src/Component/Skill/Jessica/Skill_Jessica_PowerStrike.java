@@ -1,28 +1,29 @@
 package Component.Skill.Jessica;
 
-
 import Audio.AudioManager;
 import Audio.SFXName;
+import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
-public class Skill_Jessica_Attack extends Skill_Attack {
-    public Skill_Jessica_Attack(CharacterBase character){
+public class Skill_Jessica_PowerStrike extends Skill_Attack {
+    public Skill_Jessica_PowerStrike(CharacterBase character){
         super(character);
-        skillName = "射击";
+        skillName = "强力射击";
+        apCost = 2;
     }
 
     @Override
     protected void callSound()
     {
-        character.getSkillSounds()[0].play(0.5f);
+        character.getSkillSounds()[1].play(0.5f);
     }
 
     @Override
     protected void callEffect()
     {
-        super.callEffect();
+        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Physical);
         AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
     }
 
