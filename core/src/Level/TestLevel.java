@@ -8,8 +8,8 @@ public class TestLevel extends BattleLevelBase
     public TestLevel()
     {
         super();
-        operators[0] = new Amiya(operatorPos[0],defaultY);
-        operators[1] = new Texas(operatorPos[1], defaultY);
+        operators[0] = new Liskarm(operatorPos[0],defaultY);
+        operators[1] = new Amiya(operatorPos[1], defaultY);
         operators[2] = new Platnm(operatorPos[2], defaultY);
         enemies[0] = new Enemy_1002(enemyPos[0], defaultY);
         enemies[1] = new Enemy_1002(enemyPos[1], defaultY);
