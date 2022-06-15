@@ -30,7 +30,7 @@ public abstract class BattleLevelBase extends LevelBase
     protected Enemy[] enemies = new Enemy[4];
     protected ArrayList<CharacterBase> characters = new ArrayList<>();
 
-    protected Texture background = new Texture(Gdx.files.internal("assets/BackGround/BackGroud1.jpg"));;
+    protected Texture background = new Texture(Gdx.files.internal("assets/BackGround/BackGroud1.jpg"));
     protected static Texture enemyBox = new Texture(Gdx.files.internal("assets/Images/EnemyBox.png"));
     protected static Texture operatorBox = new Texture(Gdx.files.internal("assets/Images/operatorBox.png"));
     protected Button[] operatorButtons = new Button[4];

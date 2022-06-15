@@ -14,6 +14,7 @@ public abstract class SkillBase
     protected AnimationComponent animationComponent;
     protected int apCost;
     protected boolean needChoose = true; //该技能是否需要选择目标
+    protected String skillInfo;
 
     public SkillBase(CharacterBase character)
     {
