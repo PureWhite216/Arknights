@@ -38,11 +38,19 @@ public class BattleHandler
             for(int i = 0; i <= 3; i++)
             {
                 if(operators[i] == null) break;
+                if(operators[i].isDied()) continue;
                 operators[i].setTarget(null);
                 operators[i].getBattleComponent().apPlusPlus();
                 level.getApPanels()[i].updateAP(operators[i].getBattleComponent().getAp());
                 level.setChoosingTarget(false);
                 operators[i].chosenSkillIndex = -1;
+            }
+            Enemy[] enemies = level.getEnemies();
+            for(int i = 0; i <= 3; i++)
+            {
+                if(enemies[i] == null) break;
+                if(enemies[i].isDied()) continue;
+                enemies[i].getBattleComponent().apPlusPlus();
             }
 
             /*Check Is Battle End*/
