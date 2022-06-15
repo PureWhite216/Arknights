@@ -26,17 +26,8 @@ public class Skill_Nightmare_SoulSteal extends Skill_Attack {
     @Override
     protected void callEffect() {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Magical);
-        double minHP = 2;
-        Operator minOperator = null;
-        for (Operator operator : character.getCurrentLevel().getOperators()) {
-            if (operator == null || operator.isDied()) continue;
-            if ((double) operator.getBattleComponent().getHP() / (double) operator.getBattleComponent().getMaxHP() < minHP) {
-                minHP = (double) operator.getBattleComponent().getHP() / (double) operator.getBattleComponent().getMaxHP();
-                minOperator = operator;
-            }
-        }
-        assert minOperator != null;
-        minOperator.getBattleComponent().getHealing(battleComponent.getAtk());
+        Operator minHPOperator = character.getCurrentLevel().getMinHPOperator();
+        minHPOperator.getBattleComponent().getHealing(battleComponent.getAtk());
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
