@@ -8,8 +8,8 @@ import Component.Skill.Enemy_WizardPro.Skill_Enemy_WizardPro_Attack;
 import Level.BattleLevelBase;
 
 public class Enemy_WizardPro extends Enemy {
-    static final String atlasPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.atlas";
-    static final String skelPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.skel";
+    static final String atlasPath = "assets/Enemies/Enemy_WizardPro/enemy_1018_aoemag.atlas";
+    static final String skelPath = "assets/Enemies/Enemy_WizardPro/enemy_1018_aoemag.skel";
 
     public Enemy_WizardPro(float posX, float posY) {
         super(posX, posY, defaultScale);

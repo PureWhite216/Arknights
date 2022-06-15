@@ -8,8 +8,8 @@ import Level.BattleLevelBase;
 
 public class Enemy_Wizard extends Enemy
 {
-    static final String atlasPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.atlas";
-    static final String skelPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.skel";
+    static final String atlasPath = "assets/Enemies/Enemy_Wizard/enemy_1011_wizard.atlas";
+    static final String skelPath = "assets/Enemies/Enemy_Wizard/enemy_1011_wizard.skel";
 
     public Enemy_Wizard(float posX, float posY)
     {

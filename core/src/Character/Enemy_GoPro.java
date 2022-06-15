@@ -8,8 +8,8 @@ import Level.BattleLevelBase;
 
 public class Enemy_GoPro extends Enemy
 {
-    static final String atlasPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.atlas";
-    static final String skelPath = "assets/enemy_1002_nsabr/enemy_1002_nsabr.skel";
+    static final String atlasPath = "assets/Enemies/Enemy_GoPro/enemy_1000_gopro.atlas";
+    static final String skelPath = "assets/Enemies/Enemy_GoPro/enemy_1000_gopro.skel";
 
     public Enemy_GoPro(float posX, float posY)
     {
