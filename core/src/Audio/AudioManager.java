@@ -24,6 +24,7 @@ public class AudioManager
     {
         musicAssets[0] = "assets/Audio/Music/Tactical Ambush.mp3";
         musicAssets[1] = "assets/Audio/Music/赴遥尘.mp3";
+        musicAssets[2] = "assets/Audio/Music/大柏墟.mp3";
         SFX = new EnumMap<>(SFXName.class);
         SFX.put(SFXName.sword, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_atk_swordwave_n.wav")));
         SFX.put(SFXName.arrow, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_atk_arrow_h.wav")));
@@ -34,6 +35,7 @@ public class AudioManager
         SFX.put(SFXName.atkBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_atkboost.wav")));
         SFX.put(SFXName.defBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_defboost.wav")));
         SFX.put(SFXName.healBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_healboost.wav")));
+        SFX.put(SFXName.shield, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_imp_shield_n.wav")));
 
     }
 
