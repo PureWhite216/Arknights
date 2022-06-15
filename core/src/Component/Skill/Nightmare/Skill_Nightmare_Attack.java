@@ -22,7 +22,7 @@ public class Skill_Nightmare_Attack extends Skill_Attack
     @Override
     protected void callSound()
     {
-        character.getSkillSounds()[0].play(0.5f);
+        character.getRandomSkillSounds(4).play(0.5f);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Skill_Nightmare_Attack extends Skill_Attack
     @Override
     public void callSkill()
     {
-//        callSound();
+        callSound();
 
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);

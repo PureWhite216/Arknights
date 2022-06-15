@@ -17,25 +17,26 @@ public class Skill_Warfarin_Recover extends Skill_Attack
     {
         super(character);
         skillName = "恢复";
+        needChoose = false;
     }
 
     @Override
     protected void callSound()
     {
-        character.getSkillSounds()[0].play(0.5f);
+        character.getRandomSkillSounds(4).play(0.5f);
     }
 
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
+        character.getCurrentLevel().getMinHPOperator().getBattleComponent().getHealing(battleComponent.getAtk());
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
     @Override
     public void callSkill()
     {
-//        callSound();
+        callSound();
 
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);

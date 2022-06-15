@@ -11,6 +11,9 @@ import Component.Skill.Nightmare.Skill_Nightmare_SoulSteal;
 import Component.Skill.Nightmare.Skill_Nightmare_TheShadow;
 import Component.Skill.SkillBase;
 import Component.Skill.Amiya.Skill_Amiya_Attack;
+import Component.Skill.Warfarin.Skill_Warfarin_EmergencyBandage;
+import Component.Skill.Warfarin.Skill_Warfarin_Recover;
+import Component.Skill.Warfarin.Skill_Warfarin_UnstableBlood;
 import Level.BattleLevelBase;
 import Level.LevelBase;
 import UI.SkillChooseTable;
@@ -20,8 +23,8 @@ public class Warfarin extends Operator{
     /*Set up Assets Path*/
     static final String atlasPath = "assets/Operators/Warfarin/char_171_warfarin.atlas";
     static final String skelPath = "assets/Operators/Warfarin/char_171_warfarin.skel";
-    static final String soundPath = "assets/Operators/Nightmare/夜魔_选中干员1.wav";
-    static String[] skillSoundsPath;
+    static final String soundPath = "assets/Operators/Warfarin/华法琳_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Warfarin/华法琳_作战中1.wav","assets/Operators/Warfarin/华法琳_作战中2.wav","assets/Operators/Warfarin/华法琳_作战中3.wav","assets/Operators/Warfarin/华法琳_作战中4.wav"};
 
     public Warfarin(float posX, float posY)
     {
@@ -29,10 +32,9 @@ public class Warfarin extends Operator{
         /*Set Battle Info*/
         battleComponent = new BattleComponent(100, 40, 20, 10, this);
         /*Init Skill*/
-        skills.add(new Skill_Nightmare_Attack(this));
-        skills.add(new Skill_Nightmare_PowerfulMagic(this));
-        skills.add(new Skill_Nightmare_SoulSteal(this));
-        skills.add(new Skill_Nightmare_TheShadow(this));
+        skills.add(new Skill_Warfarin_Recover(this));
+        skills.add(new Skill_Warfarin_EmergencyBandage(this));
+        skills.add(new Skill_Warfarin_UnstableBlood(this));
 
         /*Set up skillChooseTable*/
         skillChooseTable = new SkillChooseTable(this);

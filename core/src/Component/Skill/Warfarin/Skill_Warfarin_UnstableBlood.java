@@ -1,4 +1,4 @@
-package Component.Skill.Nightmare;
+package Component.Skill.Warfarin;
 
 import Audio.AudioManager;
 import Audio.SFXName;
@@ -6,32 +6,36 @@ import Character.CharacterBase;
 import Character.Operator;
 import Component.DamageType;
 import Component.Skill.Skill_Attack;
-import Level.BattleLevelBase;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
-public class Skill_Nightmare_TheShadow extends Skill_Attack {
-    public Skill_Nightmare_TheShadow(CharacterBase character) {
+public class Skill_Warfarin_UnstableBlood extends Skill_Attack
+{
+    public Skill_Warfarin_UnstableBlood(CharacterBase character)
+    {
         super(character);
-        skillName = "夜魇魔影";
-        apCost = 5;
+        skillName = "不稳定血";
+        needChoose = false;
+        apCost = 3;
     }
 
     @Override
-    protected void callSound() {
+    protected void callSound()
+    {
         character.getRandomSkillSounds(4).play(0.5f);
     }
 
     @Override
-    protected void callEffect() {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 3, DamageType.Magical);
-        character.getTarget().getBattleComponent().buff_Dizzy = 2;
+    protected void callEffect()
+    {
+        Operator randomOperator = character.getCurrentLevel().getRandomOperator();
+        randomOperator.getBattleComponent().buff_sharp = 2;
+        randomOperator.getBattleComponent().getDamage((int)(randomOperator.getBattleComponent().getMaxHP()*0.15), DamageType.Real);
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
     @Override
-    public void callSkill() {
+    public void callSkill()
+    {
         callSound();
 
         // Call Skeleton Animation
