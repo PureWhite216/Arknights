@@ -6,6 +6,9 @@ import Component.BattleComponent;
 import Component.Skill.Amiya.Skill_Amiya_PowerStrike;
 import Component.Skill.Liskarm.Skill_Liskarm_Attack;
 import Component.Skill.Nightmare.Skill_Nightmare_Attack;
+import Component.Skill.Nightmare.Skill_Nightmare_PowerfulMagic;
+import Component.Skill.Nightmare.Skill_Nightmare_SoulSteal;
+import Component.Skill.Nightmare.Skill_Nightmare_TheShadow;
 import Component.Skill.SkillBase;
 import Component.Skill.Amiya.Skill_Amiya_Attack;
 import Level.BattleLevelBase;
@@ -27,7 +30,9 @@ public class Nightmare extends Operator{
         battleComponent = new BattleComponent(120, 120, 15, 30, this);
         /*Init Skill*/
         skills.add(new Skill_Nightmare_Attack(this));
-
+        skills.add(new Skill_Nightmare_PowerfulMagic(this));
+        skills.add(new Skill_Nightmare_SoulSteal(this));
+        skills.add(new Skill_Nightmare_TheShadow(this));
 
         /*Set up skillChooseTable*/
         skillChooseTable = new SkillChooseTable(this);
