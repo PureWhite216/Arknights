@@ -11,12 +11,13 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
-public class Skill_Nightmare_Attack extends Skill_Attack
+public class Skill_Nightmare_PowerfulMagic extends Skill_Attack
 {
-    public Skill_Nightmare_Attack(CharacterBase character)
+    public Skill_Nightmare_PowerfulMagic(CharacterBase character)
     {
         super(character);
-        skillName = "法术攻击";
+        skillName = "强力魔法";
+        apCost = 2;
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Skill_Nightmare_Attack extends Skill_Attack
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
+        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk()*2, DamageType.Magical);
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 

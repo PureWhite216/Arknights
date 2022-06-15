@@ -1,51 +1,48 @@
-package Component.Skill.Nightmare;
+package Component.Skill.SilverAsh;
 
 import Audio.AudioManager;
 import Audio.SFXName;
-import Character.CharacterBase;
-import Character.Operator;
 import Component.DamageType;
 import Component.Skill.Skill_Attack;
+import Character.CharacterBase;
 import Level.BattleLevelBase;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
-public class Skill_Nightmare_Attack extends Skill_Attack
-{
-    public Skill_Nightmare_Attack(CharacterBase character)
+public class Skill_SilverAsh_powerattack extends Skill_Attack {
+    public Skill_SilverAsh_powerattack(CharacterBase character)
     {
         super(character);
-        skillName = "法术攻击";
+        skillName = "强力击";
+        apCost = 2;
     }
 
-    @Override
     protected void callSound()
     {
-        character.getRandomSkillSounds(4).play(0.5f);
+        character.getSkillSounds()[1].play(0.5f);
     }
 
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
-        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
+        //super.callEffect();
+        character.getTarget().getBattleComponent().getDamage((int)((float)battleComponent.getAtk()*2.0), DamageType.Physical);
+        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        apCost=2;
     }
 
     @Override
     public void callSkill()
     {
         callSound();
-
-        // Call Skeleton Animation
+        //System.out.println("test");
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-        // Call Action
+        //System.out.println("test1");
         character.clearActions();
         character.addAction(Actions.sequence(
                 Actions.delay(0.5f),
-                getEffectAction()
-        ));
+                getEffectAction())
+        );
     }
 }
-

@@ -118,6 +118,11 @@ public abstract class CharacterBase extends Actor
         return skillSounds;
     }
 
+    public Sound getRandomSkillSounds(int range)
+    {
+        return skillSounds[(int)(Math.random()*range)];
+    }
+
     public CharacterBase getTarget()
     {
         return target;

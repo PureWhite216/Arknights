@@ -343,6 +343,34 @@ public abstract class BattleLevelBase extends LevelBase
         return operators;
     }
 
+    public Operator getMinHPOperator(){
+        double minHP = 2;
+        Operator minHPOperator = null;
+        for (Operator operator : operators) {
+            if(operator != null && !operator.isDied()){
+                if ((double) operator.getBattleComponent().getHP() / (double) operator.getBattleComponent().getMaxHP() < minHP) {
+                    minHP = (double) operator.getBattleComponent().getHP() / (double) operator.getBattleComponent().getMaxHP();
+                    minHPOperator = operator;
+                }
+            }
+        }
+        return minHPOperator;
+    }
+
+    public Operator getRandomOperator(){
+        Operator[] randomOperators = new Operator[4];
+        int i = 0;
+        for (Operator operator : operators) {
+            if(operator != null && !operator.isDied()){
+                randomOperators[i] = operator;
+                i++;
+            }
+        }
+        int j = (int)(Math.random()*i);
+        return randomOperators[j];
+    }
+
+
     public Enemy[] getEnemies()
     {
         return enemies;

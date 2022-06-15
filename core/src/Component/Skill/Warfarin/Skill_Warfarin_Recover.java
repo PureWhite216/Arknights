@@ -1,4 +1,4 @@
-package Component.Skill.Nightmare;
+package Component.Skill.Warfarin;
 
 import Audio.AudioManager;
 import Audio.SFXName;
@@ -11,12 +11,13 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
-public class Skill_Nightmare_Attack extends Skill_Attack
+public class Skill_Warfarin_Recover extends Skill_Attack
 {
-    public Skill_Nightmare_Attack(CharacterBase character)
+    public Skill_Warfarin_Recover(CharacterBase character)
     {
         super(character);
-        skillName = "法术攻击";
+        skillName = "恢复";
+        needChoose = false;
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Skill_Nightmare_Attack extends Skill_Attack
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
+        character.getCurrentLevel().getMinHPOperator().getBattleComponent().getHealing(battleComponent.getAtk());
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
