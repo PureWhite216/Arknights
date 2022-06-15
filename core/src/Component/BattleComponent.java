@@ -75,6 +75,7 @@ public class BattleComponent
         if(!isDied)
         {
             HP += heal;
+            if(HP > maxHP) HP = maxHP;
             character.getHPPanel().updateHP(HP);
         }
     }
