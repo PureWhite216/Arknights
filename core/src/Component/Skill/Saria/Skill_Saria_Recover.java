@@ -13,7 +13,7 @@ public class Skill_Saria_Recover extends Skill_Attack {
         skillName = "急救";
         needChoose = false;
         apCost = 3;
-        skillInfo = "消耗3点能量，为血量比例最低的友方恢复自身2倍攻击力的血量";
+        skillInfo = "为血量比例最低的友方恢复自身2倍攻击力的血量";
     }
 
     @Override
