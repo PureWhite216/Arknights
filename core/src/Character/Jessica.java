@@ -22,6 +22,8 @@ public class Jessica extends Operator
    , "assets/Operators/Jessica/杰西卡_作战中2.wav"};
     public Jessica(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
+        operatorName = "杰西卡";
+        imagePath = "assets/Operators/Jessica/jessica.png";
         /* set battle info */
         battleComponent = new BattleComponent(150, 80, 20, 0, this);
         /* init skill*/

@@ -21,6 +21,8 @@ public class Saria extends Operator{
 
     public Saria(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
+        operatorName = "塞雷娅";
+        imagePath = "assets/Operators/Saria/platnm.png";
         /* set battle info */
         battleComponent = new BattleComponent(340, 50, 50, 20, this);
         /* init skill*/

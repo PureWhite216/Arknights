@@ -13,6 +13,7 @@ public class Skill_Jessica_Smoking extends SkillBase {
         super(character);
         skillName = "掩护烟幕";
         apCost = 4;
+        skillInfo = "消耗4点能量，为自己增加20%的闪避率，最多80%";
         needChoose = false;
     }
 

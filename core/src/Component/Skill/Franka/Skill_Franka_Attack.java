@@ -11,6 +11,7 @@ public class Skill_Franka_Attack extends Skill_Attack {
     public Skill_Franka_Attack(CharacterBase character){
         super(character);
         skillName = "刺剑攻击";
+        skillInfo = "对敌人造成1倍攻击力的物理伤害";
     }
 
     protected void callSound()
