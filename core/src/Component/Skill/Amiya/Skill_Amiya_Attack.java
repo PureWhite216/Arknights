@@ -15,6 +15,7 @@ public class Skill_Amiya_Attack extends Skill_Attack
     {
         super(character);
         skillName = "斩击";
+        skillInfo = "对敌人造成1倍攻击力的物理伤害";
     }
 
     @Override

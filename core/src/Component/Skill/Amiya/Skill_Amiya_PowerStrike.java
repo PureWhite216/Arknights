@@ -16,6 +16,7 @@ public class Skill_Amiya_PowerStrike extends Skill_Amiya_Attack
     {
         super(character);
         skillName = "强力击";
+        skillInfo = "对敌人造成2倍攻击力的法术伤害";
         apCost = 2;
     }
 

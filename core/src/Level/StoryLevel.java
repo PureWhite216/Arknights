@@ -1,6 +1,7 @@
 package Level;
 
 import Audio.AudioManager;
+import Level.BattleLevels.BattleLevel_01;
 import UI.DialogueButton;
 import UI.DialogueTable;
 import UI.OperatorFormationTable;
@@ -75,7 +76,7 @@ public class StoryLevel extends LevelBase
     @Override
     protected LevelBase loadNextLevel()
     {
-        return new TestLevel();
+        return new BattleLevel_01();
     }
 
     @Override

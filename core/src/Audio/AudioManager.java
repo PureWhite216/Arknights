@@ -8,7 +8,7 @@ import java.util.EnumMap;
 
 public class AudioManager
 {
-    private static AudioManager instance = new AudioManager();
+    private static final AudioManager instance = new AudioManager();
     private String[] musicAssets = new String[10];
     private static EnumMap<SFXName, Sound> SFX;
     private Sound currentCharacterSound;

@@ -116,6 +116,16 @@ public class BattleComponent
         return atk;
     }
 
+    public int getDef()
+    {
+        return def;
+    }
+
+    public int getRes()
+    {
+        return res;
+    }
+
     public int getAp()
     {
         return ap;
