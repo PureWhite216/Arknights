@@ -63,6 +63,10 @@ public class DialogueTable extends StoryUI
                         Label_text.setAlignment(Align.topLeft);
                         Label_text.setText(texts[currentIndex]);
                     }
+                    else if(currentIndex == texts.length - 1)
+                    {
+                        level.activateButton();
+                    }
             }
         });
         group.addActor(button);

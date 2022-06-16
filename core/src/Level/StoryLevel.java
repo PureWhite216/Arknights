@@ -47,22 +47,29 @@ public class StoryLevel extends LevelBase
         });
         stage.addActor(Button_operatorManage);
 
-        testButton = new DialogueButton("Test");
+        testButton = new DialogueButton(" 行 动 开 始");
+        testButton.hide();
         testButton.getButton().addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 isLevelEnd = true;
             }
         });
-        testButton.addToLevel(stage, this);
-        testButton.hide();
 
         dialogueTable = new DialogueTable(textPath);
         dialogueTable.addToLevel(stage, this);
 
+        testButton.addToLevel(stage, this);
+        testButton.setPosition(stage.getWidth() / 2 - testButton.getButton().getWidth() / 2, 500);
+
         operatorFormationTable = new OperatorFormationTable();
         operatorFormationTable.addToLevel(stage, this);
         AudioManager.getInstance().playBGM(2);
+    }
+
+    public void activateButton()
+    {
+        testButton.show();
     }
 
     @Override
