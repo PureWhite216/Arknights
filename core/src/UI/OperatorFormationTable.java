@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -27,28 +28,36 @@ public class OperatorFormationTable extends StoryUI
     private static Texture Texture_backHover = new Texture(Gdx.files.internal("assets/Button/BackHover.png"));
     private static Texture Texture_noInfo = new Texture(Gdx.files.internal("assets/Images/NoInfo.png"));
     private static Texture Texture_skillInfos = new Texture(Gdx.files.internal("assets/Images/SkillInfo.png"));
+    private static Texture Texture_decal = new Texture(Gdx.files.internal("assets/Images/decal.png"));
     private Image Image_operatorFormation;
     private Image[] Image_skillInfos = new Image[4];
+    private Image[] Image_decal = new Image[4];
     private Button Button_back;
     private Button.ButtonStyle Style_back;
-    private Button[] Button_noInfos = new Button[4];
-    private Button.ButtonStyle Style_noInfo;
+    private Button[] Button_OperatorImage = new Button[4];
+    private Button.ButtonStyle[] Style_OperatorImage = new Button.ButtonStyle[4];
     private Label[] Label_skillNames = new Label[4];
     private Label[] Label_skillInfo = new Label[4];
     private Label[] Label_skillCost = new Label[4];
+    private Label[] Label_operatorName = new Label[4];
     private Label hpLabel;
     private Label atkLabel;
     private Label defLabel;
     private Label resLabel;
     private Label.LabelStyle labelStyle;
     private Label.LabelStyle labelStyleWhite;
-
+    private Label.LabelStyle labelStyleName;
+    private Label.LabelStyle labelStyleInfo;
+    
+    private Operator[] operators;
     private Group[] Group_skill = new Group[4];
 
     private int chosenIndex = 0;
 
     public OperatorFormationTable()
     {
+        getTeamMembers();
+
         Texture_operatorFormation.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Texture_noInfo.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Texture_skillInfos.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -72,8 +81,11 @@ public class OperatorFormationTable extends StoryUI
             }
         });
 
-        Style_noInfo = new Button.ButtonStyle();
-        Style_noInfo.up = new TextureRegionDrawable(new TextureRegion(Texture_noInfo));
+        for(int i = 0; i <= 3; i++)
+        {
+            Style_OperatorImage[i] = new Button.ButtonStyle();
+            Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_noInfo));
+        }
 
         for(int i = 0; i <= 1; i++)
         {
@@ -93,6 +105,14 @@ public class OperatorFormationTable extends StoryUI
             Group_skill[i].addActor(Image_skillInfos[i]);
         }
 
+        labelStyleInfo = new Label.LabelStyle();
+        labelStyleInfo.font = bitmapFontName;
+        labelStyleInfo.fontColor = new Color(0, 0, 0, 0.9f);
+
+        labelStyleName = new Label.LabelStyle();
+        labelStyleName.font = bitmapFontName;
+        labelStyleName.fontColor = new Color(1, 1, 1, 1f);
+
         labelStyleWhite = new Label.LabelStyle();
         labelStyleWhite.font = bitmapFont;
         labelStyleWhite.fontColor = new Color(1, 1, 1, 1f);
@@ -106,7 +126,7 @@ public class OperatorFormationTable extends StoryUI
             Label_skillNames[i] = new Label("Name", labelStyleWhite);
             Label_skillNames[i].setPosition(28, 158);
             Label_skillNames[i].setFontScale(0.9f);
-            Label_skillInfo[i] = new Label("Info", labelStyle);
+            Label_skillInfo[i] = new Label("Info", labelStyleInfo);
             Label_skillInfo[i].setPosition(25, 110);
             Label_skillInfo[i].setFontScale(0.75f);
             Label_skillCost[i] = new Label("0", labelStyle);
@@ -119,17 +139,35 @@ public class OperatorFormationTable extends StoryUI
 
         for(int i = 0; i <= 3; i++)
         {
-            Button_noInfos[3 - i] = new Button(Style_noInfo);
-            Button_noInfos[3 - i].setPosition(460 + 267 * i, 565);
-            group.addActor(Button_noInfos[3 - i]);
+            Button_OperatorImage[3 - i] = new Button(Style_OperatorImage[3 - i]);
+            Button_OperatorImage[3 - i].setPosition(460 + 267 * i, 565);
+            group.addActor(Button_OperatorImage[3 - i]);
             final int finalI = 3 - i;
-            Button_noInfos[3 - i].addListener(new ClickListener() {
+            Button_OperatorImage[3 - i].addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     chosenIndex = finalI;
                     updateInfo();
                 }
             });
+            Image_decal[3 - i] = new Image(Texture_decal);
+            Image_decal[3 - i].setPosition(Button_OperatorImage[3 - i].getX() - 19, 545);
+            Image_decal[3 - i].setTouchable(Touchable.disabled);
+            group.addActor(Image_decal[3 - i]);
+
+            String name;
+            if(operators[3 - i] == null)
+            {
+                name = "Null";
+            }
+            else
+            {
+                name = operators[3 - i].getOperatorName();
+            }
+            Label_operatorName[3 - i] = new Label(name, labelStyleName);
+            Label_operatorName[3 - i].setAlignment(Align.center);
+            Label_operatorName[3 - i].setPosition(Image_decal[3 - i].getX() + 160, 582, Align.center);
+            group.addActor(Label_operatorName[3 - i]);
         }
 
         hpLabel = new Label("100/100", labelStyle);
@@ -153,6 +191,7 @@ public class OperatorFormationTable extends StoryUI
         group.addActor(resLabel);
 
         group.addActor(Button_back);
+        updateImage();
         updateInfo();
     }
 
@@ -185,5 +224,21 @@ public class OperatorFormationTable extends StoryUI
             Label_skillInfo[i].setText(tmp.getSkills().get(i).getSkillInfo());
             Label_skillCost[i].setText(tmp.getSkills().get(i).getApCost());
         }
+    }
+
+
+    private void updateImage()
+    {
+        for(int i = 0; i <= operators.length - 1; i++)
+        {
+            if(operators[i] == null) continue;
+            Texture Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
+            Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
+        }
+    }
+
+    private void getTeamMembers()
+    {
+        this.operators = TeamManager.getInstance().teamMembers;
     }
 }

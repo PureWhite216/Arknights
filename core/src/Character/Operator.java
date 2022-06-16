@@ -12,6 +12,8 @@ public abstract class Operator extends CharacterBase
     protected Sound chosenSound;
     protected SkillChooseTable skillChooseTable;
     protected Sound deadSound = Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_dead.wav"));
+    protected String imagePath;
+    protected String operatorName = "";
     public Operator(float posX, float posY, float scale, String chosenPath, String[] skillSoundsPath)
     {
         super(posX, posY, scale);
@@ -40,9 +42,19 @@ public abstract class Operator extends CharacterBase
         super.die();
     }
 
+    public String getOperatorName()
+    {
+        return operatorName;
+    }
+
     public SkillChooseTable getSkillChooseTable()
     {
         return skillChooseTable;
+    }
+
+    public String getImagePath()
+    {
+        return imagePath;
     }
 
     public void playChosenSound()

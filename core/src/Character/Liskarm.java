@@ -25,6 +25,8 @@ public class Liskarm extends Operator{
     public Liskarm(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Operators/Liskarm/liskarm.png";
+        operatorName = "雷蛇";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(300, 55, 60, 20, this);
         /*Init Skill*/

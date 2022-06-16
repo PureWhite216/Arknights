@@ -24,6 +24,8 @@ public class Amiya extends Operator
     public Amiya(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        operatorName = "阿米娅";
+        imagePath = "assets/Amiya2_Front/Amiya.png";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(200, 70, 25, 20, this);
         /*Init Skill*/
