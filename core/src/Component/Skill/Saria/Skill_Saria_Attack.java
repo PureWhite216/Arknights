@@ -38,7 +38,7 @@ public class Skill_Saria_Attack extends Skill_Attack {
         // Call Action
         character.clearActions();
         character.addAction(Actions.sequence(
-                Actions.delay(0.55f),
+                Actions.delay(0.05f),
                 Actions.moveTo(character.getTarget().getX() - 100, BattleLevelBase.defaultY, 0.35f, Interpolation.circleIn),
                 getEffectAction(),
                 Actions.delay(0.6f),
