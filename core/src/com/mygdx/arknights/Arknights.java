@@ -2,6 +2,7 @@ package com.mygdx.arknights;
 
 import Level.LevelManager;
 import Level.StartLevel;
+import Level.StoryLevel;
 import Level.TestLevel;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -22,8 +23,9 @@ public class Arknights extends ApplicationAdapter
 	public void create () {
 
 		/*Test Level*/
-		LevelManager.getInstance().push(new TestLevel());
-//		LevelManager.getInstance().push(new StartLevel());
+//		LevelManager.getInstance().push(new TestLevel());
+		LevelManager.getInstance().push(new StartLevel());
+//		LevelManager.getInstance().push(new StoryLevel());
 	}
 
 	/*Game Loop*/

@@ -41,8 +41,8 @@ public abstract class StoryUI
         group.setVisible(false);
     }
 
-    public void setPosition(float x)
+    public void setPosition(float x, float y)
     {
-        group.setX(x);
+        group.setPosition(x, y);
     }
 }
