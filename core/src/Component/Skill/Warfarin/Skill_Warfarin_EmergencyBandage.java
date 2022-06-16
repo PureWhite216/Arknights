@@ -19,6 +19,7 @@ public class Skill_Warfarin_EmergencyBandage extends Skill_Attack
         skillName = "紧急包扎";
         needChoose = false;
         apCost = 3;
+        skillInfo = "为血量比例最低的友方恢复其最大生命值的15%\n + 自身一倍攻击力的血量";
     }
 
     @Override

@@ -18,6 +18,7 @@ public class Skill_Warfarin_Recover extends Skill_Attack
         super(character);
         skillName = "恢复";
         needChoose = false;
+        skillInfo = "为血量比例最低的友方恢复自身一倍攻击力的血量";
     }
 
     @Override
