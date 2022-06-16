@@ -12,7 +12,8 @@ public abstract class StoryUI
 {
     protected Group group;
     protected StoryLevel level;
-    protected static final BitmapFont bitmapFont = new BitmapFont(Gdx.files.internal("assets/font/skill.fnt"));
+    protected Stage stage;
+    protected static final BitmapFont bitmapFont = new BitmapFont(Gdx.files.internal("assets/font/text.fnt"));
 
     public StoryUI()
     {

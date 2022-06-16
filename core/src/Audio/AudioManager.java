@@ -35,8 +35,8 @@ public class AudioManager
         SFX.put(SFXName.atkBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_atkboost.wav")));
         SFX.put(SFXName.defBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_defboost.wav")));
         SFX.put(SFXName.healBoost, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/b_char_healboost.wav")));
-        SFX.put(SFXName.shield, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_imp_shield_n.wav")));
-
+        SFX.put(SFXName.shield, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_atk_heal_h.wav")));
+        SFX.put(SFXName.healing, Gdx.audio.newSound(Gdx.files.internal("assets/Audio/BattleSFX/p_imp_shield_n.wav")));
     }
 
     public EnumMap<SFXName, Sound> getSFX()

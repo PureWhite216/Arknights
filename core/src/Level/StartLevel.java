@@ -2,6 +2,7 @@ package Level;
 
 import Audio.AudioManager;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -27,7 +28,6 @@ public class StartLevel extends LevelBase
     private Button start;
     private Texture startTexture;
     private Texture downTexture;
-
 
     public StartLevel()
     {
@@ -66,7 +66,7 @@ public class StartLevel extends LevelBase
     @Override
     protected LevelBase loadNextLevel()
     {
-        return new TestLevel();
+        return new StoryLevel();
     }
 
     @Override
