@@ -8,7 +8,7 @@ public class Skill_Franka_PowerStrike extends Skill_Franka_Attack {
     public Skill_Franka_PowerStrike(CharacterBase character){
         super(character);
         skillName = "迅捷打击";
-        skillInfo = "减少3点能量，对敌人造成两倍攻击力的物理伤害;若击杀敌人，返还2点AP";
+        skillInfo = "对敌人造成2倍攻击力的物理伤害\n若击杀敌人，返还2点AP";
         apCost = 3;
     }
 

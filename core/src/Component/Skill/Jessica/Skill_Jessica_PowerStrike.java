@@ -12,7 +12,7 @@ public class Skill_Jessica_PowerStrike extends Skill_Attack {
         super(character);
         skillName = "强力射击";
         apCost = 2;
-        skillInfo = "消耗2点能量，对敌人造成两倍攻击力的物理伤害";
+        skillInfo = "对敌人造成两倍攻击力的物理伤害";
     }
 
     @Override
