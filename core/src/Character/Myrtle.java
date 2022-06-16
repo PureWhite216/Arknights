@@ -19,10 +19,10 @@ import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 
 public class Myrtle extends Operator{
-    static final String atlasPath = "assets/Myrtile/char_151_myrtle.atlas";
-    static final String skelPath = "assets/Myrtile/char_151_myrtle.skel";
-    static final String soundPath = "assets/Myrtile/桃金娘_选中干员1.wav";
-    static String[] skillSoundsPath = {"assets/Myrtile/桃金娘_作战中1.wav","assets/Myrtile/桃金娘_作战中2.wav","assets/Myrtile/桃金娘_作战中3.wav"};
+    static final String atlasPath = "assets/Operators/Myrtlechar_151_myrtle.atlas";
+    static final String skelPath = "assets/Operators/Myrtlechar_151_myrtle.skel";
+    static final String soundPath = "assets/Operators/Myrtle桃金娘_选中干员1.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Myrtle桃金娘_作战中1.wav","assets/Operators/Myrtle桃金娘_作战中2.wav","assets/Operators/Myrtle桃金娘_作战中3.wav"};
 
     public Myrtle(float posX, float posY)
     {

@@ -24,10 +24,10 @@ import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 
 public class SilverAsh extends Operator{
-    static final String atlasPath = "assets/SilverAsh/char_172_silverash.atlas";
-    static final String skelPath = "assets/SilverAsh/char_172_silverash.skel";
-    static final String soundPath = "assets/SilverAsh/银灰_选中干员2.wav";
-    static String[] skillSoundsPath = {"assets/SilverAsh/银灰_作战中2.wav","assets/SilverAsh/银灰_作战中3.wav","assets/SilverAsh/银灰_作战中2.wav","assets/SilverAsh/银灰_作战中3.wav"};
+    static final String atlasPath = "assets/Operators/SilverAshchar_172_silverash.atlas";
+    static final String skelPath = "assets/Operators/SilverAshchar_172_silverash.skel";
+    static final String soundPath = "assets/Operators/SilverAsh银灰_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/SilverAsh银灰_作战中2.wav","assets/Operators/SilverAsh银灰_作战中3.wav","assets/Operators/SilverAsh银灰_作战中2.wav","assets/Operators/SilverAsh银灰_作战中3.wav"};
 
     public SilverAsh(float posX, float posY)
     {

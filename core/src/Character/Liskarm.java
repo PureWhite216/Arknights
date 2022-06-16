@@ -17,10 +17,10 @@ import com.badlogic.gdx.Gdx;
 
 public class Liskarm extends Operator{
     /*Set up Assets Path*/
-    static final String atlasPath = "assets/Liskarm_Front/liskarm.atlas";
-    static final String skelPath = "assets/Liskarm_Front/liskarm.skel";
-    static final String soundPath = "assets/Liskarm_Front/雷蛇_选中干员2.wav";
-    static String[] skillSoundsPath = {"assets/Liskarm_Front/雷蛇_作战中1.wav","assets/Liskarm_Front/雷蛇_作战中2.wav","assets/Liskarm_Front/雷蛇_作战中3.wav","assets/Liskarm_Front/雷蛇_作战中4.wav"};
+    static final String atlasPath = "assets/Operators/Liskarm/liskarm.atlas";
+    static final String skelPath = "assets/Operators/Liskarm/liskarm.skel";
+    static final String soundPath = "assets/Operators/Liskarm/雷蛇_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Liskarm/雷蛇_作战中1.wav","assets/Operators/Liskarm/雷蛇_作战中2.wav","assets/Operators/Liskarm/雷蛇_作战中3.wav","assets/Operators/Liskarm/雷蛇_作战中4.wav"};
 
     public Liskarm(float posX, float posY)
     {
