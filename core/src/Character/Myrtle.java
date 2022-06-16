@@ -53,7 +53,8 @@ public class Myrtle extends Operator{
         /*Set up Animation Component*/
         animationComponent = new AnimationComponent(atlasPath, skelPath, scale);
         /*Set Animation Mix*/
-        animationComponent.getAnimationStateData().setMix("Idle", "Skill_Begin", 0.5f);
-        //animationComponent.getAnimationStateData().setMix("Start", "Idle", 0.3f);
+        animationComponent.getAnimationStateData().setMix("Idle", "Skill_Begin", 1f);
+        animationComponent.getAnimationStateData().setMix("Skill_Begin", "Skill_Loop", 1f);
+        animationComponent.getAnimationStateData().setMix("Skill_Begin", "Skill_End", 0.5f);
     }
 }
