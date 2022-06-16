@@ -20,6 +20,8 @@ public class Franka extends Operator{
 
     public Franka(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
+        operatorName = "芙兰卡";
+        imagePath = "assets/Operators/Franka/Franka.png";
         /* set battle info */
         battleComponent = new BattleComponent(200, 90, 40, 10, this);
         /* init skill*/

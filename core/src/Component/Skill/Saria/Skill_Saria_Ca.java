@@ -13,8 +13,9 @@ public class Skill_Saria_Ca extends Skill_Attack {
     public Skill_Saria_Ca(CharacterBase character){
         super(character);
         skillName = "钙质化";
-        apCost = 2;
+        apCost = 6;
         needChoose = false;
+        skillInfo = "消耗6点能量，对所有敌人施加3回合的易伤（受到2倍伤害）\n并使全体友方获得3回合的坚硬效果（防御力变为原来的1.5倍）";
     }
 
     @Override

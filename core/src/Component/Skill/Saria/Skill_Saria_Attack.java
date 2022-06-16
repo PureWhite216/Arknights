@@ -12,6 +12,7 @@ public class Skill_Saria_Attack extends Skill_Attack {
     public Skill_Saria_Attack(CharacterBase character){
         super(character);
         skillName = "盾击";
+        skillInfo = "对敌人造成一倍攻击力的物理伤害";
     }
 
     @Override

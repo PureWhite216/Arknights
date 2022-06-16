@@ -13,6 +13,7 @@ public class Skill_Saria_Medicine extends Skill_Attack {
         skillName = "药物配置";
         needChoose = false;
         apCost = 3;
+        skillInfo = "消耗3点能量，使全体友方恢复自身1倍攻击力的血量";
     }
 
     @Override

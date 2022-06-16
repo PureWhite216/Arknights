@@ -10,6 +10,7 @@ public class Skill_Franka_Sharp extends Skill_Attack {
     public Skill_Franka_Sharp(CharacterBase character){
         super(character);
         skillName = "极致锋度";
+        skillInfo = "减少3点能量，自身获得3回合的锋利，3回合的易伤";
         apCost = 3;
         needChoose = false;
     }

@@ -8,6 +8,7 @@ public class Skill_Franka_PowerStrike extends Skill_Franka_Attack {
     public Skill_Franka_PowerStrike(CharacterBase character){
         super(character);
         skillName = "迅捷打击";
+        skillInfo = "减少3点能量，对敌人造成两倍攻击力的物理伤害;若击杀敌人，返还2点AP";
         apCost = 3;
     }
 
@@ -21,6 +22,9 @@ public class Skill_Franka_PowerStrike extends Skill_Franka_Attack {
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Physical);
+        if(character.getTarget().getBattleComponent().isDied()){
+            character.getBattleComponent().addAP(2);
+        }
         AudioManager.getInstance().getSFX().get(SFXName.sword).play(0.6f);
     }
 }

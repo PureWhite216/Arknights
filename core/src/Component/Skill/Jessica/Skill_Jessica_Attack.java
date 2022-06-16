@@ -11,6 +11,7 @@ public class Skill_Jessica_Attack extends Skill_Attack {
     public Skill_Jessica_Attack(CharacterBase character){
         super(character);
         skillName = "射击";
+        skillInfo = "对敌人造成一倍攻击力的物理伤害";
     }
 
     @Override
