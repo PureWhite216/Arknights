@@ -14,6 +14,7 @@ public class Skill_Liskarm_PowerAttack extends Skill_Attack{
     public Skill_Liskarm_PowerAttack(CharacterBase character){
         super(character);
         skillName ="精准射击";
+        skillInfo = "造成1.5倍物理伤害";
         apCost = 2;
     }
 

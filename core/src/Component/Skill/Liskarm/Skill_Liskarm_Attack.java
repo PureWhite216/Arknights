@@ -14,6 +14,7 @@ public class Skill_Liskarm_Attack extends Skill_Attack{
     {
         super(character);
         skillName = "射击";
+        skillInfo = "造成1倍物理伤害";
     }
 
     protected void callSound()

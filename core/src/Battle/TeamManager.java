@@ -18,7 +18,7 @@ public class TeamManager
         teamMembers[0] = new Saria(0, 0);
         teamMembers[1] = new Surtr(0, 0);
         teamMembers[2] = new Warfarin(0, 0);
-        teamMembers[3] = new Nightmare(0, 0);
+        teamMembers[3] = new Myrtle(0, 0);
     }
 
     public static TeamManager getInstance()

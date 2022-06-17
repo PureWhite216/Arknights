@@ -13,6 +13,7 @@ public class Skill_Liskarm_defense extends Skill_Attack {
     public Skill_Liskarm_defense(CharacterBase character){
         super(character);
         skillName ="战术防御";
+        skillInfo="自身免疫下一次伤害";
         apCost = 2;
         needChoose = false;
     }

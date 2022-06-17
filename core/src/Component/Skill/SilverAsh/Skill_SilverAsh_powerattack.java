@@ -14,6 +14,7 @@ public class Skill_SilverAsh_powerattack extends Skill_Attack {
     {
         super(character);
         skillName = "强力击";
+        skillInfo="造成自身攻击力2倍的物理伤害";
         apCost = 2;
     }
 

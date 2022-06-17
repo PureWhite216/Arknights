@@ -14,6 +14,7 @@ public class Skill_SilverAsh_attack extends Skill_Attack{
     {
         super(character);
         skillName = "刺击";
+        skillInfo="造成自身攻击力1倍的物理伤害";
     }
 
     protected void callSound()

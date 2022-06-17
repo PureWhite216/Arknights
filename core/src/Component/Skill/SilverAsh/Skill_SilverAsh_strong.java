@@ -14,6 +14,7 @@ public class Skill_SilverAsh_strong extends Skill_Attack{
     {
         super(character);
         skillName = "雪境生存";
+        skillInfo="自身获得2回合坚硬";
         apCost=3;
         needChoose = false;
 
