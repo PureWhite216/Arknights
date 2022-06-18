@@ -27,7 +27,7 @@ public class Skill_Surtr_Attack extends Skill_Attack {
     protected void callEffect()
     {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
-        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
     @Override

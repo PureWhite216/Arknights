@@ -32,7 +32,7 @@ public class Skill_Surtr_MoltenNuclearGiantShadow extends Skill_Attack {
                 enemy.getBattleComponent().getDamage((int) (battleComponent.getAtk() * 2.5), DamageType.Magical);
             }
         }
-        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class Skill_Surtr_Laevatein extends Skill_Attack {
         if(r == 0){
             character.getTarget().getBattleComponent().buff_fragile = 2;
         }
-        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
     @Override

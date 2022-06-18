@@ -31,7 +31,7 @@ public class Skill_Surtr_Nightfall extends Skill_Attack {
             }
         }
         battleComponent.getDamage((int) (battleComponent.getMaxHP() * 0.3), DamageType.Real);
-        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
     @Override

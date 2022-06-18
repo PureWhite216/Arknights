@@ -203,9 +203,9 @@ public class OperatorFormationTable extends StoryUI
 
         int currentHP = battleComponent.getHP();
         int maxHP = battleComponent.getHP();
-        int atk = battleComponent.getAtk();
-        int def = battleComponent.getDef();
-        int res = battleComponent.getRes();
+        int atk = battleComponent.getInitialAtk();
+        int def = battleComponent.getInitialDef();
+        int res = battleComponent.getInitialRes();
 
         hpLabel.setText(currentHP + "/" + maxHP);
         atkLabel.setText(atk);

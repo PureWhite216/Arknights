@@ -80,6 +80,7 @@ public class SkillChooseTable extends BattleUI
                     {
                         operator.getSkillChooseTable().hide();
                         operator.setTarget(operator);
+                        level.getReadyImages()[index].setVisible(true);
                     }
 
                     if(operator.chosenSkillIndex != -1)
@@ -89,7 +90,7 @@ public class SkillChooseTable extends BattleUI
                     operator.chosenSkillIndex = finalI;
                     operator.getBattleComponent().costAP(operator.getSkills().get(finalI).getApCost());
                     level.getApPanels()[index].updateAP(operator.getBattleComponent().getAp());
-                    level.getReadyImages()[index].setVisible(true);
+
                     if(level.checkIsReady())
                     {
                         level.getReadyButton().setVisible(true);
