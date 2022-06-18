@@ -2,6 +2,7 @@ package Component.Skill.SilverAsh;
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Battle.Buff.DefBuff;
 import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
@@ -29,7 +30,8 @@ public class Skill_SilverAsh_silverattack extends Skill_Attack{
     protected void callEffect()
     {
         //super.callEffect();
-        character.getBattleComponent().buff_fragile=2;
+        //character.getBattleComponent().buff_fragile=2;
+        character.getBattleComponent().addBuff(new DefBuff(2,-0.5f));
         for(Enemy enemy: character.getCurrentLevel().getEnemies()){
             if(enemy == null) continue;
             enemy.getBattleComponent().getDamage((int)((float)battleComponent.getAtk() * 3.0f), DamageType.Physical);
