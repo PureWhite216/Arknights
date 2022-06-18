@@ -2,6 +2,8 @@ package Component.Skill.Saria;
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Battle.Buff.DefBuff;
+import Battle.Buff.ResBuff;
 import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Character.CharacterBase;
@@ -15,7 +17,7 @@ public class Skill_Saria_Ca extends Skill_Attack {
         skillName = "钙质化";
         apCost = 6;
         needChoose = false;
-        skillInfo = "对所有敌人施加3回合的易伤\n使全体友方获得3回合的坚硬效果";
+        skillInfo = "使所有敌人降低50%的防御力\n使我方所有干员增加35%的防御，30的魔抗\n持续四回合";
     }
 
     @Override
@@ -30,12 +32,13 @@ public class Skill_Saria_Ca extends Skill_Attack {
         for(Enemy enemy: character.getCurrentLevel().getEnemies()){
             if(enemy==null)
                 continue;
-            enemy.getBattleComponent().buff_fragile += 3;
+            enemy.getBattleComponent().addBuff(new DefBuff(4,-0.5f));
         }
         for(Operator operator : character.getCurrentLevel().getOperators()){
             if(operator == null)
                 continue;
-            operator.getBattleComponent().buff_hard += 3;
+            operator.getBattleComponent().addBuff(new DefBuff(4, 0.35f));
+            operator.getBattleComponent().addBuff(new ResBuff(4, 30));
         }
         AudioManager.getInstance().getSFX().get(SFXName.healing).play(0.6f);
     }

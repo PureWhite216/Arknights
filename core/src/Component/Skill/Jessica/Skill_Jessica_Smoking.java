@@ -2,6 +2,7 @@ package Component.Skill.Jessica;
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Battle.Buff.MissBuff;
 import Character.CharacterBase;
 import Component.Skill.SkillBase;
 import Component.Skill.Skill_Attack;
@@ -13,7 +14,7 @@ public class Skill_Jessica_Smoking extends SkillBase {
         super(character);
         skillName = "掩护烟幕";
         apCost = 4;
-        skillInfo = "为自己增加20%的闪避率，最多80%";
+        skillInfo = "为自己增加40%的闪避率，持续4回合";
         needChoose = false;
     }
 
@@ -26,11 +27,7 @@ public class Skill_Jessica_Smoking extends SkillBase {
     @Override
     protected void callEffect()
     {
-        if(character.getBattleComponent().buff_Miss + 0.2 <=0.8){
-            character.getBattleComponent().buff_Miss += 0.2;
-        }else{
-            character.getBattleComponent().buff_Miss = (float)0.8;
-        }
+        character.getBattleComponent().addBuff(new MissBuff(4,0.4f));
         AudioManager.getInstance().getSFX().get(SFXName.defBoost).play(0.6f);
     }
 
