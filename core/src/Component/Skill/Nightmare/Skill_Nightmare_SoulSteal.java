@@ -16,6 +16,7 @@ public class Skill_Nightmare_SoulSteal extends Skill_Attack {
         super(character);
         skillName = "灵魂汲取";
         apCost = 3;
+        skillInfo = "对敌人2倍法术伤害,\n并对生命值最低的友方恢复1倍攻击力的血量";
     }
 
     @Override

@@ -14,6 +14,7 @@ public class Skill_Liskarm_fightback extends Skill_Attack{
     public Skill_Liskarm_fightback(CharacterBase character){
         super(character);
         skillName ="反击电弧";
+        skillInfo = "对所有敌人造成自身攻击力2倍的法术伤害\n每一个敌人有50%的概率被眩晕";
         apCost = 4;
         needChoose = false;
     }

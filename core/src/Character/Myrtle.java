@@ -19,14 +19,16 @@ import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 
 public class Myrtle extends Operator{
-    static final String atlasPath = "assets/Operators/Myrtlechar_151_myrtle.atlas";
-    static final String skelPath = "assets/Operators/Myrtlechar_151_myrtle.skel";
-    static final String soundPath = "assets/Operators/Myrtle桃金娘_选中干员1.wav";
-    static String[] skillSoundsPath = {"assets/Operators/Myrtle桃金娘_作战中1.wav","assets/Operators/Myrtle桃金娘_作战中2.wav","assets/Operators/Myrtle桃金娘_作战中3.wav"};
+    static final String atlasPath = "assets/Operators/Myrtle/char_151_myrtle.atlas";
+    static final String skelPath = "assets/Operators/Myrtle/char_151_myrtle.skel";
+    static final String soundPath = "assets/Operators/Myrtle/桃金娘_选中干员1.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Myrtle/桃金娘_作战中1.wav","assets/Operators/Myrtle/桃金娘_作战中2.wav","assets/Operators/Myrtle/桃金娘_作战中3.wav"};
 
     public Myrtle(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Operators/Myrtle/Myrtle.png";
+        operatorName = "桃金娘";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(180, 55, 35, 10, this);
         /*Init Skill*/

@@ -26,6 +26,8 @@ public class Nightmare extends Operator{
     public Nightmare(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Operators/Warfarin/warfarin.png";
+        operatorName = "夜魔";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(120, 120, 15, 30, this);
         /*Init Skill*/

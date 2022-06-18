@@ -17,6 +17,7 @@ public class Skill_Nightmare_Attack extends Skill_Attack
     {
         super(character);
         skillName = "法术攻击";
+        skillInfo = "对敌人1倍法术伤害";
     }
 
     @Override

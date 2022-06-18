@@ -15,6 +15,7 @@ public class Skill_SilverAsh_silverattack extends Skill_Attack{
     {
         super(character);
         skillName = "真银斩";
+        skillInfo="对所有敌人造成自身攻击力3倍的物理伤害\n自身获得2回合的易伤";
         apCost=5;
         needChoose = false;
     }

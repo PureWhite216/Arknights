@@ -18,6 +18,7 @@ public class Skill_Nightmare_PowerfulMagic extends Skill_Attack
         super(character);
         skillName = "强力魔法";
         apCost = 2;
+        skillInfo = "对敌人2倍法术伤害";
     }
 
     @Override

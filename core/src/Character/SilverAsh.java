@@ -24,14 +24,16 @@ import UI.SkillChooseTable;
 import com.badlogic.gdx.Gdx;
 
 public class SilverAsh extends Operator{
-    static final String atlasPath = "assets/Operators/SilverAshchar_172_silverash.atlas";
-    static final String skelPath = "assets/Operators/SilverAshchar_172_silverash.skel";
-    static final String soundPath = "assets/Operators/SilverAsh银灰_选中干员2.wav";
-    static String[] skillSoundsPath = {"assets/Operators/SilverAsh银灰_作战中2.wav","assets/Operators/SilverAsh银灰_作战中3.wav","assets/Operators/SilverAsh银灰_作战中2.wav","assets/Operators/SilverAsh银灰_作战中3.wav"};
+    static final String atlasPath = "assets/Operators/SilverAsh/char_172_silverash.atlas";
+    static final String skelPath = "assets/Operators/SilverAsh/char_172_silverash.skel";
+    static final String soundPath = "assets/Operators/SilverAsh/银灰_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/SilverAsh/银灰_作战中2.wav","assets/Operators/SilverAsh/银灰_作战中3.wav","assets/Operators/SilverAsh/银灰_作战中2.wav","assets/Operators/SilverAsh/银灰_作战中3.wav"};
 
     public SilverAsh(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Operators/SilverAsh/silverash.png";
+        operatorName = "银灰";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(220, 80, 45, 0, this);
         /*Init Skill*/

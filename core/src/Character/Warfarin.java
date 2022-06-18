@@ -29,6 +29,8 @@ public class Warfarin extends Operator{
     public Warfarin(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Operators/Warfarin/warfarin.png";
+        operatorName = "华法琳";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(100, 40, 20, 10, this);
         /*Init Skill*/

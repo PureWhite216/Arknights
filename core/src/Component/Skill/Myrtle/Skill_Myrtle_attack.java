@@ -14,6 +14,7 @@ public class Skill_Myrtle_attack extends Skill_Attack{
     {
         super(character);
         skillName = "挥旗";
+        skillInfo="造成自身攻击力1倍的物理伤害";
     }
 
     protected void callSound()

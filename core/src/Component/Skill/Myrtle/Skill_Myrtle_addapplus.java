@@ -15,6 +15,7 @@ public class Skill_Myrtle_addapplus extends Skill_Attack{
     {
         super(character);
         skillName = "治愈之翼";
+        skillInfo="为所有友方恢复1点AP\n并治愈桃金娘自身攻击力1倍的血量";
         apCost=4;
         needChoose = false;
     }

@@ -1,31 +1,33 @@
-package Component.Skill.Saria;
+package Component.Skill.Surtr;
+
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Character.CharacterBase;
+import Component.DamageType;
 import Component.Skill.Skill_Attack;
 import Level.BattleLevelBase;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import Character.CharacterBase;
 
-public class Skill_Saria_Attack extends Skill_Attack {
-    public Skill_Saria_Attack(CharacterBase character){
+public class Skill_Surtr_Attack extends Skill_Attack {
+    public Skill_Surtr_Attack(CharacterBase character){
         super(character);
-        skillName = "盾击";
-        skillInfo = "对敌人造成1倍攻击力的物理伤害";
+        skillName = "斩击";
+        skillInfo = "对敌人造成一倍攻击力的法术伤害";
     }
 
     @Override
     protected void callSound()
     {
-        character.getSkillSounds()[0].play(0.5f);
+        character.getRandomSkillSounds(4).play(0.5f);
     }
 
     @Override
     protected void callEffect()
     {
-        super.callEffect();
-        AudioManager.getInstance().getSFX().get(SFXName.shield).play(0.6f);
+        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk(), DamageType.Magical);
+        AudioManager.getInstance().getSFX().get(SFXName.pistol).play(0.6f);
     }
 
     @Override
@@ -35,14 +37,13 @@ public class Skill_Saria_Attack extends Skill_Attack {
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
 
-        // Call Action
         character.clearActions();
         character.addAction(Actions.sequence(
                 Actions.delay(0.05f),
                 Actions.moveTo(character.getTarget().getX() - 100, BattleLevelBase.defaultY, 0.35f, Interpolation.circleIn),
                 getEffectAction(),
                 Actions.delay(0.6f),
-                Actions.moveTo(character.getX(), BattleLevelBase.defaultY, 0.35f, Interpolation.circleOut))
-        );
+                Actions.moveTo(character.getX(), BattleLevelBase.defaultY, 0.35f, Interpolation.circleOut)
+        ));
     }
 }

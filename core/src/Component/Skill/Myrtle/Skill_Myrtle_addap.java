@@ -15,6 +15,7 @@ public class Skill_Myrtle_addap extends Skill_Attack{
     {
         super(character);
         skillName = "支援号令";
+        skillInfo="为所有友方增加1点AP";
         apCost=2;
         needChoose = false;
     }

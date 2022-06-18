@@ -15,10 +15,10 @@ public class TeamManager
 
     private void initTeam()
     {
-        teamMembers[0] = new Liskarm(0, 0);
-        teamMembers[1] = new Amiya(0, 0);
-        teamMembers[2] = new Franka(0, 0);
-        teamMembers[3] = new Jessica(0, 0);
+        teamMembers[0] = new Saria(0, 0);
+        teamMembers[1] = new Surtr(0, 0);
+        teamMembers[2] = new Warfarin(0, 0);
+        teamMembers[3] = new Myrtle(0, 0);
     }
 
     public static TeamManager getInstance()
