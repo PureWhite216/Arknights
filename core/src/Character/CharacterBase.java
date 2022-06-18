@@ -47,7 +47,6 @@ public abstract class CharacterBase extends Actor
         this.currentLevel = currentLevel;
         target = null;
         this.index = index;
-        battleComponent.setAp(2);
     }
 
 
@@ -112,6 +111,7 @@ public abstract class CharacterBase extends Actor
     {
         return battleComponent;
     }
+
 
     public Sound[] getSkillSounds()
     {

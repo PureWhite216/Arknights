@@ -1,7 +1,10 @@
 package Component;
 
+import Battle.Buff.*;
 import Character.CharacterBase;
 import Character.Operator;
+
+import java.util.ArrayList;
 
 public class BattleComponent
 {
@@ -11,6 +14,9 @@ public class BattleComponent
     private int res;
     private int atk;
     private int ap;
+    public int tmpDef;
+    public int tmpRes;
+    public int tmpAtk;
     private int apReadyToCost;
     private CharacterBase character;
     private boolean isDied = false;
@@ -23,6 +29,8 @@ public class BattleComponent
     public int buff_hard = 0; //坚硬，角色的防御力暂时变为原来的1.5倍
     public int buff_fragile = 0; // 易伤，角色受到的伤害变为原来的2倍
 
+    private ArrayList<BuffBase> buffs = new ArrayList<>();
+
     public BattleComponent(int maxHP, int atk, int def, int res, CharacterBase character)
     {
         this.HP = maxHP;
@@ -33,6 +41,33 @@ public class BattleComponent
         this.character = character;
         ap = 0;
     }
+
+    public void levelInit()
+    {
+        buffs.clear();
+        tmpAtk = atk;
+        tmpDef = def;
+        tmpRes = res;
+        ap = 2;
+    }
+
+
+    public void addBuff(BuffBase buff)
+    {
+       buffs.add(buff);
+    }
+    
+    public void buffUpdate()
+    {
+        for(BuffBase buff : buffs)
+        {
+            if(buff.roundUpdate())
+            {
+                buff.buffDisable(this);
+            }
+        }
+    }
+
 
     //角色受到伤害
     public void getDamage(int damage, DamageType damageType)
@@ -113,18 +148,34 @@ public class BattleComponent
 
     public int getAtk()
     {
-        return atk;
+        return tmpAtk;
     }
 
     public int getDef()
     {
-        return def;
+        return tmpDef;
     }
 
     public int getRes()
     {
+        return tmpRes;
+    }
+
+    public int getInitialAtk()
+    {
+        return atk;
+    }
+
+    public int getInitialDef()
+    {
+        return def;
+    }
+
+    public int getInitialRes()
+    {
         return res;
     }
+    
 
     public int getAp()
     {

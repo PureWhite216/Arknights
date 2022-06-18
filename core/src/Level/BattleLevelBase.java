@@ -81,6 +81,8 @@ public abstract class BattleLevelBase extends LevelBase
             operators[i].enterLevel(this, i);
             operators[i].getAnimationComponent().setScale(0.6f);
             stage.addActor(operators[i]);
+
+            operators[i].getBattleComponent().levelInit();
         }
         for(int i = 0; i <= 3; i++)
         {
@@ -90,6 +92,8 @@ public abstract class BattleLevelBase extends LevelBase
             enemies[i].getAnimationComponent().setScale(0.6f);
             enemies[i].setTarget(operators[i]);
             stage.addActor(enemies[i]);
+
+            enemies[i].getBattleComponent().levelInit();
         }
     }
 

@@ -4,6 +4,7 @@ import Component.Animation.AnimationBase;
 import Component.AnimationComponent;
 import Component.BattleComponent;
 import Character.CharacterBase;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
 public abstract class SkillBase
@@ -23,7 +24,6 @@ public abstract class SkillBase
         animationComponent = character.getAnimationComponent();
     }
 
-    protected abstract RunnableAction getEffectAction();
     protected abstract void callEffect();
 
     public abstract void callSkill();
@@ -31,6 +31,16 @@ public abstract class SkillBase
     protected void callSound()
     {
 
+    }
+
+    protected RunnableAction getEffectAction()
+    {
+        return Actions.run(new Runnable() {
+            @Override
+            public void run() {
+                callEffect();
+            }
+        });
     }
 
     public boolean isNeedChoose()

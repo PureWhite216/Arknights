@@ -44,6 +44,8 @@ public class BattleHandler
                 level.getApPanels()[i].updateAP(operators[i].getBattleComponent().getAp());
                 level.setChoosingTarget(false);
                 operators[i].chosenSkillIndex = -1;
+
+                operators[i].getBattleComponent().buffUpdate();
             }
             Enemy[] enemies = level.getEnemies();
             for(int i = 0; i <= 3; i++)

@@ -4,6 +4,7 @@ import Audio.AudioManager;
 import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Amiya.Skill_Amiya_PowerStrike;
+import Component.Skill.Amiya.Skill_Amiya_Skill3;
 import Component.Skill.SkillBase;
 import Component.Skill.Amiya.Skill_Amiya_Attack;
 import Level.BattleLevelBase;
@@ -31,7 +32,7 @@ public class Amiya extends Operator
         /*Init Skill*/
         skills.add(new Skill_Amiya_Attack(this));
         skills.add(new Skill_Amiya_PowerStrike(this));
-
+        skills.add(new Skill_Amiya_Skill3(this));
         /*Set up skillChooseTable*/
         skillChooseTable = new SkillChooseTable(this);
     }

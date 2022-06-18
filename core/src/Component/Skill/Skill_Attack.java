@@ -31,16 +31,5 @@ public abstract class Skill_Attack extends SkillBase
 //        }
     }
 
-    @Override
-    protected RunnableAction getEffectAction()
-    {
-        return Actions.run(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Cause Damage");
-                callEffect();
-            }
-        });
-    }
 
 }
