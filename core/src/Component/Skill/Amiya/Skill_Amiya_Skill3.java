@@ -4,6 +4,7 @@ import Audio.AudioManager;
 import Audio.SFXName;
 import Battle.Buff.AtkBuff;
 import Battle.Buff.BuffName;
+import Battle.Buff.MissBuff;
 import Component.Skill.SkillBase;
 import Level.BattleLevelBase;
 import com.badlogic.gdx.math.Interpolation;
@@ -31,7 +32,11 @@ public class Skill_Amiya_Skill3 extends SkillBase
     @Override
     protected void callEffect()
     {
-        character.getBattleComponent().addBuff(new AtkBuff(3, 0.5f));
+        character.getBattleComponent().addBuff(new AtkBuff(3, 0.5f)); //攻击力提升50%，持续3回合
+        //        character.getBattleComponent().addBuff(new DefBuff(3, 0.5f)); //防御力提升50%，持续3回合
+        //        character.getBattleComponent().addBuff(new DefBuff(3, -0.5f)); //防御力下降50%，持续3回合
+        //        character.getBattleComponent().addBuff(new ResBuff(3, 10)); //魔抗提升10，持续3回合
+//                character.getBattleComponent().addBuff(new MissBuff(3, 0.1f)); //获得10%的闪避，持续3回合
         AudioManager.getInstance().getSFX().get(SFXName.atkBoost).play(0.6f);
     }
 
