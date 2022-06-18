@@ -20,6 +20,7 @@ public class Skill_Amiya_Skill3 extends SkillBase
         super(character);
         skillName = "攻击强化";
         skillInfo = "提示2倍攻击力";
+        needChoose = false;
         apCost = 2;
     }
 

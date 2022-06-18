@@ -33,7 +33,7 @@ public class Skill_Warfarin_EmergencyBandage extends Skill_Attack
     {
         Operator minHPOperator = character.getCurrentLevel().getMinHPOperator();
         minHPOperator.getBattleComponent().getHealing((int)(minHPOperator.getBattleComponent().getMaxHP()*0.15)+battleComponent.getAtk());
-        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.healing).play(0.6f);
     }
 
     @Override

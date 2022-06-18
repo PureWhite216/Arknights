@@ -1,40 +1,37 @@
 package Character;
 
-import Audio.AudioManager;
 import Component.AnimationComponent;
 import Component.BattleComponent;
-import Component.Skill.Amiya.Skill_Amiya_PowerStrike;
-import Component.Skill.Liskarm.Skill_Liskarm_Attack;
+import Component.Skill.Executor.Skill_Executor_GrapeShot;
+import Component.Skill.Executor.Skill_Executor_LastRide;
+import Component.Skill.Executor.Skill_Executor_MuzzlePack;
+import Component.Skill.Executor.Skill_Executor_Prepare;
 import Component.Skill.Nightmare.Skill_Nightmare_Attack;
 import Component.Skill.Nightmare.Skill_Nightmare_PowerfulMagic;
 import Component.Skill.Nightmare.Skill_Nightmare_SoulSteal;
 import Component.Skill.Nightmare.Skill_Nightmare_TheShadow;
-import Component.Skill.SkillBase;
-import Component.Skill.Amiya.Skill_Amiya_Attack;
 import Level.BattleLevelBase;
-import Level.LevelBase;
 import UI.SkillChooseTable;
-import com.badlogic.gdx.Gdx;
 
-public class Nightmare extends Operator{
+public class Executor extends Operator{
     /*Set up Assets Path*/
-    static final String atlasPath = "assets/Operators/Nightmare/nightmare.atlas";
-    static final String skelPath = "assets/Operators/Nightmare/nightmare.skel";
-    static final String soundPath = "assets/Operators/Nightmare/夜魔_选中干员1.wav";
-    static String[] skillSoundsPath = {"assets/Operators/Nightmare/夜魔_作战中1.wav","assets/Operators/Nightmare/夜魔_作战中2.wav","assets/Operators/Nightmare/夜魔_作战中3.wav", "assets/Operators/Nightmare/夜魔_作战中4.wav"};
+    static final String atlasPath = "assets/Operators/Exec/char_279_excu.atlas";
+    static final String skelPath = "assets/Operators/Exec/char_279_excu.skel";
+    static final String soundPath = "assets/Operators/Exec/送葬人_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Exec/送葬人_作战中1.wav","assets/Operators/Exec/送葬人_作战中2.wav","assets/Operators/Exec/送葬人_作战中3.wav", "assets/Operators/Exec/送葬人_作战中4.wav"};
 
-    public Nightmare(float posX, float posY)
+    public Executor(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
         imagePath = "assets/Operators/Nightmare/nightmare.png";
-        operatorName = "夜魔";
+        operatorName = "送葬人";
         /*Set Battle Info*/
-        battleComponent = new BattleComponent(120, 120, 15, 30, this);
+        battleComponent = new BattleComponent(120, 110, 30, 0, this);
         /*Init Skill*/
-        skills.add(new Skill_Nightmare_Attack(this));
-        skills.add(new Skill_Nightmare_PowerfulMagic(this));
-        skills.add(new Skill_Nightmare_SoulSteal(this));
-        skills.add(new Skill_Nightmare_TheShadow(this));
+        skills.add(new Skill_Executor_Prepare(this));
+        skills.add(new Skill_Executor_GrapeShot(this));
+        skills.add(new Skill_Executor_MuzzlePack(this));
+        skills.add(new Skill_Executor_LastRide(this));
 
         /*Set up skillChooseTable*/
         skillChooseTable = new SkillChooseTable(this);

@@ -32,7 +32,7 @@ public class Skill_Warfarin_UnstableBlood extends Skill_Attack
         Operator randomOperator = character.getCurrentLevel().getRandomOperator();
         randomOperator.getBattleComponent().addBuff(new AtkBuff(2,1f));
         randomOperator.getBattleComponent().getDamage((int)(randomOperator.getBattleComponent().getMaxHP()*0.15), DamageType.Real);
-        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.atkBoost).play(0.6f);
     }
 
     @Override

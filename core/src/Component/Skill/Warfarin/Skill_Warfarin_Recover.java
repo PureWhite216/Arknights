@@ -31,7 +31,7 @@ public class Skill_Warfarin_Recover extends Skill_Attack
     protected void callEffect()
     {
         character.getCurrentLevel().getMinHPOperator().getBattleComponent().getHealing(battleComponent.getAtk());
-        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.healing).play(0.6f);
     }
 
     @Override
