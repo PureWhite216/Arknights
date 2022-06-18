@@ -2,6 +2,7 @@ package Component.Skill.Warfarin;
 
 import Audio.AudioManager;
 import Audio.SFXName;
+import Battle.Buff.AtkBuff;
 import Character.CharacterBase;
 import Character.Operator;
 import Component.DamageType;
@@ -29,7 +30,7 @@ public class Skill_Warfarin_UnstableBlood extends Skill_Attack
     protected void callEffect()
     {
         Operator randomOperator = character.getCurrentLevel().getRandomOperator();
-        randomOperator.getBattleComponent().buff_sharp = 2;
+        randomOperator.getBattleComponent().addBuff(new AtkBuff(2,1f));
         randomOperator.getBattleComponent().getDamage((int)(randomOperator.getBattleComponent().getMaxHP()*0.15), DamageType.Real);
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
