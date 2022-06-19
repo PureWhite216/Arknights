@@ -33,5 +33,23 @@ public class Skill_Amiya_PowerStrike extends Skill_Amiya_Attack
         AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
+    @Override
+    public void callSkill()
+    {
+        callSound();
+
+        // Call Skeleton Animation
+        animationComponent.getAnimationState().setAnimation(0, "Skill_1", false);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
+        // Call Action
+        character.clearActions();
+        character.addAction(Actions.sequence(
+                Actions.delay(0.05f),
+                Actions.moveTo(character.getTarget().getX() - 100, BattleLevelBase.defaultY, 0.35f, Interpolation.circleIn),
+                getEffectAction(),
+                Actions.delay(0.6f),
+                Actions.moveTo(character.getX(), BattleLevelBase.defaultY, 0.35f, Interpolation.circleOut))
+        );
+    }
 
 }

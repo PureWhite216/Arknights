@@ -42,6 +42,7 @@ public class Skill_Warfarin_UnstableBlood extends Skill_Attack
 
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);
+//        animationComponent.getAnimationState().addAnimation(0, "Attack", true, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         // Call Action
         character.clearActions();

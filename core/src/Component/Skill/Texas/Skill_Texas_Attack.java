@@ -14,6 +14,7 @@ public class Skill_Texas_Attack extends Skill_Attack
     {
         super(character);
         skillName = "斩击";
+        skillInfo = "对敌人造成一倍攻击力的物理伤害";
     }
 
     @Override

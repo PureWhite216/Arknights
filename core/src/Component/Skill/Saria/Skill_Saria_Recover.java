@@ -47,9 +47,9 @@ public class Skill_Saria_Recover extends Skill_Attack {
     {
         callSound();
 
-        animationComponent.getAnimationState().setAnimation(0, "Skill_Begin", false);
-        animationComponent.getAnimationState().addAnimation(0, "Skill_Loop", false, 0f);
-        animationComponent.getAnimationState().addAnimation(0, "Skill_End", false, 0f);
+        animationComponent.getAnimationState().setAnimation(0, "Attack_2", false);
+//        animationComponent.getAnimationState().addAnimation(0, "Skill_Loop", false, 0f);
+//        animationComponent.getAnimationState().addAnimation(0, "Skill_End", false, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
 
         character.clearActions();
