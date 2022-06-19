@@ -4,6 +4,9 @@ import Audio.AudioManager;
 import Audio.SFXName;
 import Battle.Buff.AtkBuff;
 import Battle.Buff.DefBuff;
+import Level.BattleLevelBase;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class Skill_Texas_Sharp extends Skill_Texas_Attack{
     public Skill_Texas_Sharp(CharacterBase character){
@@ -25,5 +28,19 @@ public class Skill_Texas_Sharp extends Skill_Texas_Attack{
         character.getBattleComponent().addBuff(new AtkBuff(3,1.0f));
         character.getBattleComponent().addBuff(new DefBuff(3, -0.7f));
         AudioManager.getInstance().getSFX().get(SFXName.atkBoost).play(0.6f);
+    }
+
+    @Override
+    public void callSkill()
+    {
+        // Call Skeleton Animation
+        animationComponent.getAnimationState().setAnimation(0, "Skill", false);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
+        // Call Action
+        character.clearActions();
+        character.addAction(Actions.sequence(
+                Actions.delay(0.5f),
+                getEffectAction()
+        ));
     }
 }
