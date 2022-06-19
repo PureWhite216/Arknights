@@ -23,7 +23,6 @@ public class BattleLevel_01 extends BattleLevelBase
         enemies[0] = new Enemy_1002(enemyPos[0], defaultY);
         enemies[1] = new Enemy_1002(enemyPos[1], defaultY);
 //        enemies[2] = new Enemy_1002(enemyPos[2], defaultY);
-
         initLevel();
     }
 

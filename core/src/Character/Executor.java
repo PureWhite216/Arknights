@@ -15,15 +15,15 @@ import UI.SkillChooseTable;
 
 public class Executor extends Operator{
     /*Set up Assets Path*/
-    static final String atlasPath = "assets/Operators/Exec/char_279_excu.atlas";
-    static final String skelPath = "assets/Operators/Exec/char_279_excu.skel";
-    static final String soundPath = "assets/Operators/Exec/送葬人_选中干员2.wav";
-    static String[] skillSoundsPath = {"assets/Operators/Exec/送葬人_作战中1.wav","assets/Operators/Exec/送葬人_作战中2.wav","assets/Operators/Exec/送葬人_作战中3.wav", "assets/Operators/Exec/送葬人_作战中4.wav"};
+    static final String atlasPath = "assets/Operators/Executor/char_279_excu.atlas";
+    static final String skelPath = "assets/Operators/Executor/char_279_excu.skel";
+    static final String soundPath = "assets/Operators/Executor/送葬人_选中干员2.wav";
+    static String[] skillSoundsPath = {"assets/Operators/Executor/送葬人_作战中1.wav","assets/Operators/Executor/送葬人_作战中2.wav","assets/Operators/Executor/送葬人_作战中3.wav", "assets/Operators/Executor/送葬人_作战中4.wav"};
 
     public Executor(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
-        imagePath = "assets/Operators/Nightmare/nightmare.png";
+        imagePath = "assets/Operators/Executor/executor.png";
         operatorName = "送葬人";
         /*Set Battle Info*/
         battleComponent = new BattleComponent(120, 110, 30, 0, this);
