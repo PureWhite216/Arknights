@@ -23,7 +23,7 @@ public class Iris extends Operator{
     public Iris(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
         operatorName = "爱丽丝";
-        imagePath = "assets/Operators/Franka/Franka.png";
+        imagePath = "assets/Operators/Iris/iris.png";
         /* set battle info */
         battleComponent = new BattleComponent(120, 110, 30, 30, this);
         /* init skill*/
