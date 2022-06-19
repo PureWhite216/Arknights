@@ -24,7 +24,7 @@ public class TeamManager
         teamMembers[0] = new Amiya(0, 0);
         Amiya.isCreated = true;
 
-        for(int i = 1; i <= 3; i++)
+        for(int i = 1; i <= 1; i++)
         {
             do
             {

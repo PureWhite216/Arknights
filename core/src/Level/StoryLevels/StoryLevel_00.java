@@ -32,6 +32,7 @@ public class StoryLevel_00 extends StoryLevelBase
                 isLevelEnd = true;
             }
         });
+        buttons.add(testButton);
 
         dialogueTable = new DialogueTable(textPath);
         dialogueTable.addToLevel(stage, this);
