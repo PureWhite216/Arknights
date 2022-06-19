@@ -28,6 +28,7 @@ public class SilverAsh extends Operator{
     static final String skelPath = "assets/Operators/SilverAsh/char_172_silverash.skel";
     static final String soundPath = "assets/Operators/SilverAsh/银灰_选中干员2.wav";
     static String[] skillSoundsPath = {"assets/Operators/SilverAsh/银灰_作战中2.wav","assets/Operators/SilverAsh/银灰_作战中3.wav","assets/Operators/SilverAsh/银灰_作战中2.wav","assets/Operators/SilverAsh/银灰_作战中3.wav"};
+    public static boolean isCreated = false;
 
     public SilverAsh(float posX, float posY)
     {

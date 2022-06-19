@@ -23,6 +23,7 @@ public class Myrtle extends Operator{
     static final String skelPath = "assets/Operators/Myrtle/char_151_myrtle.skel";
     static final String soundPath = "assets/Operators/Myrtle/桃金娘_选中干员1.wav";
     static String[] skillSoundsPath = {"assets/Operators/Myrtle/桃金娘_作战中1.wav","assets/Operators/Myrtle/桃金娘_作战中2.wav","assets/Operators/Myrtle/桃金娘_作战中3.wav"};
+    public static boolean isCreated = false;
 
     public Myrtle(float posX, float posY)
     {

@@ -29,9 +29,17 @@ public class OperatorFormationTable extends StoryUI
     private static Texture Texture_noInfo = new Texture(Gdx.files.internal("assets/Images/NoInfo.png"));
     private static Texture Texture_skillInfos = new Texture(Gdx.files.internal("assets/Images/SkillInfo.png"));
     private static Texture Texture_decal = new Texture(Gdx.files.internal("assets/Images/decal.png"));
+    private static Texture Texture_left = new Texture(Gdx.files.internal("assets/Button/Left.png"));
+    private static Texture Texture_leftOver = new Texture(Gdx.files.internal("assets/Button/Left_over.png"));
+    private static Texture Texture_right = new Texture(Gdx.files.internal("assets/Button/Right.png"));
+    private static Texture Texture_rightOver = new Texture(Gdx.files.internal("assets/Button/Right_over.png"));
     private Image Image_operatorFormation;
     private Image[] Image_skillInfos = new Image[4];
     private Image[] Image_decal = new Image[4];
+    private Button[] Button_left = new Button[3];
+    private Button.ButtonStyle Style_left;
+    private Button[] Button_right = new Button[3];
+    private Button.ButtonStyle Style_right;
     private Button Button_back;
     private Button.ButtonStyle Style_back;
     private Button[] Button_OperatorImage = new Button[4];
@@ -61,6 +69,7 @@ public class OperatorFormationTable extends StoryUI
         Texture_operatorFormation.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Texture_noInfo.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Texture_skillInfos.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        Texture_decal.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         group= new Group();
         group.setVisible(false);
@@ -170,6 +179,49 @@ public class OperatorFormationTable extends StoryUI
             group.addActor(Label_operatorName[3 - i]);
         }
 
+        Style_left = new Button.ButtonStyle();
+        Style_left.up = new TextureRegionDrawable(new TextureRegion(Texture_left));
+        Style_left.over = new TextureRegionDrawable(new TextureRegion(Texture_leftOver));
+
+        Style_right = new Button.ButtonStyle();
+        Style_right.up = new TextureRegionDrawable(new TextureRegion(Texture_right));
+        Style_right.over = new TextureRegionDrawable(new TextureRegion(Texture_rightOver));
+        for(int i = 0; i <= 2; i++)
+        {
+            final int finalI = 3 - i;
+            Button_left[i] = new Button(Style_left);
+            Button_left[i].setPosition(702 + 267 * i, 680);
+            Button_left[i].addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    Operator tmp;
+                    tmp = TeamManager.getInstance().teamMembers[finalI];
+                    TeamManager.getInstance().teamMembers[finalI] = TeamManager.getInstance().teamMembers[finalI - 1];
+                    TeamManager.getInstance().teamMembers[finalI - 1] = tmp;
+                    getTeamMembers();
+                    updateInfo();
+                    updateImage();
+                }
+            });
+            group.addActor(Button_left[i]);
+
+            Button_right[i] = new Button(Style_right);
+            Button_right[i].setPosition(657 + 267 * i, 680);
+            Button_right[i].addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    Operator tmp;
+                    tmp = TeamManager.getInstance().teamMembers[finalI];
+                    TeamManager.getInstance().teamMembers[finalI] = TeamManager.getInstance().teamMembers[finalI - 1];
+                    TeamManager.getInstance().teamMembers[finalI - 1] = tmp;
+                    getTeamMembers();
+                    updateInfo();
+                    updateImage();
+                }
+            });
+            group.addActor(Button_right[i]);
+        }
+
         hpLabel = new Label("100/100", labelStyle);
         hpLabel.setPosition(360, 368, Align.center);
         hpLabel.setFontScale(0.8f);
@@ -229,11 +281,28 @@ public class OperatorFormationTable extends StoryUI
 
     private void updateImage()
     {
-        for(int i = 0; i <= operators.length - 1; i++)
+        for(int i = 0; i <= 3; i++)
         {
-            if(operators[i] == null) continue;
-            Texture Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
-            Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
+            Texture Texture_image;
+            if(operators[3 - i] != null)
+            {
+                Texture_image = new Texture(Gdx.files.internal(operators[3 - i].getImagePath()));
+            }
+            else
+            {
+                Texture_image = Texture_noInfo;
+            }
+            Style_OperatorImage[3 - i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
+            String name;
+            if(operators[3 - i] == null)
+            {
+                name = "Null";
+            }
+            else
+            {
+                name = operators[3 - i].getOperatorName();
+            }
+            Label_operatorName[3 - i].setText(name);
         }
     }
 

@@ -18,6 +18,7 @@ public class Saria extends Operator{
     static final String soundPath = "assets/Operators/Saria/塞雷娅_选中干员1.wav";
     static final String[] skillPath = {"assets/Operators/Saria/塞雷娅_作战中1.wav","assets/Operators/Saria/塞雷娅_作战中2.wav"
             , "assets/Operators/Saria/塞雷娅_作战中3.wav", "assets/Operators/Saria/塞雷娅_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Saria(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);

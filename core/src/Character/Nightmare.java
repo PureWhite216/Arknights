@@ -22,6 +22,7 @@ public class Nightmare extends Operator{
     static final String skelPath = "assets/Operators/Nightmare/nightmare.skel";
     static final String soundPath = "assets/Operators/Nightmare/夜魔_选中干员1.wav";
     static String[] skillSoundsPath = {"assets/Operators/Nightmare/夜魔_作战中1.wav","assets/Operators/Nightmare/夜魔_作战中2.wav","assets/Operators/Nightmare/夜魔_作战中3.wav", "assets/Operators/Nightmare/夜魔_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Nightmare(float posX, float posY)
     {

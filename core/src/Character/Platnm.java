@@ -14,10 +14,13 @@ public class Platnm extends Operator
     static final String skelPath = "assets/Platnm_Front/char_204_platnm.skel";
     static final String soundPath = "assets/Platnm_Front/白金_选中干员1.wav";
     static String[] skillSoundsPath;
+    public static boolean isCreated = false;
 
     public Platnm(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);
+        imagePath = "assets/Platnm_Front/platnm.png";
+        operatorName = "白金";
         battleComponent = new BattleComponent(100, 80, 20, 0, this);
         skills.add(new Skill_Platnm_Attack(this));
         skills.add(new Skill_Platnm_QuickShoot(this));

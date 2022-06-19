@@ -20,9 +20,9 @@ public class BattleLevel_01 extends BattleLevelBase
                 operators[i].setPosition(operatorPos[i], defaultY);
             }
         }
-        enemies[0] = new Enemy_WizardPro(enemyPos[0], defaultY);
-        enemies[1] = new Enemy_ShieldDefender(enemyPos[1], defaultY);
-        enemies[2] = new Enemy_GoPro(enemyPos[2], defaultY);
+        enemies[0] = new Enemy_1002(enemyPos[0], defaultY);
+//        enemies[1] = new Enemy_1002(enemyPos[1], defaultY);
+//        enemies[2] = new Enemy_1002(enemyPos[2], defaultY);
 
         initLevel();
     }

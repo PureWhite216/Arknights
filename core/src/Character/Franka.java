@@ -17,6 +17,8 @@ public class Franka extends Operator{
     static final String soundPath = "assets/Operators/Franka/芙兰卡_选中干员1.wav";
     static final String[] skillPath = {"assets/Operators/Franka/芙兰卡_作战中1.wav","assets/Operators/Franka/芙兰卡_作战中2.wav"
             , "assets/Operators/Franka/芙兰卡_作战中4.wav"};
+    public static boolean isCreated = false;
+
 
     public Franka(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
