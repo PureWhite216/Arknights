@@ -39,6 +39,7 @@ public class Iris extends Operator{
     public void enterLevel(BattleLevelBase currentLevel, int index) {
         super.enterLevel(currentLevel, index);
         /*Init Animation*/
+        animationComponent.getAnimationState().addAnimation(0, "Start", false, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
     }
 

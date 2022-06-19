@@ -1,17 +1,17 @@
-package Component.Skill.Franka;
-
+package Component.Skill.Texas;
+import Character.CharacterBase;
 import Audio.AudioManager;
 import Audio.SFXName;
 import Battle.Buff.AtkBuff;
 import Battle.Buff.DefBuff;
-import Component.Skill.Skill_Attack;
-import Character.CharacterBase;
+import Level.BattleLevelBase;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
-public class Skill_Franka_Sharp extends Skill_Attack {
-    public Skill_Franka_Sharp(CharacterBase character){
+public class Skill_Texas_Sharp extends Skill_Texas_Attack{
+    public Skill_Texas_Sharp(CharacterBase character){
         super(character);
-        skillName = "极致锋度";
+        skillName = "锋度";
         skillInfo = "自身的攻击力提升100%，防御力下降70%\n持续3回合";
         apCost = 3;
         needChoose = false;
@@ -31,12 +31,12 @@ public class Skill_Franka_Sharp extends Skill_Attack {
     }
 
     @Override
-    public void callSkill(){
-        callSound();
+    public void callSkill()
+    {
         // Call Skeleton Animation
-        animationComponent.getAnimationState().setAnimation(0, "Attack", false);
+        animationComponent.getAnimationState().setAnimation(0, "Skill", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
-
+        // Call Action
         character.clearActions();
         character.addAction(Actions.sequence(
                 Actions.delay(0.5f),

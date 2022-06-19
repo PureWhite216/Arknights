@@ -27,7 +27,7 @@ public class Skill_Nightmare_TheShadow extends Skill_Attack {
     @Override
     protected void callEffect() {
         character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 3, DamageType.Magical);
-        character.getTarget().getBattleComponent().buff_Dizzy = 2;
+        character.getTarget().getBattleComponent().buff_Dizzy += 2;
         AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
     }
 
@@ -37,11 +37,12 @@ public class Skill_Nightmare_TheShadow extends Skill_Attack {
 
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Attack", false);
+        animationComponent.getAnimationState().addAnimation(0, "Attack", false,0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         // Call Action
         character.clearActions();
         character.addAction(Actions.sequence(
-                Actions.delay(0.5f),
+                Actions.delay(1.5f),
                 getEffectAction()
         ));
     }

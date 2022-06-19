@@ -16,12 +16,15 @@ public class Skill_Platnm_QuickShoot extends Skill_Attack
     {
         super(character);
         skillName = "快速射击";
+        skillInfo = "对敌人造成0.8倍攻击力的伤害两次";
         apCost = 2;
+        skillInfo = "造成0.8倍的物理伤害";
     }
 
     @Override
     protected void callEffect()
     {
+        character.getTarget().getBattleComponent().getDamage((int)((float)battleComponent.getAtk() * 0.8f), DamageType.Physical);
         character.getTarget().getBattleComponent().getDamage((int)((float)battleComponent.getAtk() * 0.8f), DamageType.Physical);
         AudioManager.getInstance().getSFX().get(SFXName.arrow).play(0.6f);
     }

@@ -38,7 +38,7 @@ public class Skill_Amiya_Attack extends Skill_Attack
 
         // Call Skeleton Animation
         animationComponent.getAnimationState().setAnimation(0, "Skill_2_Loop", false);
-        animationComponent.getAnimationState().addAnimation(0, "Skill_2_Idle", true, 0f);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         // Call Action
         character.clearActions();
         character.addAction(Actions.sequence(

@@ -45,12 +45,13 @@ public class Skill_SilverAsh_silverattack extends Skill_Attack{
     {
         callSound();
         //System.out.println("test");
-        animationComponent.getAnimationState().setAnimation(0, "Skill", false);
+        animationComponent.getAnimationState().setAnimation(0, "Attack", false);
+        animationComponent.getAnimationState().addAnimation(0, "Skill", false,0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         //System.out.println("test1");
         character.clearActions();
         character.addAction(Actions.sequence(
-                Actions.delay(0.5f),
+                Actions.delay(1.5f),
                 getEffectAction())
         );
     }

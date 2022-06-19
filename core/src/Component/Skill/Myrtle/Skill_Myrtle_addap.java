@@ -44,8 +44,8 @@ public class Skill_Myrtle_addap extends Skill_Attack{
         callSound();
 
         animationComponent.getAnimationState().setAnimation(0, "Skill_Begin", false);
-        animationComponent.getAnimationState().setAnimation(0, "Skill_Loop", false);
-        animationComponent.getAnimationState().setAnimation(0, "Skill_End", false);
+        animationComponent.getAnimationState().addAnimation(0, "Skill_Loop", false,0f);
+        animationComponent.getAnimationState().addAnimation(0, "Skill_End", false,0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
 
         character.clearActions();

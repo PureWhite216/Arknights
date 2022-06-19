@@ -41,6 +41,7 @@ public class Skill_SilverAsh_strong extends Skill_Attack{
     {
         callSound();
         //System.out.println("test");
+        animationComponent.getAnimationState().setAnimation(0, "Attack", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         //System.out.println("test1");
         character.clearActions();

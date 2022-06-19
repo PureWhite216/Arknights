@@ -4,6 +4,7 @@ import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Platnm.Skill_Platnm_Attack;
 import Component.Skill.Platnm.Skill_Platnm_QuickShoot;
+import Component.Skill.Platnm.Skill_Platnm_Recover;
 import Level.BattleLevelBase;
 import Level.LevelBase;
 import UI.SkillChooseTable;
@@ -24,7 +25,7 @@ public class Platnm extends Operator
         battleComponent = new BattleComponent(100, 80, 20, 0, this);
         skills.add(new Skill_Platnm_Attack(this));
         skills.add(new Skill_Platnm_QuickShoot(this));
-
+        skills.add(new Skill_Platnm_Recover(this));
         skillChooseTable = new SkillChooseTable(this); // Set up skillChooseTable
     }
 
@@ -32,6 +33,7 @@ public class Platnm extends Operator
     public void enterLevel(BattleLevelBase currentLevel, int index)
     {
         super.enterLevel(currentLevel, index);
+        animationComponent.getAnimationState().addAnimation(0, "Start", false, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
     }
 

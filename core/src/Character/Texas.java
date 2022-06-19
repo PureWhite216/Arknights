@@ -5,6 +5,8 @@ import Component.AnimationComponent;
 import Component.BattleComponent;
 import Component.Skill.Enemy1002.Skill_Enemy1002_Attack;
 import Component.Skill.Texas.Skill_Texas_Attack;
+import Component.Skill.Texas.Skill_Texas_PowerStrike;
+import Component.Skill.Texas.Skill_Texas_Sharp;
 import Level.BattleLevelBase;
 import Level.LevelBase;
 import UI.SkillChooseTable;
@@ -29,7 +31,8 @@ public class Texas extends Operator
         battleComponent = new BattleComponent(200, 60, 50, 0, this);
 
         skills.add(new Skill_Texas_Attack(this));
-
+        skills.add(new Skill_Texas_PowerStrike(this));
+        skills.add(new Skill_Texas_Sharp(this));
         skillChooseTable = new SkillChooseTable(this); // Set up skillChooseTable
 
     }
@@ -39,6 +42,7 @@ public class Texas extends Operator
     public void enterLevel(BattleLevelBase currentLevel, int index)
     {
         super.enterLevel(currentLevel, index);
+        animationComponent.getAnimationState().addAnimation(0, "Start", false, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
     }
 
