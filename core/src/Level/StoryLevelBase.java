@@ -15,21 +15,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-public class StoryLevel extends LevelBase
+import java.util.ArrayList;
+
+public class StoryLevelBase extends LevelBase
 {
-    private OperatorFormationTable operatorFormationTable;
-    private DialogueButton testButton;
-    private DialogueTable dialogueTable;
+    protected OperatorFormationTable operatorFormationTable;
+    protected DialogueButton testButton;
+    protected ArrayList<DialogueButton> buttons = new ArrayList<>();
+    protected DialogueTable dialogueTable;
 
-    private static Texture Texture_background = new Texture(Gdx.files.internal("assets/BackGround/StoryLevelBG.png"));
-    private static Texture Texture_operatorManage = new Texture(Gdx.files.internal("assets/Button/OperatorManage.png"));
-    private static Texture Texture_operatorManage_Over = new Texture(Gdx.files.internal("assets/Button/OperatorManage_Over.png"));
-    private Image Image_background;
-    private Button Button_operatorManage;
+    protected static Texture Texture_background = new Texture(Gdx.files.internal("assets/BackGround/StoryLevelBG.png"));
+    protected static Texture Texture_operatorManage = new Texture(Gdx.files.internal("assets/Button/OperatorManage.png"));
+    protected static Texture Texture_operatorManage_Over = new Texture(Gdx.files.internal("assets/Button/OperatorManage_Over.png"));
+    protected Image Image_background;
+    protected Button Button_operatorManage;
 
-    private String textPath = "assets/Text/start.txt";
+    protected String textPath = "assets/Text/base.txt";
 
-    public StoryLevel()
+    public StoryLevelBase()
     {
         Texture_background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Image_background = new Image(Texture_background);
@@ -48,6 +51,15 @@ public class StoryLevel extends LevelBase
         });
         stage.addActor(Button_operatorManage);
 
+        initDialogue();
+
+        operatorFormationTable = new OperatorFormationTable();
+        operatorFormationTable.addToLevel(stage, this);
+        AudioManager.getInstance().playBGM(2);
+    }
+    
+    protected void initDialogue()
+    {
         testButton = new DialogueButton(" 行 动 开 始");
         testButton.hide();
         testButton.getButton().addListener(new ClickListener() {
@@ -56,27 +68,32 @@ public class StoryLevel extends LevelBase
                 isLevelEnd = true;
             }
         });
+        buttons.add(testButton);
 
         dialogueTable = new DialogueTable(textPath);
         dialogueTable.addToLevel(stage, this);
 
         testButton.addToLevel(stage, this);
         testButton.setPosition(stage.getWidth() / 2 - testButton.getButton().getWidth() / 2, 500);
-
-        operatorFormationTable = new OperatorFormationTable();
-        operatorFormationTable.addToLevel(stage, this);
-        AudioManager.getInstance().playBGM(2);
     }
 
     public void activateButton()
     {
-        testButton.show();
+        for(DialogueButton dialogueButton : buttons)
+        {
+            dialogueButton.show();
+        }
     }
 
     @Override
     protected LevelBase loadNextLevel()
     {
         return new BattleLevel_01();
+    }
+
+    public ArrayList<DialogueButton> getButtons()
+    {
+        return buttons;
     }
 
     @Override

@@ -29,7 +29,7 @@ public class Skill_Amiya_PowerStrike extends Skill_Amiya_Attack
     @Override
     protected void callEffect()
     {
-        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 2, DamageType.Magical);
+        character.getTarget().getBattleComponent().getDamage(battleComponent.getAtk() * 10, DamageType.Magical);
         AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 

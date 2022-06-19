@@ -14,7 +14,7 @@ public class Enemy_Slime extends Enemy
     public Enemy_Slime(float posX, float posY)
     {
         super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(220, 70, 40, 30, this);
+        battleComponent = new BattleComponent(120, 60, 20, 30, this);
         skills.add(new Skill_Enemy_Slime_Attack(this));
         chosenSkillIndex = 0;
     }

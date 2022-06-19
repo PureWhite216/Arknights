@@ -262,6 +262,7 @@ public abstract class BattleLevelBase extends LevelBase
         AudioManager.getInstance().playBGM(3);
     }
 
+
     @Override
     protected LevelBase loadNextLevel()
     {

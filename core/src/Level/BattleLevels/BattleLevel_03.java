@@ -4,7 +4,8 @@ import Battle.TeamManager;
 import Level.BattleLevelBase;
 import Character.*;
 import Level.LevelBase;
-import Level.StoryLevel;
+import Level.StoryLevels.StoryLevel_00;
+import Level.StoryLevels.StoryLevel_03;
 
 public class BattleLevel_03 extends BattleLevelBase
 {
@@ -31,6 +32,6 @@ public class BattleLevel_03 extends BattleLevelBase
     @Override
     protected LevelBase loadNextLevel()
     {
-        return new StoryLevel();
+        return new StoryLevel_03();
     }
 }

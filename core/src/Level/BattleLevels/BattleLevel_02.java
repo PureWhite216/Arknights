@@ -2,12 +2,10 @@ package Level.BattleLevels;
 
 import Battle.TeamManager;
 import Level.LevelBase;
-import Level.StoryLevel;
-import Battle.TeamManager;
+import Level.StoryLevels.StoryLevel_00;
 import Level.BattleLevelBase;
 import Character.*;
-import Level.LevelBase;
-import Level.StoryLevel;
+import Level.StoryLevels.StoryLevel_02;
 
 public class BattleLevel_02 extends BattleLevelBase
 {
@@ -23,9 +21,9 @@ public class BattleLevel_02 extends BattleLevelBase
                 operators[i].setPosition(operatorPos[i], defaultY);
             }
         }
-        enemies[0] = new Enemy_1002(enemyPos[1], defaultY);
-        enemies[1] = new Enemy_Crossbowman(enemyPos[2], defaultY);
-        enemies[2] = new Enemy_Crossbowman(enemyPos[3], defaultY);
+        enemies[0] = new Enemy_1002(enemyPos[0], defaultY);
+        enemies[1] = new Enemy_Crossbowman(enemyPos[1], defaultY);
+        enemies[2] = new Enemy_Crossbowman(enemyPos[2], defaultY);
 //        enemies[2] = new Enemy_1002(enemyPos[2], defaultY);
 
         initLevel();
@@ -34,6 +32,6 @@ public class BattleLevel_02 extends BattleLevelBase
     @Override
     protected LevelBase loadNextLevel()
     {
-        return new StoryLevel();
+        return new StoryLevel_02();
     }
 }

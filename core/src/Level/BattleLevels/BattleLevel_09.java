@@ -7,9 +7,9 @@ import Level.LevelBase;
 import Level.StoryLevels.StoryLevel_00;
 import Level.StoryLevels.StoryLevel_07;
 
-public class BattleLevel_07 extends BattleLevelBase
+public class BattleLevel_09 extends BattleLevelBase
 {
-    public BattleLevel_07()
+    public BattleLevel_09()
     {
         super();
         Operator[] teamMembers = TeamManager.getInstance().teamMembers;
@@ -22,8 +22,9 @@ public class BattleLevel_07 extends BattleLevelBase
             }
         }
         enemies[0] = new Enemy_GoPro(enemyPos[0], defaultY);
-        enemies[1] = new Enemy_Revenger(enemyPos[1], defaultY);
-        enemies[2] = new Enemy_Crossbowman(enemyPos[2], defaultY);
+        enemies[1] = new Enemy_Mrogue(enemyPos[1], defaultY);
+        enemies[2] = new Enemy_Mrogue(enemyPos[2], defaultY);
+        enemies[3] = new Enemy_Mrogue(enemyPos[3], defaultY);
 
         initLevel();
     }

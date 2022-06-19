@@ -86,12 +86,12 @@ public abstract class LevelBase
     public void update(float deltaTime)
     {
         enterLevel(deltaTime);
-        leaveLevel(deltaTime);
         stage.act();
         camera.update();
         twoColorPolygonBatch.setProjectionMatrix(camera.combined);
         spriteBatch.setProjectionMatrix(camera.combined);
         stage.getBatch().setProjectionMatrix(camera.combined);
+        leaveLevel(deltaTime);
     }
     public abstract void render();
     public abstract void dispose();
