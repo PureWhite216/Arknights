@@ -17,6 +17,7 @@ public class Skill_Platnm_QuickShoot extends Skill_Attack
         super(character);
         skillName = "快速射击";
         apCost = 2;
+        skillInfo = "造成0.8倍的物理伤害";
     }
 
     @Override
