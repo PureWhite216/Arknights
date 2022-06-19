@@ -19,6 +19,7 @@ public class Surtr extends Operator{
     static final String skelPath = "assets/Operators/Surtr/char_350_surtr.skel";
     static final String soundPath = "assets/Operators/Surtr/史尔特尔_选中干员2.wav";
     static String[] skillSoundsPath = {"assets/Operators/Surtr/史尔特尔_作战中1.wav","assets/Operators/Surtr/史尔特尔_作战中2.wav","assets/Operators/Surtr/史尔特尔_作战中3.wav","assets/Operators/Surtr/史尔特尔_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Surtr(float posX, float posY)
     {

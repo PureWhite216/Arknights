@@ -2,9 +2,12 @@ package Level;
 
 import Audio.AudioManager;
 import Battle.BattleHandler;
+import Battle.TeamManager;
 import Character.CharacterBase;
 import Character.Enemy;
 import Character.Operator;
+import UI.BattleEndTable;
+import UI.ChangeOperatorTable;
 import UI.Panel_AP;
 import UI.Panel_HP;
 import com.badlogic.gdx.Gdx;
@@ -36,13 +39,14 @@ public abstract class BattleLevelBase extends LevelBase
     protected Button[] operatorButtons = new Button[4];
     protected Button[] enemyButtons = new Button[4];
     protected Button readyButton;
-    protected Button nextButton;
     protected Image preImage;
     protected Image Image_Battling;
-    protected Image endImage;
     protected Image[] readyImages = new Image[4];
     protected Panel_HP[] hpPanels = new Panel_HP[8];
     protected Panel_AP[] apPanels = new Panel_AP[4];
+
+    protected BattleEndTable battleEndTable;
+    protected ChangeOperatorTable changeOperatorTable;
 
     protected static final Texture Texture_preImage= new Texture(Gdx.files.internal("assets/Images/准备阶段.png"));
     protected static final Texture Texture_Battling = new Texture(Gdx.files.internal("assets/Images/battling.png"));
@@ -208,27 +212,6 @@ public abstract class BattleLevelBase extends LevelBase
 
         }
 
-        endImage = new Image(new Texture(Gdx.files.internal("assets/Images/BattleEnd.png")));
-        endImage.setPosition(0, 0);
-        endImage.setVisible(false);
-        stage.addActor(endImage);
-
-        Texture next_Texture = new Texture(Gdx.files.internal("assets/Button/next.png"));
-        Texture next_pressed_Texture = new Texture(Gdx.files.internal("assets/Button/next_pressed.png"));
-        Button.ButtonStyle next_Style = new Button.ButtonStyle();
-        next_Style.up = new TextureRegionDrawable(new TextureRegion(next_Texture));
-        next_Style.down = new TextureRegionDrawable(new TextureRegion(next_pressed_Texture));
-        nextButton = new Button(next_Style);
-        nextButton.setPosition(stage.getWidth() / 2 - nextButton.getWidth() / 2, stage.getHeight() * 0.2f);
-        nextButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                System.out.println("next");
-                isLevelEnd = true;
-            }
-        });
-        stage.addActor(nextButton);
-        nextButton.setVisible(false);
 
         for(int i = 0; i <= 3; i++)
         {
@@ -236,6 +219,10 @@ public abstract class BattleLevelBase extends LevelBase
             operators[i].getSkillChooseTable().setPosition(operatorPos[i] + 50);
             operators[i].getSkillChooseTable().addToLevel(stage, this, i);
         }
+
+        battleEndTable = new BattleEndTable();
+        battleEndTable.addToLevel(stage, this, 0);
+        battleEndTable.hide();
     }
 
     public boolean checkIsReady()
@@ -267,8 +254,11 @@ public abstract class BattleLevelBase extends LevelBase
 
     public void battleEnd()
     {
-        endImage.setVisible(true);
-        nextButton.setVisible(true);
+        battleEndTable.show();
+        TeamManager.getInstance().createNewOperator();
+        changeOperatorTable = new ChangeOperatorTable();
+        changeOperatorTable.addToLevel(stage, this, 0);
+        AudioManager.getInstance().playBGM(3);
     }
 
     @Override
@@ -408,6 +398,11 @@ public abstract class BattleLevelBase extends LevelBase
     public Image[] getReadyImages()
     {
         return readyImages;
+    }
+
+    public ChangeOperatorTable getChangeOperatorTable()
+    {
+        return changeOperatorTable;
     }
 
     public Panel_AP[] getApPanels()

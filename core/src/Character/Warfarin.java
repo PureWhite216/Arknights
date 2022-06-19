@@ -25,6 +25,7 @@ public class Warfarin extends Operator{
     static final String skelPath = "assets/Operators/Warfarin/char_171_warfarin.skel";
     static final String soundPath = "assets/Operators/Warfarin/华法琳_选中干员2.wav";
     static String[] skillSoundsPath = {"assets/Operators/Warfarin/华法琳_作战中1.wav","assets/Operators/Warfarin/华法琳_作战中2.wav","assets/Operators/Warfarin/华法琳_作战中3.wav","assets/Operators/Warfarin/华法琳_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Warfarin(float posX, float posY)
     {

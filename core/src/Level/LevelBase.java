@@ -96,6 +96,11 @@ public abstract class LevelBase
     public abstract void render();
     public abstract void dispose();
     public abstract void resize(int width, int height);
+
+    public void setLevelEnd()
+    {
+        isLevelEnd = true;
+    }
 }
 
 

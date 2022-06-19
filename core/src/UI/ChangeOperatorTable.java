@@ -21,9 +21,9 @@ import com.badlogic.gdx.utils.Align;
 
 import java.util.ArrayList;
 
-public class OperatorFormationTable extends StoryUI
+public class ChangeOperatorTable extends BattleUI
 {
-    private static Texture Texture_operatorFormation = new Texture(Gdx.files.internal("assets/Images/OperatorFormationBackground.png"));
+    private static Texture Texture_operatorFormation = new Texture(Gdx.files.internal("assets/Images/ChangeOperator.png"));
     private static Texture Texture_backUp = new Texture(Gdx.files.internal("assets/Button/Back.png"));
     private static Texture Texture_backHover = new Texture(Gdx.files.internal("assets/Button/BackHover.png"));
     private static Texture Texture_noInfo = new Texture(Gdx.files.internal("assets/Images/NoInfo.png"));
@@ -33,21 +33,25 @@ public class OperatorFormationTable extends StoryUI
     private static Texture Texture_leftOver = new Texture(Gdx.files.internal("assets/Button/Left_over.png"));
     private static Texture Texture_right = new Texture(Gdx.files.internal("assets/Button/Right.png"));
     private static Texture Texture_rightOver = new Texture(Gdx.files.internal("assets/Button/Right_over.png"));
+    private static Texture Texture_change = new Texture(Gdx.files.internal("assets/Button/change.png"));
+    private static Texture Texture_changeOver = new Texture(Gdx.files.internal("assets/Button/change_over.png"));
     private Image Image_operatorFormation;
     private Image[] Image_skillInfos = new Image[4];
-    private Image[] Image_decal = new Image[4];
+    private Image[] Image_decal = new Image[5];
+    private Button Button_change;
+    private Button.ButtonStyle Style_change;
     private Button[] Button_left = new Button[3];
     private Button.ButtonStyle Style_left;
     private Button[] Button_right = new Button[3];
     private Button.ButtonStyle Style_right;
     private Button Button_back;
     private Button.ButtonStyle Style_back;
-    private Button[] Button_OperatorImage = new Button[4];
-    private Button.ButtonStyle[] Style_OperatorImage = new Button.ButtonStyle[4];
+    private Button[] Button_OperatorImage = new Button[5];
+    private Button.ButtonStyle[] Style_OperatorImage = new Button.ButtonStyle[5];
     private Label[] Label_skillNames = new Label[4];
     private Label[] Label_skillInfo = new Label[4];
     private Label[] Label_skillCost = new Label[4];
-    private Label[] Label_operatorName = new Label[4];
+    private Label[] Label_operatorName = new Label[5];
     private Label hpLabel;
     private Label atkLabel;
     private Label defLabel;
@@ -56,13 +60,13 @@ public class OperatorFormationTable extends StoryUI
     private Label.LabelStyle labelStyleWhite;
     private Label.LabelStyle labelStyleName;
     private Label.LabelStyle labelStyleInfo;
-    
+
     private Operator[] operators;
     private Group[] Group_skill = new Group[4];
 
     private int chosenIndex = 0;
 
-    public OperatorFormationTable()
+    public ChangeOperatorTable()
     {
         getTeamMembers();
 
@@ -77,20 +81,7 @@ public class OperatorFormationTable extends StoryUI
         Image_operatorFormation = new Image(Texture_operatorFormation);
         group.addActor(Image_operatorFormation);
 
-        Style_back = new Button.ButtonStyle();
-        Style_back.up = new TextureRegionDrawable(new TextureRegion(Texture_backUp));
-        Style_back.over = new TextureRegionDrawable(new TextureRegion(Texture_backHover));
-
-        Button_back = new Button(Style_back);
-        Button_back.setPosition(70, 910);
-        Button_back.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                hide();
-            }
-        });
-
-        for(int i = 0; i <= 3; i++)
+        for(int i = 0; i <= 4; i++)
         {
             Style_OperatorImage[i] = new Button.ButtonStyle();
             Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_noInfo));
@@ -123,11 +114,11 @@ public class OperatorFormationTable extends StoryUI
         labelStyleName.fontColor = new Color(1, 1, 1, 1f);
 
         labelStyleWhite = new Label.LabelStyle();
-        labelStyleWhite.font = bitmapFont;
+        labelStyleWhite.font = bitmapFontText;
         labelStyleWhite.fontColor = new Color(1, 1, 1, 1f);
 
         labelStyle = new Label.LabelStyle();
-        labelStyle.font = bitmapFont;
+        labelStyle.font = bitmapFontText;
         labelStyle.fontColor = new Color(0, 0, 0, 0.8f);
 
         for(int i = 0; i <= 3; i++)
@@ -149,7 +140,7 @@ public class OperatorFormationTable extends StoryUI
         for(int i = 0; i <= 3; i++)
         {
             Button_OperatorImage[3 - i] = new Button(Style_OperatorImage[3 - i]);
-            Button_OperatorImage[3 - i].setPosition(460 + 267 * i, 565);
+            Button_OperatorImage[3 - i].setPosition(278 + 460 + 267 * i, 565);
             group.addActor(Button_OperatorImage[3 - i]);
             final int finalI = 3 - i;
             Button_OperatorImage[3 - i].addListener(new ClickListener() {
@@ -179,6 +170,29 @@ public class OperatorFormationTable extends StoryUI
             group.addActor(Label_operatorName[3 - i]);
         }
 
+        Button_OperatorImage[4] = new Button(Style_OperatorImage[4]);
+        Button_OperatorImage[4].setPosition(282, 565);
+        group.addActor(Button_OperatorImage[4]);
+        final int finalTmp = 4;
+        Button_OperatorImage[4].addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                chosenIndex = finalTmp;
+                updateInfo();
+            }
+        });
+        Image_decal[4] = new Image(Texture_decal);
+        Image_decal[4].setPosition(Button_OperatorImage[4].getX() - 19, 545);
+        Image_decal[4].setTouchable(Touchable.disabled);
+        group.addActor(Image_decal[4]);
+
+        Label_operatorName[4] = new Label(operators[4].getOperatorName(), labelStyleName);
+        Label_operatorName[4].setAlignment(Align.center);
+        Label_operatorName[4].setPosition(Image_decal[4].getX() + 160, 582, Align.center);
+        group.addActor(Label_operatorName[4]);
+        
+        /////////////
+
         Style_left = new Button.ButtonStyle();
         Style_left.up = new TextureRegionDrawable(new TextureRegion(Texture_left));
         Style_left.over = new TextureRegionDrawable(new TextureRegion(Texture_leftOver));
@@ -186,11 +200,12 @@ public class OperatorFormationTable extends StoryUI
         Style_right = new Button.ButtonStyle();
         Style_right.up = new TextureRegionDrawable(new TextureRegion(Texture_right));
         Style_right.over = new TextureRegionDrawable(new TextureRegion(Texture_rightOver));
+
         for(int i = 0; i <= 2; i++)
         {
             final int finalI = 3 - i;
             Button_left[i] = new Button(Style_left);
-            Button_left[i].setPosition(702 + 267 * i, 680);
+            Button_left[i].setPosition(278 + 702 + 267 * i, 680);
             Button_left[i].addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -206,7 +221,7 @@ public class OperatorFormationTable extends StoryUI
             group.addActor(Button_left[i]);
 
             Button_right[i] = new Button(Style_right);
-            Button_right[i].setPosition(657 + 267 * i, 680);
+            Button_right[i].setPosition(278 + 657 + 267 * i, 680);
             Button_right[i].addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -242,7 +257,40 @@ public class OperatorFormationTable extends StoryUI
         resLabel.setFontScale(0.8f);
         group.addActor(resLabel);
 
+        Style_back = new Button.ButtonStyle();
+        Style_back.up = new TextureRegionDrawable(new TextureRegion(Texture_backUp));
+        Style_back.over = new TextureRegionDrawable(new TextureRegion(Texture_backHover));
+
+        Button_back = new Button(Style_back);
+        Button_back.setPosition(70, 910);
+        Button_back.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                hide();
+            }
+        });
         group.addActor(Button_back);
+
+        Style_change = new Button.ButtonStyle();
+        Style_change.up = new TextureRegionDrawable(new TextureRegion(Texture_change));
+        Style_change.over = new TextureRegionDrawable(new TextureRegion(Texture_changeOver));
+
+        Button_change = new Button(Style_change);
+        Button_change.setPosition(440, 620);
+        Button_change.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Operator tmp;
+                tmp = TeamManager.getInstance().teamMembers[chosenIndex];
+                TeamManager.getInstance().teamMembers[chosenIndex] = TeamManager.getInstance().teamMembers[4];
+                TeamManager.getInstance().teamMembers[4] = tmp;
+                updateImage();
+                updateInfo();
+            }
+        });
+        group.addActor(Button_change);
+
+
         updateImage();
         updateInfo();
     }
@@ -281,28 +329,21 @@ public class OperatorFormationTable extends StoryUI
 
     private void updateImage()
     {
-        for(int i = 0; i <= 3; i++)
+        for(int i = 0; i <= operators.length - 1; i++)
         {
-            Texture Texture_image;
-            if(operators[3 - i] != null)
-            {
-                Texture_image = new Texture(Gdx.files.internal(operators[3 - i].getImagePath()));
-            }
-            else
-            {
-                Texture_image = Texture_noInfo;
-            }
-            Style_OperatorImage[3 - i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
+            if(operators[i] == null) continue;
+            Texture Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
+            Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
             String name;
-            if(operators[3 - i] == null)
+            if(operators[i] == null)
             {
                 name = "Null";
             }
             else
             {
-                name = operators[3 - i].getOperatorName();
+                name = operators[i].getOperatorName();
             }
-            Label_operatorName[3 - i].setText(name);
+            Label_operatorName[i].setText(name);
         }
     }
 

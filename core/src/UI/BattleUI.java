@@ -13,11 +13,14 @@ public abstract class BattleUI
     protected int index;
     protected BattleLevelBase level;
     protected static final BitmapFont bitmapFont = new BitmapFont(Gdx.files.internal("assets/font/skill.fnt"));
+    protected static final BitmapFont bitmapFontText = new BitmapFont(Gdx.files.internal("assets/font/text.fnt"));
+    protected static final BitmapFont bitmapFontName = new BitmapFont(Gdx.files.internal("assets/font/name.fnt"));
 
     public BattleUI()
     {
         bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
+        bitmapFontText.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        bitmapFontName.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     public void addToLevel(Stage stage, BattleLevelBase level, int index)

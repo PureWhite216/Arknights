@@ -20,6 +20,9 @@ public class Jessica extends Operator
     static final String soundPath = "assets/Operators/Jessica/杰西卡_选中干员2.wav";
     static final String[] skillPath = {"assets/Operators/Jessica/杰西卡_作战中1.wav","assets/Operators/Jessica/杰西卡_作战中4.wav"
    , "assets/Operators/Jessica/杰西卡_作战中2.wav"};
+    public static boolean isCreated = false;
+
+
     public Jessica(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
         operatorName = "杰西卡";

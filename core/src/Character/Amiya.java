@@ -21,6 +21,7 @@ public class Amiya extends Operator
     static final String skelPath = "assets/Amiya2_Front/char_1001_amiya2.skel";
     static final String soundPath = "assets/Amiya2_Front/阿米娅_选中干员1.wav";
     static String[] skillSoundsPath = {"assets/Amiya2_Front/阿米娅_作战中1.wav", "assets/Amiya2_Front/阿米娅_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Amiya(float posX, float posY)
     {

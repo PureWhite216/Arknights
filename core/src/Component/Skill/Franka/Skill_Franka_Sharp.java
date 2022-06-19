@@ -27,7 +27,7 @@ public class Skill_Franka_Sharp extends Skill_Attack {
     protected void callEffect(){
         character.getBattleComponent().addBuff(new AtkBuff(3,1.0f));
         character.getBattleComponent().addBuff(new DefBuff(3, -0.7f));
-        AudioManager.getInstance().getSFX().get(SFXName.magic).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.atkBoost).play(0.6f);
     }
 
     @Override

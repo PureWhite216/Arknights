@@ -21,6 +21,7 @@ public class Liskarm extends Operator{
     static final String skelPath = "assets/Operators/Liskarm/liskarm.skel";
     static final String soundPath = "assets/Operators/Liskarm/雷蛇_选中干员2.wav";
     static String[] skillSoundsPath = {"assets/Operators/Liskarm/雷蛇_作战中1.wav","assets/Operators/Liskarm/雷蛇_作战中2.wav","assets/Operators/Liskarm/雷蛇_作战中3.wav","assets/Operators/Liskarm/雷蛇_作战中4.wav"};
+    public static boolean isCreated = false;
 
     public Liskarm(float posX, float posY)
     {
