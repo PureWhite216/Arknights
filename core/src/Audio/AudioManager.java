@@ -13,7 +13,7 @@ public class AudioManager
     private static EnumMap<SFXName, Sound> SFX;
     private Sound currentCharacterSound;
     private Music bgm;
-    public static float defaultVolume = 0.1f;
+    public static float defaultVolume = 0.05f;
 
     public static AudioManager getInstance()
     {

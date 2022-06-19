@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class BattleComponent
 {
-    private int HP;
-    private int maxHP;
+    public int HP;
+    public int maxHP;
     private int def;
     private int res;
     private int atk;

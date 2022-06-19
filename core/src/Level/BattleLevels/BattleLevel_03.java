@@ -17,6 +17,8 @@ public class BattleLevel_03 extends BattleLevelBase
         {
             if(teamMembers[i] != null)
             {
+                teamMembers[i].getBattleComponent().HP = teamMembers[i].getBattleComponent().maxHP;
+                teamMembers[i].isDied = false;
                 operators[i] = teamMembers[i];
                 operators[i].setPosition(operatorPos[i], defaultY);
             }

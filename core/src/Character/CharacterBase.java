@@ -23,7 +23,7 @@ public abstract class CharacterBase extends Actor
     protected AnimationComponent animationComponent;
     protected BattleComponent battleComponent;
     protected CharacterBase target;
-    protected boolean isDied = false;
+    public boolean isDied = false;
     protected ArrayList<SkillBase> skills = new ArrayList<>();
     protected BattleLevelBase currentLevel;
     protected Sound[] skillSounds = new Sound[4];
