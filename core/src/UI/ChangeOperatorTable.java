@@ -329,10 +329,17 @@ public class ChangeOperatorTable extends BattleUI
 
     private void updateImage()
     {
-        for(int i = 0; i <= operators.length - 1; i++)
+        for(int i = 0; i <= 4; i++)
         {
-            if(operators[i] == null) continue;
-            Texture Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
+            Texture Texture_image;
+            if(operators[i] != null)
+            {
+                Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
+            }
+            else
+            {
+                Texture_image = Texture_noInfo;
+            }
             Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
             String name;
             if(operators[i] == null)

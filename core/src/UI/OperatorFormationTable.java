@@ -284,25 +284,25 @@ public class OperatorFormationTable extends StoryUI
         for(int i = 0; i <= 3; i++)
         {
             Texture Texture_image;
-            if(operators[3 - i] != null)
+            if(operators[i] != null)
             {
-                Texture_image = new Texture(Gdx.files.internal(operators[3 - i].getImagePath()));
+                Texture_image = new Texture(Gdx.files.internal(operators[i].getImagePath()));
             }
             else
             {
                 Texture_image = Texture_noInfo;
             }
-            Style_OperatorImage[3 - i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
+            Style_OperatorImage[i].up = new TextureRegionDrawable(new TextureRegion(Texture_image));
             String name;
-            if(operators[3 - i] == null)
+            if(operators[i] == null)
             {
                 name = "Null";
             }
             else
             {
-                name = operators[3 - i].getOperatorName();
+                name = operators[i].getOperatorName();
             }
-            Label_operatorName[3 - i].setText(name);
+            Label_operatorName[i].setText(name);
         }
     }
 

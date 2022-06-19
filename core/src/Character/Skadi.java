@@ -32,7 +32,7 @@ public class Skadi extends Operator{
     static final String skelPath = "assets/Operators/Skadi/char_1012_skadi2.skel";
     static final String soundPath = "assets/Operators/Skadi/斯卡蒂_选中干员1.wav";
     static String[] skillSoundsPath = {"assets/Operators/Skadi/斯卡蒂_作战中2.wav","assets/Operators/Skadi/斯卡蒂_作战中3.wav","assets/Operators/Skadi/斯卡蒂_作战中2.wav","assets/Operators/Skadi/斯卡蒂_作战中4.wav"};
-
+    public static boolean isCreated = false;
     public Skadi(float posX, float posY)
     {
         super(posX, posY, defaultScale, soundPath, skillSoundsPath);

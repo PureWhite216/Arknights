@@ -8,6 +8,8 @@ public class TeamManager
 {
     private static final TeamManager instance = new TeamManager();
 
+    public static final int operatorNum = 13;
+
     public Operator[] teamMembers = new Operator[5];
 
     Random random = new Random();
@@ -23,7 +25,7 @@ public class TeamManager
         {
             do
             {
-                teamMembers[i] = getOperator(random.nextInt(12));
+                teamMembers[i] = getOperator(random.nextInt(operatorNum));
             }
             while(teamMembers[i] == null);
 
@@ -39,7 +41,7 @@ public class TeamManager
         teamMembers[4] = null;
         while(teamMembers[4] == null)
         {
-            teamMembers[4] = getOperator(random.nextInt(12));
+            teamMembers[4] = getOperator(random.nextInt(operatorNum));
         }
     }
     
@@ -129,6 +131,13 @@ public class TeamManager
                 {
                     Warfarin.isCreated = true;
                     return new Warfarin(0, 0);
+                }
+                break;
+            case 12:
+                if(!Skadi.isCreated)
+                {
+                    Skadi.isCreated = true;
+                    return new Skadi(0, 0);
                 }
                 break;
         }
