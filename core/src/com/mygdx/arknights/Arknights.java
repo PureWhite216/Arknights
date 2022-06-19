@@ -1,20 +1,12 @@
 package com.mygdx.arknights;
 
 import Level.LevelManager;
-import Level.StartLevel;
-import Level.StoryLevel;
-import Level.TestLevel;
+import Level.StoryLevels.StoryLevel_00;
+import Level.StoryLevels.StoryLevel_02;
+import Level.StoryLevels.StoryLevel_03;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.esotericsoftware.spine.SkeletonRenderer;
-import com.esotericsoftware.spine.SkeletonRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 
 public class Arknights extends ApplicationAdapter
 {
@@ -25,7 +17,9 @@ public class Arknights extends ApplicationAdapter
 		/*Test Level*/
 //		LevelManager.getInstance().push(new TestLevel());
 //		LevelManager.getInstance().push(new StartLevel());
-		LevelManager.getInstance().push(new StoryLevel());
+//		LevelManager.getInstance().push(new StoryLevelBase());
+		LevelManager.getInstance().push(new StoryLevel_03());
+//		LevelManager.getInstance().push(new BattleLevel_09());
 	}
 
 	/*Game Loop*/
