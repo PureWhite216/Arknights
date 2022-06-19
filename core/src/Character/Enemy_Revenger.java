@@ -14,7 +14,7 @@ public class Enemy_Revenger extends Enemy
     public Enemy_Revenger(float posX, float posY)
     {
         super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(350, 80, 50, 0, this);
+        battleComponent = new BattleComponent(450, 80, 50, 0, this);
         skills.add(new Skill_Enemy_Revenger_Attack(this));
         chosenSkillIndex = 0;
     }

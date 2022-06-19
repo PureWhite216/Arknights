@@ -33,7 +33,7 @@ public class Warfarin extends Operator{
         imagePath = "assets/Operators/Warfarin/warfarin.png";
         operatorName = "华法琳";
         /*Set Battle Info*/
-        battleComponent = new BattleComponent(100, 40, 20, 10, this);
+        battleComponent = new BattleComponent(160, 40, 20, 10, this);
         /*Init Skill*/
         skills.add(new Skill_Warfarin_Recover(this));
         skills.add(new Skill_Warfarin_EmergencyBandage(this));

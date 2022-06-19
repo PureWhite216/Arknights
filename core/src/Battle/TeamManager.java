@@ -21,7 +21,10 @@ public class TeamManager
 
     private void initTeam()
     {
-        for(int i = 0; i <= 1; i++)
+        teamMembers[0] = new Amiya(0, 0);
+        Amiya.isCreated = true;
+
+        for(int i = 1; i <= 3; i++)
         {
             do
             {

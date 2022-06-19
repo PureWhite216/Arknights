@@ -13,7 +13,7 @@ public class AudioManager
     private static EnumMap<SFXName, Sound> SFX;
     private Sound currentCharacterSound;
     private Music bgm;
-    public static float defaultVolume = 0.25f;
+    public static float defaultVolume = 0.1f;
 
     public static AudioManager getInstance()
     {
@@ -22,7 +22,7 @@ public class AudioManager
 
     private AudioManager()
     {
-        musicAssets[0] = "assets/Audio/Music/Tactical Ambush.mp3";
+        musicAssets[0] = "assets/Audio/Music/战斗曲.mp3";
         musicAssets[1] = "assets/Audio/Music/赴遥尘.mp3";
         musicAssets[2] = "assets/Audio/Music/大柏墟.mp3";
         musicAssets[3] = "assets/Audio/Music/终局抵抗者.mp3";

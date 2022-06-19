@@ -14,7 +14,7 @@ public class Enemy_ShieldDefender extends Enemy
     public Enemy_ShieldDefender(float posX, float posY)
     {
         super(posX, posY, defaultScale);
-        battleComponent = new BattleComponent(500, 50, 60, 0, this);
+        battleComponent = new BattleComponent(700, 55, 60, 0, this);
         skills.add(new Skill_Enemy_ShieldDefender_Attack(this));
         chosenSkillIndex = 0;
     }

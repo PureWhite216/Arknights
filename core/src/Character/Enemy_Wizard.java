@@ -17,6 +17,7 @@ public class Enemy_Wizard extends Enemy
         battleComponent = new BattleComponent(180, 60, 25, 30, this);
         skills.add(new Skill_Enemy_Wizard_Attack(this));
         chosenSkillIndex = 0;
+        animationComponent.getSkeleton().setSkin("Wizard");
     }
 
     @Override

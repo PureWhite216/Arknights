@@ -25,7 +25,7 @@ public class Skill_Enemy_Revenger_Attack extends Skill_Attack
         }else{
             super.callEffect();
         }
-        AudioManager.getInstance().getSFX().get(SFXName.sword).play(0.6f);
+        AudioManager.getInstance().getSFX().get(SFXName.swordMagic).play(0.6f);
     }
 
     @Override

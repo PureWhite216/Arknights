@@ -258,6 +258,7 @@ public abstract class BattleLevelBase extends LevelBase
         TeamManager.getInstance().createNewOperator();
         changeOperatorTable = new ChangeOperatorTable();
         changeOperatorTable.addToLevel(stage, this, 0);
+        AudioManager.getInstance().StopBGM();
         AudioManager.getInstance().playBGM(3);
     }
 
