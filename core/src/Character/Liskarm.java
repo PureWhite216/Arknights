@@ -44,6 +44,7 @@ public class Liskarm extends Operator{
     {
         super.enterLevel(currentLevel, index);
         /*Init Animation*/
+        animationComponent.getAnimationState().addAnimation(0, "Start", false, 0f);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
 
     }

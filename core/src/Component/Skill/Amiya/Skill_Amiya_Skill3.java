@@ -19,7 +19,7 @@ public class Skill_Amiya_Skill3 extends SkillBase
     {
         super(character);
         skillName = "攻击强化";
-        skillInfo = "提示2倍攻击力";
+        skillInfo = "提升2倍攻击力";
         needChoose = false;
         apCost = 2;
     }
@@ -45,6 +45,8 @@ public class Skill_Amiya_Skill3 extends SkillBase
     public void callSkill()
     {
         callSound();
+        animationComponent.getAnimationState().setAnimation(0, "Attack", false);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
         character.addAction(Actions.sequence(
                 Actions.delay(0.2f),
                 getEffectAction())

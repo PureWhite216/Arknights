@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class Skill_Iris_Dream extends Skill_Attack {
     public Skill_Iris_Dream(CharacterBase character){
         super(character);
-        skillName = " 梦乡摇篮";
+        skillName = "梦乡摇篮";
         skillInfo = "使目标敌人眩晕3回合\n并造成自身攻击力1.5倍的法术伤害";
         apCost = 6;
     }

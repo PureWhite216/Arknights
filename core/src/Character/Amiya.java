@@ -43,7 +43,8 @@ public class Amiya extends Operator
     {
         super.enterLevel(currentLevel, index);
         /*Init Animation*/
-        animationComponent.getAnimationState().addAnimation(0, "Skill_2_Idle", true, 0f);
+        animationComponent.getAnimationState().addAnimation(0, "Start", false, 0f);
+        animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
     }
 
     @Override
@@ -52,6 +53,7 @@ public class Amiya extends Operator
         /*Set up Animation Component*/
         animationComponent = new AnimationComponent(atlasPath, skelPath, scale);
         /*Set Animation Mix*/
+        animationComponent.getAnimationStateData().setMix("Start", "Idle", 0.3f);
         animationComponent.getAnimationStateData().setMix("Skill_2_Idle", "Skill_2_Loop", 0.3f);
     }
 

@@ -34,7 +34,7 @@ public class Skill_Franka_Sharp extends Skill_Attack {
     public void callSkill(){
         callSound();
         // Call Skeleton Animation
-        animationComponent.getAnimationState().setAnimation(0, "Skill", false);
+        animationComponent.getAnimationState().setAnimation(0, "Attack", false);
         animationComponent.getAnimationState().addAnimation(0, "Idle", true, 0f);
 
         character.clearActions();
