@@ -18,6 +18,8 @@ public class Iris extends Operator{
     static final String soundPath = "assets/Operators/Iris/爱丽丝_选中干员1.wav";
     static final String[] skillPath = {"assets/Operators/Iris/爱丽丝_作战中1.wav","assets/Operators/Iris/爱丽丝_作战中2.wav"
             ,"assets/Operators/Iris/爱丽丝_作战中3.wav","assets/Operators/Iris/爱丽丝_作战中4.wav"};
+    public static boolean isCreated = false;
+
     public Iris(float posX, float posY){
         super(posX, posY, defaultScale, soundPath, skillPath);
         operatorName = "爱丽丝";

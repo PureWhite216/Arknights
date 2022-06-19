@@ -8,7 +8,7 @@ public class TeamManager
 {
     private static final TeamManager instance = new TeamManager();
 
-    public static final int operatorNum = 13;
+    public static final int operatorNum = 14;
 
     public Operator[] teamMembers = new Operator[5];
 
@@ -138,6 +138,13 @@ public class TeamManager
                 {
                     Skadi.isCreated = true;
                     return new Skadi(0, 0);
+                }
+                break;
+            case 13:
+                if(!Iris.isCreated)
+                {
+                    Iris.isCreated = true;
+                    return new Iris(0, 0);
                 }
                 break;
         }

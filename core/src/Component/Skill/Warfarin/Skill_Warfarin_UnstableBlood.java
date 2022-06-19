@@ -17,7 +17,7 @@ public class Skill_Warfarin_UnstableBlood extends Skill_Attack
         skillName = "不稳定血";
         needChoose = false;
         apCost = 3;
-        skillInfo = "随机选择一名友方，\n使其获得持续2回合的“锋利”效果（攻击力变为2倍)\n且损失15%的最大生命值的血量";
+        skillInfo = "随机选择一名友方，使其损失15%的最大生命值的血量，\n并在3回合内攻击力提升40%";
     }
 
     @Override
