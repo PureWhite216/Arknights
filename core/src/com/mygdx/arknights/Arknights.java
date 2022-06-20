@@ -2,9 +2,7 @@ package com.mygdx.arknights;
 
 import Level.LevelManager;
 import Level.StartLevel;
-import Level.StoryLevels.StoryLevel_00;
-import Level.StoryLevels.StoryLevel_02;
-import Level.StoryLevels.StoryLevel_03;
+import Level.StoryLevels.*;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -17,9 +15,9 @@ public class Arknights extends ApplicationAdapter
 
 		/*Test Level*/
 //		LevelManager.getInstance().push(new TestLevel());
-		LevelManager.getInstance().push(new StartLevel());
+//		LevelManager.getInstance().push(new StartLevel());
 //		LevelManager.getInstance().push(new StoryLevelBase());
-//		LevelManager.getInstance().push(new StoryLevel_00());
+		LevelManager.getInstance().push(new StoryLevel_06());
 //		LevelManager.getInstance().push(new BattleLevel_09());
 	}
 

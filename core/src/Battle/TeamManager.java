@@ -21,22 +21,22 @@ public class TeamManager
 
     private void initTeam()
     {
-        teamMembers[0] = new Amiya(0, 0);
-        Amiya.isCreated = true;
-
-        for(int i = 1; i <= 1; i++)
-        {
-            do
-            {
-                teamMembers[i] = getOperator(random.nextInt(operatorNum));
-            }
-            while(teamMembers[i] == null);
-
-        }
-//        teamMembers[0] = new Saria(0, 0);
-//        teamMembers[1] = new SilverAsh(0, 0);
-//        teamMembers[2] = new Franka(0, 0);
-//        teamMembers[3] = new Myrtle(0, 0);
+//        teamMembers[0] = new Amiya(0, 0);
+//        Amiya.isCreated = true;
+//
+//        for(int i = 1; i <= 3; i++)
+//        {
+//            do
+//            {
+//                teamMembers[i] = getOperator(random.nextInt(operatorNum));
+//            }
+//            while(teamMembers[i] == null);
+//
+//        }
+        teamMembers[0] = new Saria(0, 0);
+        teamMembers[1] = new SilverAsh(0, 0);
+        teamMembers[2] = new Iris(0, 0);
+        teamMembers[3] = new Executor(0, 0);
     }
 
     public void createNewOperator()
